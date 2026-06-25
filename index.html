@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Operasional Gudang</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f4f9; }
+        h2 { text-align: center; color: #333; }
+        details { margin-bottom: 15px; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        summary { font-weight: bold; cursor: pointer; list-style: none; font-size: 1.1em; color: #0056b3; }
+        summary::after { content: ' ▼'; float: right; }
+        .sub-content { margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee; }
+        img { max-width: 100%; height: auto; border-radius: 5px; margin: 10px 0; border: 1px solid #ccc; }
+        p { color: #555; }
+    </style>
+</head>
+<body>
 
+    <h2>Panduan Alur Kerja Gudang</h2>
+
+    <details>
+        <summary>INBOUND</summary>
+        
+        <div class="sub-content">
+            <h4>Admin Inbound</h4>
+            <p>Prosedur untuk admin dalam menginput data kedatangan barang ke sistem.</p>
+            <img src="IB-regist.png" alt="Admin Inbound">
+        </div>
+
+        <div class="sub-content">
+            <h4>Checker Inbound</h4>
+            <p>Prosedur pengecekan fisik barang yang datang sesuai dengan dokumen.</p>
+            <img src="IB-Validasi.png" alt="Checker Inbound">
+        </div>
+
+        <div class="sub-content">
+            <h4>Labeling Inbound</h4>
+            <p>Prosedur penempelan label barcode pada barang sebelum masuk rak.</p>
+            <img src="label.png" alt="Labeling Inbound">
+        </div>
+    </details>
+
+    <details>
+        <summary>QUALITY CONTROL</summary>
+        <div class="sub-content">
+            <h4>Validasi Badstock</h4>
+            <p>Prosedur validasi barang rusak/defect.</p>
+            <img src="Validasi Badstock.png" alt="Validasi Badstock">
+        </div>
+    </details>
+
+</body>
+</html>
