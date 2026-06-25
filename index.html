@@ -3,52 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panduan Operasional Gudang</title>
+    <title>Mitra Playbook</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f4f9; }
-        h2 { text-align: center; color: #333; }
-        details { margin-bottom: 15px; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        summary { font-weight: bold; cursor: pointer; list-style: none; font-size: 1.1em; color: #0056b3; }
-        summary::after { content: ' ▼'; float: right; }
-        .sub-content { margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee; }
-        img { max-width: 100%; height: auto; border-radius: 5px; margin: 10px 0; border: 1px solid #ccc; }
-        p { color: #555; }
+        :root {
+            --primary: #033980;
+            --bg: #64b1fa;
+            --text: #1e293b;
+            --border: #bce2fd;
+            --white: #ffffff;
+        }
+        
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; background: var(--bg); color: var(--text); }
+        
+        /* Sidebar */
+        nav { width: 280px; height: 100vh; background: var(--white); border-right: 1px solid var(--border); padding: 20px; position: fixed; box-sizing: border-box; z-index: 100; }
+        nav h2 { font-size: 1.4rem; color: var(--primary); margin-bottom: 25px; }
+        #searchInput { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; outline: none; }
+        nav ul { list-style: none; padding: 0; }
+        nav li { padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
+        nav li:hover { background: #bce2fd; }
+        nav li.active { background: var(--primary); color: white; }
+
+        /* Main Content */
+        main { margin-left: 280px; padding: 40px; width: calc(100% - 280px); box-sizing: border-box; }
+
+        /* --- BANNER HIGHLIGHT --- */
+        .highlight-container {
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(153, 58, 142, 0.15);
+            border: 1px solid var(--border);
+        }
+
+        .banner-image-wrapper { width: 100%; height: 180px; overflow: hidden; position: relative; }
+        .banner-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        .running-text-wrapper {
+            background: var(--primary);
+            color: white;
+            padding: 10px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .running-text {
+            display: inline-block;
+            padding-left: 100%;
+            font-weight: 700;
+            font-size: 1.1rem;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        .running-text-wrapper:hover .running-text { animation-play-state: paused; }
+
+        /* Content Sections */
+        .content-section { display: none; } 
+        .content-section.active { display: block; } 
+        .card { background: white; padding: 25px; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .badge { background: #bce2fd; color: var(--primary); padding: 6px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        h3 { color: var(--primary); margin: 15px 0 10px 0; font-size: 1.5rem; }
+        p { line-height: 1.6; color: #475569; }
+        .content-image { max-width: 100%; border-radius: 10px; margin-top: 15px; display: block; }
     </style>
 </head>
 <body>
 
-    <h2>Panduan Alur Kerja Gudang</h2>
+    <nav>
+        <h2>Panduan Kerja Mitra Warehouse</h2>
+        <input type="text" id="searchInput" placeholder="Cari materi..." onkeyup="searchGlobal()">
+        <ul id="menuList">
+            <li class="active" onclick="openTab(event, 'Panduan Umum')">Panduan Umum</li>
+            <li onclick="openTab(event, 'Inbound')">Inbound</li>
+            <li onclick="openTab(event, 'Inventory')">Inventory</li>
+            <li onclick="openTab(event, 'Outbound')">Outbound</li>
+        </ul>
+    </nav>
 
-    <details>
-        <summary>INBOUND</summary>
+    <main>
         
-        <div class="sub-content">
-            <h4>Admin Inbound</h4>
-            <p>Prosedur untuk admin dalam menginput data kedatangan barang ke sistem.</p>
-            <img src="IB-regist.png" alt="Admin Inbound">
+        <div id="Panduan Umum" class="content-section">
+            <div class="card">
+                <span class="badge">Panduan umum Warehouse Fresh/span>
+                <h3>Bla..bla..bla</h3>
+                <p>• blu blu blu</p>
+            </div> 
+            
+            <div class="card">
+                <span class="badge">Panduan umum Warehouse Frozen/span>
+                <h3>Bla..bla..bla</h3>
+                <p>blu blu blu</p>
+            </div>
         </div>
 
-        <div class="sub-content">
-            <h4>Checker Inbound</h4>
-            <p>Prosedur pengecekan fisik barang yang datang sesuai dengan dokumen.</p>
-            <img src="IB-Validasi.png" alt="Checker Inbound">
+        <div id="Inbound" class="content-section">
+            <div class="card">
+                <span class="badge">Inbound Checker/span>
+                <h3>Bla..bla..bla</h3>
+                <p>• blu blu blu</p>
+            </div>
+
+            <div class="card">
+                <span class="badge">Inbound Labelling/span>
+                <h3>Bla..bla..bla</h3>
+                <p>blu blu blu</p>
+                    
+            <div class="card">
+                <span class="badge">Inbound Admin/span>
+                <h3>Bla..bla..bla</h3>
+                <p>blu blu blu</p>
+            </div>
         </div>
 
-        <div class="sub-content">
-            <h4>Labeling Inbound</h4>
-            <p>Prosedur penempelan label barcode pada barang sebelum masuk rak.</p>
-            <img src="label.png" alt="Labeling Inbound">
-        </div>
-    </details>
+            <div id="Inventory" class="content-section">
+            <div class="card">
+                <span class="badge">Inventory Putaway/span>
+                <h3>Bla..bla..bla</h3>
+                <p>• blu blu blu</p>
+            </div>
 
-    <details>
-        <summary>QUALITY CONTROL</summary>
-        <div class="sub-content">
-            <h4>Validasi Badstock</h4>
-            <p>Prosedur validasi barang rusak/defect.</p>
-            <img src="Validasi Badstock.png" alt="Validasi Badstock">
-        </div>
-    </details>
+            <div class="card">
+                <span class="badge">Inventory Stock Keeper/span>
+                <h3>Bla..bla..bla</h3>
+                <p>blu blu blu</p>
+                    
+            <div class="card">
+                <span class="badge">Inventory Badstock/span>
+                <h3>Bla..bla..bla</h3>
+                <p>blu blu blu</p>
+            </div>
 
+            <div class="card">
+                <span class="badge">Inventory Admin/span>
+                <h3>Bla..bla..bla</h3>
+                <p>blu blu blu</p>
+            </div>
+        </div>
+
+                <div id="Outbound" class="content-section">
+            <div class="card">
+                <span class="badge">Outbound Picker Sorter/span>
+                <h3>Bla..bla..bla</h3>
+                <p>• blu blu blu</p>
+            </div>
+
+            <div class="card">
+                <span class="badge">Outbound Checker/span>
+                <h3>Bla..bla..bla</h3>
+                <p>blu blu blu</p>
+                    
+            <div class="card">
+                <span class="badge">Outbound Loader/span>
+                <h3>Bla..bla..bla</h3>
+                <p>blu blu blu</p>
+            </div>
+        </div>
+
+
+            </div>
+        </div>
+
+
+        <!-- ... (Bagian Insentif BSC, BPJS, Astro Get Astro, Izin, Pelanggaran, Bantuan tetap sama) ... -->
+    </main>
+                  
+<script>
+    function openTab(evt, tabName) {
+        let sections = document.getElementsByClassName("content-section");
+        for (let i = 0; i < sections.length; i++) {
+            sections[i].classList.remove("active");
+        }
+
+        let menuItems = document.querySelectorAll("#menuList li");
+        menuItems.forEach(item => item.classList.remove("active"));
+
+        let targetSection = document.getElementById(tabName);
+        if(targetSection) {
+            targetSection.classList.add("active");
+        }
+        evt.currentTarget.classList.add("active");
+    }
+
+    function searchGlobal() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('card');
+
+        for (let i = 0; i < cards.length; i++) {
+            let text = cards[i].innerText.toLowerCase();
+
+            if (text.includes(input)) {
+                cards[i].style.display = "block";
+                cards[i].parentElement.classList.add("active");
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+</script>
 </body>
 </html>
