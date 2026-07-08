@@ -130,6 +130,11 @@
                 <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Picker Sorter')">Picker Sorter</li>
                 <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Checker')">Checker</li>
                 <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Loader')">Loader</li>
+            </ul>
+
+            <li onclick="toggleDropdown(event, 'Kamus Warehouse')">Kamus Warehouse</li>
+            <ul class="submenu" id="submenuKamus">
+                <li onclick="openTab(event, 'Kamus Warehouse', 'Istilah - istilah')">Istilah - istilah</li>
         </ul>
     </nav>
 
@@ -164,7 +169,7 @@
             
             <div class="card sub-card" data-sub="Inbound Checker">
                 <span class="badge">Inbound Admin</span>
-                <h3>1. Mengambiil dokumen</h3>
+                <h3>1. Mengambil dokumen untuk pengecekan</h3>
                 <p>blu blu blu bagian admin checker selesai...</p>
                 <h3>2. Proses Menghitung (Counting)</h3>
                 <p>• Sebelum proses menghitung, tim QA Inbound melakukan screening quality</p>
@@ -223,6 +228,15 @@
                 <p>blu blu blu</p>
             </div>
         </div>
+
+        <div id="Kamus Warehouse" class="content-section">
+            <div class="card sub-card" data-sub="Istilah - istilah">
+                <span class="badge">Istilah - istilah</span>
+                <h3>1. Forecast</h3>
+                <p>estimasi jumlah kedatangan barang</p>
+            </div>
+        </div>
+
 
     </main>
                     
