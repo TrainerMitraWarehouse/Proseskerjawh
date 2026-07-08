@@ -16,13 +16,39 @@
         body { font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; background: var(--bg); color: var(--text); }
         
         /* Sidebar */
-        nav { width: 280px; height: 100vh; background: var(--white); border-right: 1px solid var(--border); padding: 20px; position: fixed; box-sizing: border-box; z-index: 100; }
+        nav { width: 280px; height: 100vh; background: var(--white); border-right: 1px solid var(--border); padding: 20px; position: fixed; box-sizing: border-box; z-index: 100; overflow-y: auto; }
         nav h2 { font-size: 1.4rem; color: var(--primary); margin-bottom: 25px; }
         #searchInput { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; outline: none; }
-        nav ul { list-style: none; padding: 0; }
+        nav ul { list-style: none; padding: 0; margin: 0; }
         nav li { padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
         nav li:hover { background: #dbf5f0; }
         nav li.active { background: var(--primary); color: white; }
+
+        /* Style untuk Submenu Bertingkat */
+        .submenu {
+            display: none; /* Tersembunyi secara default */
+            padding-left: 20px !important;
+            margin-top: -4px;
+            margin-bottom: 10px;
+        }
+        .submenu li {
+            padding: 8px 12px;
+            font-size: 0.95rem;
+            font-weight: normal;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .submenu li:hover {
+            background: #e6f7f4;
+        }
+        .submenu li.active {
+            background: #057780 !important;
+            color: white !important;
+        }
+        /* Class pembantu untuk menampilkan submenu */
+        .submenu.show {
+            display: block;
+        }
 
         /* Main Content */
         main { margin-left: 280px; padding: 40px; width: calc(100% - 280px); box-sizing: border-box; }
@@ -73,7 +99,7 @@
         .card { background: white; padding: 25px; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 25px; }
         .badge { background: #dbf5f0; color: var(--primary); padding: 6px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
         h3 { color: var(--primary); margin: 15px 0 10px 0; font-size: 1.5rem; }
-        p { line-height: 1.6; color: #dbf5f0; }
+        p { line-height: 1.6; color: var(--text); } /* Diperbaiki dari #dbf5f0 agar teks panduan terbaca */
         .content-image { max-width: 100%; border-radius: 10px; margin-top: 15px; display: block; }
     </style>
 </head>
@@ -84,9 +110,15 @@
         <input type="text" id="searchInput" placeholder="Cari materi..." onkeyup="searchGlobal()">
         <ul id="menuList">
             <li class="active" onclick="openTab(event, 'Panduan Umum')">Panduan Umum</li>
-            <li onclick="openTab(event, 'Inbound Fresh')">Inbound Fresh</li>
-            <li onclick="openTab(event, 'Inventory Fresh')">Inventory Fresh</li>
-            <li onclick="openTab(event, 'Outbound Fresh')">Outbound Fresh</li>
+            
+            <li onclick="toggleDropdown(event, 'Inbound Fresh')">Inbound Fresh</li>
+            <ul class="submenu" id="submenuInbound">
+                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Checker')">Proses Checker</li>
+                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Labelling')">Labeling</li>
+            </ul>
+
+            <li onclick="openTab(event, 'Inventory')">Inventory Fresh</li>
+            <li onclick="openTab(event, 'Outbound')">Outbound Fresh</li>
         </ul>
     </nav>
 
@@ -107,8 +139,8 @@
         </div>
 
         <div id="Inbound Fresh" class="content-section">
-            <div class="card">
-                <span class="badge">Inbound Admin</span>
+            <div class="card sub-card" data-sub="Inbound Checker">
+                <span class="badge">Inbound Admin - Checker</span>
                 <h3>1. Registrasi oleh Vendor</h3>
                 <p>• Vendor melakukan registrasi pada Inbound Admin</p>
                 <p>• Inbound Admin melakukan pengecekan kelengkapan dokumen PO & Surat Jalan</p>
@@ -128,20 +160,20 @@
                 <img src="IB WMS.png" alt="IB WMS" class="content-image">
             </div>
 
-            <div class="card">
+            <div class="card sub-card" data-sub="Inbound Labelling">
                 <span class="badge">Inbound Labelling</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
+                <h3>Proses Labelling</h3>
+                <p>blu blu blu bagian proses labeling...</p>
             </div>
-                    
-            <div class="card">
+            
+            <div class="card sub-card" data-sub="Inbound Checker">
                 <span class="badge">Inbound Admin</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
+                <h3>Proses Akhir Checker</h3>
+                <p>blu blu blu bagian admin checker selesai...</p>
             </div>
         </div>
 
-            <div id="Inventory" class="content-section">
+        <div id="Inventory" class="content-section">
             <div class="card">
                 <span class="badge">Inventory Putaway</span>
                 <h3>Bla..bla..bla</h3>
@@ -161,13 +193,13 @@
             </div>
 
             <div class="card">
-                <span class="badge">Inventory Admin,/span>
+                <span class="badge">Inventory Admin</span>
                 <h3>Bla..bla..bla</h3>
                 <p>blu blu blu</p>
             </div>
         </div>
 
-                <div id="Outbound" class="content-section">
+        <div id="Outbound" class="content-section">
             <div class="card">
                 <span class="badge">Outbound Picker Sorter</span>
                 <h3>Bla..bla..bla</h3>
@@ -187,31 +219,72 @@
             </div>
         </div>
 
-
-            </div>
-        </div>
-
-
-        <!-- ... (Bagian Insentif BSC, BPJS, Astro Get Astro, Izin, Pelanggaran, Bantuan tetap sama) ... -->
     </main>
-                  
+                    
 <script>
-    function openTab(evt, tabName) {
+    // Fungsi khusus untuk menu utama yang memiliki dropdown (Inbound Fresh)
+    function toggleDropdown(evt, tabName) {
+        let submenu = document.getElementById("submenuInbound");
+        
+        // Membuka / menutup dropdown saat menu utama diklik
+        submenu.classList.toggle("show");
+
+        // Sekaligus memicu pembukaan tab utama
+        openTab(evt, tabName);
+    }
+
+    // Fungsi utama pemindah Tab (diperbarui agar mendukung filter Submenu)
+    function openTab(evt, tabName, subName = null) {
+        // 1. Sembunyikan semua section besar
         let sections = document.getElementsByClassName("content-section");
         for (let i = 0; i < sections.length; i++) {
             sections[i].classList.remove("active");
         }
 
+        // 2. Hapus class active dari semua menu & submenu
         let menuItems = document.querySelectorAll("#menuList li");
         menuItems.forEach(item => item.classList.remove("active"));
 
+        // 3. Tampilkan section utama yang dituju
         let targetSection = document.getElementById(tabName);
         if(targetSection) {
             targetSection.classList.add("active");
         }
+
+        // 4. Beri class active pada menu yang sedang diklik
         evt.currentTarget.classList.add("active");
+
+        // Jika menu utama diklik langsung tanpa memilih submenu, tutup dropdown menu lain jika perlu
+        if (!subName && tabName !== 'Inbound Fresh') {
+            document.getElementById("submenuInbound").classList.remove("show");
+        }
+
+        // 5. LOGIKA FILTER CARD SUBMENU (Jika submenu dipilih)
+        if (targetSection) {
+            let subCards = targetSection.getElementsByClassName("sub-card");
+            
+            if (subName) {
+                // Jika mengklik submenu (Checker atau Labelling), filter card yang sesuai saja
+                for (let i = 0; i < subCards.length; i++) {
+                    if (subCards[i].getAttribute("data-sub") === subName) {
+                        subCards[i].style.display = "block";
+                    } else {
+                        subCards[i].style.display = "none";
+                    }
+                }
+            } else {
+                // Jika klik menu utama "Inbound Fresh", tampilkan semua card di dalamnya
+                for (let i = 0; i < subCards.length; i++) {
+                    subCards[i].style.display = "block";
+                }
+            }
+        }
+        
+        // Mencegah bubbling agar jika submenu diklik, menu utama tidak ikut terpicu ulang salah target
+        evt.stopPropagation();
     }
 
+    // Fungsi Pencarian
     function searchGlobal() {
         let input = document.getElementById('searchInput').value.toLowerCase();
         let cards = document.getElementsByClassName('card');
