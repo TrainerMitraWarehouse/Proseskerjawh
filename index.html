@@ -113,12 +113,23 @@
             
             <li onclick="toggleDropdown(event, 'Inbound Fresh')">Inbound Fresh</li>
             <ul class="submenu" id="submenuInbound">
-                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Checker')">Proses Checker</li>
-                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Labelling')">Labeling</li>
+                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Admin')">Admin</li>
+                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Checker')">Checker</li>
+                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Labeling')">Labeling</li>
             </ul>
 
-            <li onclick="openTab(event, 'Inventory')">Inventory Fresh</li>
-            <li onclick="openTab(event, 'Outbound')">Outbound Fresh</li>
+            <li onclick="toggleDropdown(event, 'Inventory Fresh')">Inventory Fresh</li>
+            <ul class="submenu" id="submenuInbound">
+                <li onclick="openTab(event, 'Inventory Fresh', 'Inventory Putaway')">Putaway</li>
+                <li onclick="openTab(event, 'Inventory Fresh', 'Inventory Stock Keeper')">Stock Keeper</li>
+                <li onclick="openTab(event, 'Inventory Fresh', 'Inventory Badstock')">Badstcok</li>
+            </ul>
+
+            <li onclick="toggleDropdown(event, 'Outbound Fresh')">Outbound Fresh</li>
+            <ul class="submenu" id="submenuInbound">
+                <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Picker Sorter')">Picker Sorter</li>
+                <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Checker')">Checker</li>
+                <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Loader')">Loader</li>
         </ul>
     </nav>
 
