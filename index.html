@@ -1,310 +1,518 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitra Playbook</title>
-    <style>
-        :root {
-            --primary: #057780;
-            --bg: #dbf5f0;
-            --text: #080808;
-            --border: #000000;
-            --white: #ffffff;
-        }
-        
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; background: var(--bg); color: var(--text); }
-        
-        /* Sidebar */
-        nav { width: 280px; height: 100vh; background: var(--white); border-right: 1px solid var(--border); padding: 20px; position: fixed; box-sizing: border-box; z-index: 100; overflow-y: auto; }
-        nav h2 { font-size: 1.4rem; color: var(--primary); margin-bottom: 25px; }
-        #searchInput { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; outline: none; }
-        nav ul { list-style: none; padding: 0; margin: 0; }
-        nav li { padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
-        nav li:hover { background: #dbf5f0; }
-        nav li.active { background: var(--primary); color: white; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panduan Kerja Mitra Warehouse</title>
+  <style>
+    :root {
+      --ink: #17211f;
+      --muted: #596662;
+      --line: #d8e1de;
+      --panel: #ffffff;
+      --soft: #f4f8f6;
+      --brand: #0b766f;
+      --brand-dark: #07534f;
+      --accent: #f2b84b;
+      --danger: #b94a48;
+    }
 
-        /* Style untuk Submenu Bertingkat */
-        .submenu {
-            display: none; /* Tersembunyi secara default */
-            padding-left: 20px !important;
-            margin-top: -4px;
-            margin-bottom: 10px;
-        }
-        .submenu li {
-            padding: 8px 12px;
-            font-size: 0.95rem;
-            font-weight: normal;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-        }
-        .submenu li:hover {
-            background: #e6f7f4;
-        }
-        .submenu li.active {
-            background: #057780 !important;
-            color: white !important;
-        }
-        /* Class pembantu untuk menampilkan submenu */
-        .submenu.show {
-            display: block;
-        }
+    * { box-sizing: border-box; }
 
-        /* Main Content */
-        main { margin-left: 280px; padding: 40px; width: calc(100% - 280px); box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", Verdana, sans-serif;
+      background: var(--soft);
+      color: var(--ink);
+    }
 
-        /* --- BANNER HIGHLIGHT --- */
-        .highlight-container {
-            width: 100%;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 20px rgba(153, 58, 142, 0.15);
-            border: 1px solid var(--border);
-        }
+    header {
+      background: var(--brand-dark);
+      color: #fff;
+      padding: 24px clamp(18px, 4vw, 48px);
+      border-bottom: 6px solid var(--accent);
+    }
 
-        .banner-image-wrapper { width: 100%; height: 180px; overflow: hidden; position: relative; }
-        .banner-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      letter-spacing: 0;
+    }
 
-        .running-text-wrapper {
-            background: var(--primary);
-            color: white;
-            padding: 10px 0;
-            white-space: nowrap;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
+    header p {
+      margin: 0;
+      max-width: 850px;
+      color: #dcecea;
+      line-height: 1.55;
+      font-size: 1rem;
+    }
 
-        .running-text {
-            display: inline-block;
-            padding-left: 100%;
-            font-weight: 700;
-            font-size: 1.1rem;
-            animation: marquee 15s linear infinite;
-        }
+    .layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 24px;
+      padding: 24px clamp(14px, 4vw, 48px) 48px;
+      align-items: start;
+    }
 
-        @keyframes marquee {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
-        }
+    aside {
+      position: sticky;
+      top: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
 
-        .running-text-wrapper:hover .running-text { animation-play-state: paused; }
+    .search {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      font: inherit;
+      margin-bottom: 12px;
+    }
 
-        /* Content Sections */
-        .content-section { display: none; } 
-        .content-section.active { display: block; } 
-        .card { background: white; padding: 25px; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        .badge { background: #dbf5f0; color: var(--primary); padding: 6px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        h3 { color: var(--primary); margin: 15px 0 10px 0; font-size: 1.5rem; }
-        p { line-height: 1.6; color: var(--text); } /* Diperbaiki dari #dbf5f0 agar teks panduan terbaca */
-        .content-image { max-width: 100%; border-radius: 10px; margin-top: 15px; display: block; }
-    </style>
+    .tabs {
+      display: grid;
+      gap: 8px;
+    }
+
+    .tab {
+      border: 1px solid transparent;
+      background: #f7faf9;
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+    }
+
+    .tab:hover,
+    .tab:focus {
+      border-color: var(--brand);
+      outline: none;
+    }
+
+    .tab.active {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    main {
+      display: grid;
+      gap: 18px;
+    }
+
+    .quick-box,
+    .guide {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(16px, 3vw, 24px);
+    }
+
+    .quick-box h2,
+    .guide h2 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      color: var(--brand-dark);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .quick-item {
+      background: var(--soft);
+      border-left: 4px solid var(--brand);
+      border-radius: 6px;
+      padding: 12px;
+      min-height: 88px;
+    }
+
+    .quick-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .quick-item span {
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: .94rem;
+    }
+
+    .guide {
+      display: none;
+    }
+
+    .guide.active {
+      display: block;
+    }
+
+    .role-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .role-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #fff4d8;
+      border: 1px solid #f0cd75;
+      color: #6f4b00;
+      border-radius: 999px;
+      padding: 7px 12px;
+      white-space: nowrap;
+      font-size: .84rem;
+      font-weight: 700;
+    }
+
+    .step-list {
+      counter-reset: step;
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 14px;
+      padding: 14px;
+      background: #fbfdfc;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .step::before {
+      content: counter(step);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .step h3 {
+      margin: 4px 0 8px;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: #fff7ed;
+      border: 1px solid #f1c88d;
+      color: #5e3c08;
+      line-height: 1.5;
+    }
+
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    figure img {
+      width: 100%;
+      height: 230px;
+      object-fit: contain;
+      display: block;
+      background: #eef4f2;
+    }
+
+    figcaption {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: .92rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .empty {
+      display: none;
+      background: #fff;
+      border: 1px dashed var(--danger);
+      color: var(--danger);
+      border-radius: 8px;
+      padding: 16px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 850px) {
+      .layout {
+        grid-template-columns: 1fr;
+        padding-top: 14px;
+      }
+
+      aside {
+        position: static;
+      }
+
+      .tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .quick-grid,
+      .image-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .role-head {
+        display: block;
+      }
+
+      .badge {
+        margin-top: 12px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Panduan Kerja Mitra Warehouse Fresh</h1>
+    <p>Panduan lapangan yang ringkas untuk membantu mitra menjalankan proses inbound, inventory, dan outbound dengan urutan kerja yang jelas.</p>
+  </header>
 
-    <nav>
-        <h2>Panduan Kerja Mitra Warehouse</h2>
-        <input type="text" id="searchInput" placeholder="Cari materi..." onkeyup="searchGlobal()">
-        <ul id="menuList">
-            <li class="active" onclick="openTab(event, 'Panduan Umum')">Panduan Umum</li>
-            
-            <li onclick="toggleDropdown(event, 'Inbound Fresh')">Inbound Fresh</li>
-            <ul class="submenu" id="submenuInbound">
-                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Admin')">Admin</li>
-                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Checker')">Checker</li>
-                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Labeling')">Labeling</li>
-            </ul>
-
-            <li onclick="toggleDropdown(event, 'Inventory Fresh')">Inventory Fresh</li>
-            <ul class="submenu" id="submenuInbound">
-                <li onclick="openTab(event, 'Inventory Fresh', 'Inventory Putaway')">Putaway</li>
-                <li onclick="openTab(event, 'Inventory Fresh', 'Inventory Stock Keeper')">Stock Keeper</li>
-                <li onclick="openTab(event, 'Inventory Fresh', 'Inventory Badstock')">Badstcok</li>
-            </ul>
-
-            <li onclick="toggleDropdown(event, 'Outbound Fresh')">Outbound Fresh</li>
-            <ul class="submenu" id="submenuInbound">
-                <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Picker Sorter')">Picker Sorter</li>
-                <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Checker')">Checker</li>
-                <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Loader')">Loader</li>
-        </ul>
-    </nav>
+  <div class="layout">
+    <aside>
+      <input class="search" id="searchInput" type="search" placeholder="Cari panduan..." aria-label="Cari panduan">
+      <div class="tabs" role="tablist" aria-label="Daftar panduan">
+        <button class="tab active" type="button" data-target="umum">Panduan Umum</button>
+        <button class="tab" type="button" data-target="inbound-admin">Inbound Admin</button>
+        <button class="tab" type="button" data-target="inbound-checker">Inbound Checker</button>
+        <button class="tab" type="button" data-target="inbound-labeling">Inbound Labeling</button>
+        <button class="tab" type="button" data-target="inventory">Inventory Fresh</button>
+        <button class="tab" type="button" data-target="outbound">Outbound Fresh</button>
+      </div>
+    </aside>
 
     <main>
-        
-        <div id="Panduan Umum" class="content-section active">
-            <div class="card">
-                <span class="badge">Panduan umum Warehouse Fresh</span>
-                <h3>Bla..bla..bla</h3>
-                <p>• blu blu blu</p>
-            </div>
+      <section class="quick-box searchable">
+        <h2>Aturan Singkat di Lapangan</h2>
+        <div class="quick-grid">
+          <div class="quick-item">
+            <strong>Ikuti urutan proses</strong>
+            <span>Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</span>
+          </div>
+          <div class="quick-item">
+            <strong>Catat hasil aktual</strong>
+            <span>Jumlah barang, kondisi barang, dan selisih harus ditulis sesuai temuan.</span>
+          </div>
+          <div class="quick-item">
+            <strong>Laporkan kendala</strong>
+            <span>Jika ada dokumen tidak lengkap, QR tidak terbaca, atau barang rusak, segera eskalasi ke PIC.</span>
+          </div>
         </div>
+      </section>
 
-        <div id="Inbound Fresh" class="content-section">
-            <div class="card sub-card" data-sub="Inbound Admin">
-                <span class="badge">Inbound Admin - Checker</span>
-                <h3>1. Registrasi oleh Vendor</h3>
-                <p>• Vendor melakukan registrasi pada Inbound Admin</p>
-                <p>• Inbound Admin melakukan pengecekan kelengkapan dokumen PO & Surat Jalan</p>
-                <img src="IB regist.png" alt="Vendor Registrasi" class="content-image">
-                <h3>2. Persiapan Dokumen Pengecekan</h3>
-                <p>• Inbound Admin mencetak Lembar Hand Over (HO)</p>
-                <p>• Inbound Admin menyatukan Lembar HO dengan PO, dan Surat Jalan</p>
-                <img src="HO.png" alt="Lembar Hand Over (HO)" class="content-image">
-            </div>
+      <p class="empty" id="emptyMessage">Materi tidak ditemukan. Coba kata kunci lain.</p>
 
-            <div class="card sub-card" data-sub="Inbound Labelling">
-                <span class="badge">Inbound Labelling</span>
-                <h3>Proses Labelling</h3>
-                <p>blu blu blu bagian proses labeling...</p>
-            </div>
-            
-            <div class="card sub-card" data-sub="Inbound Checker">
-                <span class="badge">Inbound Admin</span>
-                <h3>1. Mengambiil dokumen</h3>
-                <p>blu blu blu bagian admin checker selesai...</p>
-                <h3>2. Proses Menghitung (Counting)</h3>
-                <p>• Sebelum proses menghitung, tim QA Inbound melakukan screening quality</p>
-                <p>• Setelah dilakukan screening quality, Inbound Checker melakukan proses perhitungan jumlah barang</p>
-                <p>• Hasil perhitungan dicatat pada lembar HO, kemudian diproses pada sistem WMS</p>
-                <img src="counting.png" alt="counting" class="content-image">
-                <h3>3. Proses Penerimaan Pada Sistem</h3>
-                <p>• Inbound Checker memproses penerimaan pada sistem WMS dengan melakukan pemindaian (scan) QR pada produk dan QR Package ID</p>
-                <p>• Penempelan Package ID pada keranjang</p>
-                <img src="IB WMS.png" alt="IB WMS" class="content-image">
-            </div>
+      <section id="umum" class="guide searchable active">
+        <div class="role-head">
+          <div>
+            <h2>Panduan Umum</h2>
+            <p>Digunakan semua mitra sebelum mulai bekerja agar proses berjalan rapi, aman, dan mudah ditelusuri.</p>
+          </div>
+          <span class="badge">Untuk semua area</span>
         </div>
+        <ol class="step-list">
+          <li class="step"><div><h3>Briefing sebelum mulai kerja</h3><p>Pastikan pembagian tugas, area kerja, target proses, dan PIC eskalasi sudah dipahami.</p></div></li>
+          <li class="step"><div><h3>Gunakan APD dan jaga kebersihan</h3><p>Gunakan perlengkapan kerja sesuai aturan warehouse fresh dan jaga area tetap bersih.</p></div></li>
+          <li class="step"><div><h3>Periksa alat kerja</h3><p>Pastikan scanner, dokumen, keranjang, label, dan alat tulis tersedia sebelum proses dimulai.</p></div></li>
+          <li class="step"><div><h3>Ikuti instruksi sistem</h3><p>Semua proses yang memakai WMS harus mengikuti data dan status yang tampil di sistem.</p></div></li>
+        </ol>
+        <div class="note">Catatan: jangan memproses barang tanpa dokumen, tanpa label yang sesuai, atau tanpa arahan PIC area.</div>
+      </section>
 
-        <div id="Inventory" class="content-section">
-            <div class="card">
-                <span class="badge">Inventory Putaway</span>
-                <h3>Bla..bla..bla</h3>
-                <p>• blu blu blu</p>
-            </div>
-
-            <div class="card">
-                <span class="badge">Inventory Stock Keeper</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
-            </div>
-                    
-            <div class="card">
-                <span class="badge">Inventory Badstock</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
-            </div>
-
-            <div class="card">
-                <span class="badge">Inventory Admin</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
-            </div>
+      <section id="inbound-admin" class="guide searchable">
+        <div class="role-head">
+          <div>
+            <h2>Inbound Admin</h2>
+            <p>Fokus pada registrasi vendor, pengecekan dokumen, dan persiapan lembar kerja untuk proses penerimaan.</p>
+          </div>
+          <span class="badge">Dokumen PO, SJ, HO</span>
         </div>
-
-        <div id="Outbound" class="content-section">
-            <div class="card">
-                <span class="badge">Outbound Picker Sorter</span>
-                <h3>Bla..bla..bla</h3>
-                <p>• blu blu blu</p>
-            </div>
-
-            <div class="card">
-                <span class="badge">Outbound Checker</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
-            </div>
-                    
-            <div class="card">
-                <span class="badge">Outbound Loader</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
-            </div>
+        <ol class="step-list">
+          <li class="step"><div><h3>Terima registrasi vendor</h3><p>Pastikan vendor sudah datang sesuai jadwal dan membawa dokumen yang dibutuhkan.</p></div></li>
+          <li class="step"><div><h3>Cek kelengkapan dokumen</h3><p>Periksa PO dan Surat Jalan. Jika ada data tidak sesuai, tahan proses dan laporkan ke PIC.</p></div></li>
+          <li class="step"><div><h3>Cetak lembar HO</h3><p>Siapkan Lembar Hand Over untuk digunakan checker saat proses hitung fisik.</p></div></li>
+          <li class="step"><div><h3>Satukan dokumen</h3><p>Gabungkan HO, PO, dan Surat Jalan agar mudah dibawa ke area pengecekan.</p></div></li>
+        </ol>
+        <div class="image-row">
+          <figure><img src="IB regist.png" alt="Contoh registrasi inbound"><figcaption>Contoh registrasi vendor inbound.</figcaption></figure>
+          <figure><img src="HO.png" alt="Contoh lembar hand over"><figcaption>Contoh Lembar Hand Over untuk checker.</figcaption></figure>
         </div>
+      </section>
 
+      <section id="inbound-checker" class="guide searchable">
+        <div class="role-head">
+          <div>
+            <h2>Inbound Checker</h2>
+            <p>Fokus pada pengecekan fisik barang, pencatatan hasil hitung, dan proses penerimaan di WMS.</p>
+          </div>
+          <span class="badge">Counting dan WMS</span>
+        </div>
+        <ol class="step-list">
+          <li class="step"><div><h3>Ambil dokumen dari admin</h3><p>Bawa HO, PO, dan Surat Jalan ke area pengecekan.</p></div></li>
+          <li class="step"><div><h3>Tunggu screening quality</h3><p>Pastikan tim QA Inbound sudah melakukan screening kualitas sebelum barang dihitung.</p></div></li>
+          <li class="step"><div><h3>Hitung jumlah barang</h3><p>Catat jumlah aktual pada lembar HO. Tulis selisih jika jumlah berbeda dari dokumen.</p></div></li>
+          <li class="step"><div><h3>Proses penerimaan di WMS</h3><p>Scan QR produk dan QR Package ID, lalu pastikan status penerimaan berhasil.</p></div></li>
+          <li class="step"><div><h3>Tempel Package ID</h3><p>Tempel label pada keranjang yang sesuai agar barang mudah dilacak.</p></div></li>
+        </ol>
+        <div class="image-row">
+          <figure><img src="counting.png" alt="Proses counting inbound"><figcaption>Proses hitung fisik barang.</figcaption></figure>
+          <figure><img src="IB WMS.png" alt="Proses inbound di WMS"><figcaption>Proses penerimaan barang di WMS.</figcaption></figure>
+        </div>
+      </section>
+
+      <section id="inbound-labeling" class="guide searchable">
+        <div class="role-head">
+          <div>
+            <h2>Inbound Labeling</h2>
+            <p>Fokus pada validasi label, pencetakan label, dan penempelan label pada barang atau keranjang yang tepat.</p>
+          </div>
+          <span class="badge">Label harus terbaca</span>
+        </div>
+        <ol class="step-list">
+          <li class="step"><div><h3>Terima data dari checker</h3><p>Pastikan barang sudah dihitung dan sudah siap diberi label.</p></div></li>
+          <li class="step"><div><h3>Cetak label sesuai data</h3><p>Pastikan nama barang, jumlah, dan kode terbaca jelas sebelum ditempel.</p></div></li>
+          <li class="step"><div><h3>Tempel label di posisi aman</h3><p>Label tidak boleh menutup informasi penting dan tidak boleh mudah lepas.</p></div></li>
+          <li class="step"><div><h3>Validasi ulang</h3><p>Scan atau cek label untuk memastikan data sesuai dengan barang dan lokasi.</p></div></li>
+        </ol>
+        <div class="image-row">
+          <figure><img src="label.png" alt="Contoh label inbound"><figcaption>Contoh label yang digunakan untuk identifikasi.</figcaption></figure>
+          <figure><img src="IB Validasi.png" alt="Validasi inbound"><figcaption>Contoh validasi data inbound.</figcaption></figure>
+        </div>
+      </section>
+
+      <section id="inventory" class="guide searchable">
+        <div class="role-head">
+          <div>
+            <h2>Inventory Fresh</h2>
+            <p>Fokus pada putaway, penjagaan stok, pengecekan lokasi, dan penanganan barang tidak layak.</p>
+          </div>
+          <span class="badge">Putaway dan stok</span>
+        </div>
+        <ol class="step-list">
+          <li class="step"><div><h3>Putaway barang</h3><p>Pindahkan barang ke lokasi sesuai instruksi WMS dan aturan penyimpanan fresh.</p></div></li>
+          <li class="step"><div><h3>Cek kesesuaian lokasi</h3><p>Pastikan kode lokasi, jenis barang, dan label sesuai sebelum barang ditinggalkan.</p></div></li>
+          <li class="step"><div><h3>Jaga kondisi stok</h3><p>Susun barang dengan rapi, hindari tumpukan berlebih, dan pisahkan barang bermasalah.</p></div></li>
+          <li class="step"><div><h3>Laporkan badstock</h3><p>Barang rusak, busuk, bocor, atau tidak sesuai kualitas harus dilaporkan ke PIC.</p></div></li>
+        </ol>
+      </section>
+
+      <section id="outbound" class="guide searchable">
+        <div class="role-head">
+          <div>
+            <h2>Outbound Fresh</h2>
+            <p>Fokus pada picking, sorting, pengecekan akhir, dan loading barang ke armada.</p>
+          </div>
+          <span class="badge">Picker, checker, loader</span>
+        </div>
+        <ol class="step-list">
+          <li class="step"><div><h3>Ambil barang sesuai tugas</h3><p>Picker mengambil barang berdasarkan instruksi WMS dan memastikan item yang diambil benar.</p></div></li>
+          <li class="step"><div><h3>Sortir per tujuan</h3><p>Kelompokkan barang sesuai rute, toko, atau tujuan yang tercantum pada sistem.</p></div></li>
+          <li class="step"><div><h3>Checker melakukan validasi</h3><p>Cek ulang item, jumlah, kondisi barang, dan label sebelum barang masuk proses loading.</p></div></li>
+          <li class="step"><div><h3>Loader memuat barang</h3><p>Muat barang sesuai urutan keberangkatan dan pastikan barang tidak rusak saat dipindahkan.</p></div></li>
+        </ol>
+        <div class="image-row">
+          <figure><img src="GRN.png" alt="Contoh dokumen GRN"><figcaption>Contoh dokumen pendukung proses warehouse.</figcaption></figure>
+        </div>
+      </section>
     </main>
-                    
-<script>
-    // Fungsi khusus untuk menu utama yang memiliki dropdown (Inbound Fresh)
-    function toggleDropdown(evt, tabName) {
-        let submenu = document.getElementById("submenuInbound");
-        
-        // Membuka / menutup dropdown saat menu utama diklik
-        submenu.classList.toggle("show");
+  </div>
 
-        // Sekaligus memicu pembukaan tab utama
-        openTab(evt, tabName);
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const guides = document.querySelectorAll(".guide");
+    const searchable = document.querySelectorAll(".searchable");
+    const emptyMessage = document.getElementById("emptyMessage");
+    const searchInput = document.getElementById("searchInput");
+
+    function showGuide(id) {
+      tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.target === id));
+      guides.forEach((guide) => guide.classList.toggle("active", guide.id === id));
+      searchInput.value = "";
+      searchable.forEach((item) => item.style.display = "");
+      emptyMessage.style.display = "none";
     }
 
-    // Fungsi utama pemindah Tab (diperbarui agar mendukung filter Submenu)
-    function openTab(evt, tabName, subName = null) {
-        // 1. Sembunyikan semua section besar
-        let sections = document.getElementsByClassName("content-section");
-        for (let i = 0; i < sections.length; i++) {
-            sections[i].classList.remove("active");
-        }
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => showGuide(tab.dataset.target));
+    });
 
-        // 2. Hapus class active dari semua menu & submenu
-        let menuItems = document.querySelectorAll("#menuList li");
-        menuItems.forEach(item => item.classList.remove("active"));
+    searchInput.addEventListener("input", () => {
+      const keyword = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
 
-        // 3. Tampilkan section utama yang dituju
-        let targetSection = document.getElementById(tabName);
-        if(targetSection) {
-            targetSection.classList.add("active");
-        }
+      if (!keyword) {
+        searchable.forEach((item) => item.style.display = "");
+        guides.forEach((guide) => guide.classList.remove("active"));
+        document.getElementById("umum").classList.add("active");
+        tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.target === "umum"));
+        emptyMessage.style.display = "none";
+        return;
+      }
 
-        // 4. Beri class active pada menu yang sedang diklik
-        evt.currentTarget.classList.add("active");
+      guides.forEach((guide) => guide.classList.add("active"));
+      tabs.forEach((tab) => tab.classList.remove("active"));
 
-        // Jika menu utama diklik langsung tanpa memilih submenu, tutup dropdown menu lain jika perlu
-        if (!subName && tabName !== 'Inbound Fresh') {
-            document.getElementById("submenuInbound").classList.remove("show");
-        }
+      searchable.forEach((item) => {
+        const match = item.innerText.toLowerCase().includes(keyword);
+        item.style.display = match ? "" : "none";
+        if (match && item.classList.contains("guide")) visibleCount += 1;
+      });
 
-        // 5. LOGIKA FILTER CARD SUBMENU (Jika submenu dipilih)
-        if (targetSection) {
-            let subCards = targetSection.getElementsByClassName("sub-card");
-            
-            if (subName) {
-                // Jika mengklik submenu (Checker atau Labelling), filter card yang sesuai saja
-                for (let i = 0; i < subCards.length; i++) {
-                    if (subCards[i].getAttribute("data-sub") === subName) {
-                        subCards[i].style.display = "block";
-                    } else {
-                        subCards[i].style.display = "none";
-                    }
-                }
-            } else {
-                // Jika klik menu utama "Inbound Fresh", tampilkan semua card di dalamnya
-                for (let i = 0; i < subCards.length; i++) {
-                    subCards[i].style.display = "block";
-                }
-            }
-        }
-        
-        // Mencegah bubbling agar jika submenu diklik, menu utama tidak ikut terpicu ulang salah target
-        evt.stopPropagation();
-    }
-
-    // Fungsi Pencarian
-    function searchGlobal() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let cards = document.getElementsByClassName('card');
-
-        for (let i = 0; i < cards.length; i++) {
-            let text = cards[i].innerText.toLowerCase();
-
-            if (text.includes(input)) {
-                cards[i].style.display = "block";
-                cards[i].parentElement.classList.add("active");
-            } else {
-                cards[i].style.display = "none";
-            }
-        }
-    }
-</script>
+      emptyMessage.style.display = visibleCount ? "none" : "block";
+    });
+  </script>
 </body>
 </html>
