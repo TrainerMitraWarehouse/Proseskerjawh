@@ -11,12 +11,19 @@
     <nav>
         <input type="text" id="searchInput" placeholder="Cari panduan..." onkeyup="searchGlobal()">
         <ul id="menuList">
-            <li class="active" onclick="openTab(event, 'Panduan Umum')">Panduan Umum</li>
-            <li onclick="openTab(event, 'Inbound Admin')">Inbound Admin</li>
-            <li onclick="openTab(event, 'Inbound Checker')">Inbound Checker</li>
-            <li onclick="openTab(event, 'Inbound Labeling')">Inbound Labeling</li>
-            <li onclick="openTab(event, 'Inventory Fresh')">Inventory Fresh</li>
-            <li onclick="openTab(event, 'Outbound Fresh')">Outbound Fresh</li>
+            <li class="main-menu active" onclick="openTab(event, 'Panduan Umum')">Panduan Umum</li>
+            
+            <li class="main-menu has-submenu" onclick="toggleSubmenu(event, 'inboundSubmenu')">
+                Inbound Fresh <span class="arrow">▼</span>
+            </li>
+            <ul id="inboundSubmenu" class="submenu-list">
+                <li class="sub-menu" onclick="openTab(event, 'Inbound Admin')">Inbound Admin</li>
+                <li class="sub-menu" onclick="openTab(event, 'Inbound Checker')">Inbound Checker</li>
+                <li class="sub-menu" onclick="openTab(event, 'Inbound Labeling')">Inbound Labeling</li>
+            </ul>
+
+            <li class="main-menu" onclick="openTab(event, 'Inventory Fresh')">Inventory Fresh</li>
+            <li class="main-menu" onclick="openTab(event, 'Outbound Fresh')">Outbound Fresh</li>
         </ul>
     </nav>
 
@@ -56,25 +63,12 @@
                 </div>
                 <p class="section-desc">Fokus pada penerimaan dokumen, pengecekan kualitas barang, pencatatan hasil aktual, serta input data ke sistem WMS.</p>
 
-                <div class="card clickable" onclick="toggleGallery('adminGallery1')">
+                <div class="card">
                     <div class="step-container">
-                        <div class="step-number">1</div>
+                        <div class="step-number">2</div>
                         <div class="step-content">
-                            <h3>Cek kelengkapan dokumen (Klik untuk lihat contoh gambar)</h3>
+                            <h3>Cek kelengkapan dokumen</h3>
                             <p>Periksa PO dan Surat Jalan. Jika ada data tidak sesuai, tahan proses dan laporkan ke PIC.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="adminGallery1" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="IB regist.png" alt="Contoh registrasi vendor inbound">
-                            <div class="image-caption">Contoh registrasi vendor inbound.</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="HO.png" alt="Contoh Lembar Hand Over untuk checker">
-                            <div class="image-caption">Contoh Lembar Hand Over untuk checker.</div>
                         </div>
                     </div>
                 </div>
@@ -92,11 +86,11 @@
                 <div id="adminGallery3" class="image-gallery-wrapper">
                     <div class="image-gallery">
                         <div class="image-box">
-                            <img src="Screenshot 2026-07-09 104900.jpg" alt="Contoh registrasi vendor inbound">
+                            <img src="IB regist.png" alt="Contoh registrasi vendor inbound">
                             <div class="image-caption">Contoh registrasi vendor inbound.</div>
                         </div>
                         <div class="image-box">
-                            <img src="Screenshot 2026-07-09 104900.jpg" alt="Contoh Lembar Hand Over untuk checker">
+                            <img src="HO.png" alt="Contoh Lembar Hand Over untuk checker">
                             <div class="image-caption">Contoh Lembar Hand Over untuk checker.</div>
                         </div>
                     </div>
@@ -175,17 +169,21 @@
                     <p>Persiapan pengiriman barang keluar dari gudang menuju ke hub/tujuan berikutnya.</p>
                 </div>
             </div>
-
         </div>
     </main>
 
 <script>
+    // Fungsi Navigasi Tab Utama & Sub-menu
     function openTab(evt, tabName) {
+        // Hentikan efek bubbling klik agar toggleSubmenu tidak ikut terpicu
+        if(evt) evt.stopPropagation();
+
         let sections = document.getElementsByClassName("content-section");
         for (let i = 0; i < sections.length; i++) {
             sections[i].classList.remove("active");
         }
 
+        // Reset status active dari seluruh elemen li di sidebar
         let allMenus = document.querySelectorAll("#menuList li");
         allMenus.forEach(item => item.classList.remove("active"));
 
@@ -194,13 +192,29 @@
             targetSection.classList.add("active");
         }
 
+        // Tandai item yang diklik sebagai active
         evt.currentTarget.classList.add("active");
 
-        // Tutup semua galeri saat berganti halaman/tab utama
+        // Tutup galeri gambar apa pun yang terbuka di konten
         let allGalleries = document.querySelectorAll(".image-gallery-wrapper");
         allGalleries.forEach(gal => gal.classList.remove("show"));
     }
 
+    // Fungsi khusus Buka/Tutup Submenu di Sidebar
+    function toggleSubmenu(evt, submenuId) {
+        let submenu = document.getElementById(submenuId);
+        let arrow = evt.currentTarget.querySelector(".arrow");
+        
+        if (submenu.classList.contains("open")) {
+            submenu.classList.remove("open");
+            if(arrow) arrow.innerText = "▼";
+        } else {
+            submenu.classList.add("open");
+            if(arrow) arrow.innerText = "▲";
+        }
+    }
+
+    // Fungsi Klik Poin Langkah -> Muncul/Sembunyi Gambar Contoh
     function toggleGallery(galleryId) {
         let gallery = document.getElementById(galleryId);
         if (gallery) {
@@ -208,6 +222,7 @@
         }
     }
 
+    // Fungsi Kolom Pencarian Global
     function searchGlobal() {
         let input = document.getElementById('searchInput').value.toLowerCase();
         let cards = document.getElementsByClassName('card');
