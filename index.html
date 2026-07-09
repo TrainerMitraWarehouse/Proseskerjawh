@@ -3,322 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitra Playbook</title>
-    <style>
-        :root {
-            --primary: #057780;
-            --bg: #dbf5f0;
-            --text: #080808;
-            --border: #000000;
-            --white: #ffffff;
-        }
-        
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; background: var(--bg); color: var(--text); }
-        
-        /* Sidebar */
-        nav { width: 280px; height: 100vh; background: var(--white); border-right: 1px solid var(--border); padding: 20px; position: fixed; box-sizing: border-box; z-index: 100; overflow-y: auto; }
-        nav h2 { font-size: 1.4rem; color: var(--primary); margin-bottom: 25px; }
-        #searchInput { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; outline: none; }
-        nav ul { list-style: none; padding: 0; margin: 0; }
-        nav li { padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
-        nav li:hover { background: #dbf5f0; }
-        nav li.active { background: var(--primary); color: white; }
-
-        /* Style untuk Submenu Bertingkat */
-        .submenu {
-            display: none; /* Tersembunyi secara default */
-            padding-left: 20px !important;
-            margin-top: -4px;
-            margin-bottom: 10px;
-        }
-        .submenu li {
-            padding: 8px 12px;
-            font-size: 0.95rem;
-            font-weight: normal;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-        }
-        .submenu li:hover {
-            background: #e6f7f4;
-        }
-        .submenu li.active {
-            background: #057780 !important;
-            color: white !important;
-        }
-        /* Class pembantu untuk menampilkan submenu */
-        .submenu.show {
-            display: block;
-        }
-
-        /* Main Content */
-        main { margin-left: 280px; padding: 40px; width: calc(100% - 280px); box-sizing: border-box; }
-
-        /* --- BANNER HIGHLIGHT --- */
-        .highlight-container {
-            width: 100%;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 20px rgba(153, 58, 142, 0.15);
-            border: 1px solid var(--border);
-        }
-
-        .banner-image-wrapper { width: 100%; height: 180px; overflow: hidden; position: relative; }
-        .banner-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-
-        .running-text-wrapper {
-            background: var(--primary);
-            color: white;
-            padding: 10px 0;
-            white-space: nowrap;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .running-text {
-            display: inline-block;
-            padding-left: 100%;
-            font-weight: 700;
-            font-size: 1.1rem;
-            animation: marquee 15s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
-        }
-
-        .running-text-wrapper:hover .running-text { animation-play-state: paused; }
-
-        /* Content Sections */
-        .content-section { display: none; } 
-        .content-section.active { display: block; } 
-        .card { background: white; padding: 25px; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        .badge { background: #dbf5f0; color: var(--primary); padding: 6px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        h3 { color: var(--primary); margin: 15px 0 10px 0; font-size: 1.5rem; }
-        p { line-height: 1.6; color: var(--text); } /* Diperbaiki dari #dbf5f0 agar teks panduan terbaca */
-        .content-image { max-width: 100%; border-radius: 10px; margin-top: 15px; display: block; }
-    </style>
+    <title>Panduan Kerja Mitra Warehouse Fresh</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-gray-100 font-sans antialiased text-gray-800">
 
-    <nav>
-        <h2>Panduan Kerja Mitra Warehouse</h2>
-        <input type="text" id="searchInput" placeholder="Cari materi..." onkeyup="searchGlobal()">
-        <ul id="menuList">
-            <li class="active" onclick="openTab(event, 'Panduan Umum')">Panduan Umum</li>
-            
-            <li onclick="toggleDropdown(event, 'Inbound Fresh')">Inbound Fresh</li>
-            <ul class="submenu" id="submenuInbound">
-                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Admin')">Admin</li>
-                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Checker')">Checker</li>
-                <li onclick="openTab(event, 'Inbound Fresh', 'Inbound Labeling')">Labeling</li>
-            </ul>
+    <header class="bg-[#005B41] text-white py-8 px-6 md:px-12 shadow-md">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Panduan Kerja Mitra Warehouse Fresh</h1>
+            <p class="text-emerald-100 mt-2 max-w-3xl">
+                Panduan lapangan yang ringkas untuk membantu mitra menjalankan proses inbound, inventory, dan outbound dengan urutan kerja yang jelas.
+            </p>
+        </div>
+    </header>
 
-            <li onclick="toggleDropdown(event, 'Inventory Fresh')">Inventory Fresh</li>
-            <ul class="submenu" id="submenuInbound">
-                <li onclick="openTab(event, 'Inventory Fresh', 'Inventory Putaway')">Putaway</li>
-                <li onclick="openTab(event, 'Inventory Fresh', 'Inventory Stock Keeper')">Stock Keeper</li>
-                <li onclick="openTab(event, 'Inventory Fresh', 'Inventory Badstock')">Badstcok</li>
-            </ul>
-
-            <li onclick="toggleDropdown(event, 'Outbound Fresh')">Outbound Fresh</li>
-            <ul class="submenu" id="submenuInbound">
-                <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Picker Sorter')">Picker Sorter</li>
-                <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Checker')">Checker</li>
-                <li onclick="openTab(event, 'Outbound Fresh', 'Outbound Loader')">Loader</li>
-            </ul>
-
-            <li onclick="toggleDropdown(event, 'Kamus Warehouse')">Kamus Warehouse</li>
-            <ul class="submenu" id="submenuKamus">
-                <li onclick="openTab(event, 'Kamus Warehouse', 'Istilah - istilah')">Istilah - istilah</li>
-        </ul>
-    </nav>
-
-    <main>
+    <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-6">
         
-        <div id="Panduan Umum" class="content-section active">
-            <div class="card">
-                <span class="badge">Panduan umum Warehouse Fresh</span>
-                <h3>Bla..bla..bla</h3>
-                <p>• blu blu blu</p>
-            </div>
-        </div>
-
-        <div id="Inbound Fresh" class="content-section">
-            <div class="card sub-card" data-sub="Inbound Admin">
-                <span class="badge">Inbound Admin - Checker</span>
-                <h3>1. Registrasi oleh Vendor</h3>
-                <p>• Vendor melakukan registrasi pada Inbound Admin</p>
-                <p>• Inbound Admin melakukan pengecekan kelengkapan dokumen PO & Surat Jalan</p>
-                <img src="IB regist.png" alt="Vendor Registrasi" class="content-image">
-                <h3>2. Persiapan Dokumen Pengecekan</h3>
-                <p>• Inbound Admin mencetak Lembar Hand Over (HO)</p>
-                <p>• Inbound Admin menyatukan Lembar HO dengan PO, dan Surat Jalan</p>
-                <img src="HO.png" alt="Lembar Hand Over (HO)" class="content-image">
-            </div>
-
-            <div class="card sub-card" data-sub="Inbound Labelling">
-                <span class="badge">Inbound Labelling</span>
-                <h3>Proses Labelling</h3>
-                <p>blu blu blu bagian proses labeling...</p>
+        <aside class="md:col-span-1 bg-white p-4 rounded-xl shadow-xs border border-gray-100 h-fit">
+            <div class="relative mb-4">
+                <input type="text" placeholder="Cari panduan..." class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#007F5F]">
             </div>
             
-            <div class="card sub-card" data-sub="Inbound Checker">
-                <span class="badge">Inbound Admin</span>
-                <h3>1. Mengambil dokumen untuk pengecekan</h3>
-                <p>blu blu blu bagian admin checker selesai...</p>
-                <h3>2. Proses Menghitung (Counting)</h3>
-                <p>• Sebelum proses menghitung, tim QA Inbound melakukan screening quality</p>
-                <p>• Setelah dilakukan screening quality, Inbound Checker melakukan proses perhitungan jumlah barang</p>
-                <p>• Hasil perhitungan dicatat pada lembar HO, kemudian diproses pada sistem WMS</p>
-                <img src="counting.png" alt="counting" class="content-image">
-                <h3>3. Proses Penerimaan Pada Sistem</h3>
-                <p>• Inbound Checker memproses penerimaan pada sistem WMS dengan melakukan pemindaian (scan) QR pada produk dan QR Package ID</p>
-                <p>• Penempelan Package ID pada keranjang</p>
-                <img src="IB WMS.png" alt="IB WMS" class="content-image">
-            </div>
-        </div>
+            <nav class="space-y-1">
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">Panduan Umum</a>
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg bg-[#007F5F] text-white shadow-xs">Inbound Admin</a>
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">Inbound Checker</a>
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">Inbound Labeling</a>
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">Inventory Fresh</a>
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">Outbound Fresh</a>
+            </nav>
+        </aside>
 
-        <div id="Inventory" class="content-section">
-            <div class="card">
-                <span class="badge">Inventory Putaway</span>
-                <h3>Bla..bla..bla</h3>
-                <p>• blu blu blu</p>
-            </div>
-
-            <div class="card">
-                <span class="badge">Inventory Stock Keeper</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
-            </div>
-                    
-            <div class="card">
-                <span class="badge">Inventory Badstock</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
+        <section class="md:col-span-3 space-y-6">
+            
+            <div class="bg-white p-6 rounded-xl shadow-xs border border-gray-100">
+                <h2 class="text-xl font-bold text-[#005B41] mb-4">Aturan Singkat di Lapangan</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="border-l-4 border-[#007F5F] bg-emerald-50/30 p-4 rounded-r-lg">
+                        <h3 class="font-bold text-gray-900 text-sm md:text-base">Ikuti urutan proses</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mt-1">Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</p>
+                    </div>
+                    <div class="border-l-4 border-[#007F5F] bg-emerald-50/30 p-4 rounded-r-lg">
+                        <h3 class="font-bold text-gray-900 text-sm md:text-base">Catat hasil aktual</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mt-1">Jumlah barang, kondisi barang, dan selisih harus ditulis sesuai temuan.</p>
+                    </div>
+                    <div class="border-l-4 border-[#007F5F] bg-emerald-50/30 p-4 rounded-r-lg">
+                        <h3 class="font-bold text-gray-900 text-sm md:text-base">Laporkan kendala</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mt-1">Jika ada dokumen tidak lengkap, QR tidak terbaca, atau barang rusak, segera eskalasi ke PIC.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <span class="badge">Inventory Admin</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
-            </div>
-        </div>
+            <div class="bg-white p-6 rounded-xl shadow-xs border border-gray-100 space-y-4">
+                <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                    <h2 class="text-xl font-bold text-[#005B41]">Inbound Admin</h2>
+                    <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">Proses Admin</span>
+                </div>
 
-        <div id="Outbound" class="content-section">
-            <div class="card">
-                <span class="badge">Outbound Picker Sorter</span>
-                <h3>Bla..bla..bla</h3>
-                <p>• blu blu blu</p>
-            </div>
+                <div class="space-y-3">
+                    <div class="flex gap-4 p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#007F5F] text-white flex items-center justify-center font-bold text-sm">2</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm md:text-base">Cek kelengkapan dokumen</h4>
+                            <p class="text-xs md:text-sm text-gray-600 mt-0.5">Periksa PO dan Surat Jalan. Jika ada data tidak sesuai, tahan proses dan laporkan ke PIC.</p>
+                        </div>
+                    </div>
 
-            <div class="card">
-                <span class="badge">Outbound Checker</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
-            </div>
-                    
-            <div class="card">
-                <span class="badge">Outbound Loader</span>
-                <h3>Bla..bla..bla</h3>
-                <p>blu blu blu</p>
-            </div>
-        </div>
+                    <div class="flex gap-4 p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#007F5F] text-white flex items-center justify-center font-bold text-sm">3</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm md:text-base">Cetak lembar HO</h4>
+                            <p class="text-xs md:text-sm text-gray-600 mt-0.5">Siapkan Lembar Hand Over untuk digunakan checker saat proses hitung fisik.</p>
+                        </div>
+                    </div>
 
-        <div id="Kamus Warehouse" class="content-section">
-            <div class="card sub-card" data-sub="Istilah - istilah">
-                <span class="badge">Istilah - istilah</span>
-                <h3>1. Forecast</h3>
-                <p>estimasi jumlah kedatangan barang</p>
+                    <div class="flex gap-4 p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#007F5F] text-white flex items-center justify-center font-bold text-sm">4</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm md:text-base">Satukan dokumen</h4>
+                            <p class="text-xs md:text-sm text-gray-600 mt-0.5">Gabungkan HO, PO, dan Surat Jalan agar mudah dibawa ke area pengecekan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                    <div class="border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
+                        <img src="https://via.placeholder.com/500x300" alt="Registrasi Vendor" class="w-full h-48 object-cover">
+                        <p class="p-3 text-xs md:text-sm text-gray-600 border-t border-gray-200 bg-white">Contoh registrasi vendor inbound.</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
+                        <img src="https://via.placeholder.com/500x300" alt="Lembar Hand Over" class="w-full h-48 object-cover">
+                        <p class="p-3 text-xs md:text-sm text-gray-600 border-t border-gray-200 bg-white">Contoh Lembar Hand Over untuk checker.</p>
+                    </div>
+                </div>
+
             </div>
-        </div>
-
-
+        </section>
     </main>
-                    
-<script>
-    // Fungsi khusus untuk menu utama yang memiliki dropdown (Inbound Fresh)
-    function toggleDropdown(evt, tabName) {
-        let submenu = document.getElementById("submenuInbound");
-        
-        // Membuka / menutup dropdown saat menu utama diklik
-        submenu.classList.toggle("show");
 
-        // Sekaligus memicu pembukaan tab utama
-        openTab(evt, tabName);
-    }
-
-    // Fungsi utama pemindah Tab (diperbarui agar mendukung filter Submenu)
-    function openTab(evt, tabName, subName = null) {
-        // 1. Sembunyikan semua section besar
-        let sections = document.getElementsByClassName("content-section");
-        for (let i = 0; i < sections.length; i++) {
-            sections[i].classList.remove("active");
-        }
-
-        // 2. Hapus class active dari semua menu & submenu
-        let menuItems = document.querySelectorAll("#menuList li");
-        menuItems.forEach(item => item.classList.remove("active"));
-
-        // 3. Tampilkan section utama yang dituju
-        let targetSection = document.getElementById(tabName);
-        if(targetSection) {
-            targetSection.classList.add("active");
-        }
-
-        // 4. Beri class active pada menu yang sedang diklik
-        evt.currentTarget.classList.add("active");
-
-        // Jika menu utama diklik langsung tanpa memilih submenu, tutup dropdown menu lain jika perlu
-        if (!subName && tabName !== 'Inbound Fresh') {
-            document.getElementById("submenuInbound").classList.remove("show");
-        }
-
-        // 5. LOGIKA FILTER CARD SUBMENU (Jika submenu dipilih)
-        if (targetSection) {
-            let subCards = targetSection.getElementsByClassName("sub-card");
-            
-            if (subName) {
-                // Jika mengklik submenu (Checker atau Labelling), filter card yang sesuai saja
-                for (let i = 0; i < subCards.length; i++) {
-                    if (subCards[i].getAttribute("data-sub") === subName) {
-                        subCards[i].style.display = "block";
-                    } else {
-                        subCards[i].style.display = "none";
-                    }
-                }
-            } else {
-                // Jika klik menu utama "Inbound Fresh", tampilkan semua card di dalamnya
-                for (let i = 0; i < subCards.length; i++) {
-                    subCards[i].style.display = "block";
-                }
-            }
-        }
-        
-        // Mencegah bubbling agar jika submenu diklik, menu utama tidak ikut terpicu ulang salah target
-        evt.stopPropagation();
-    }
-
-    // Fungsi Pencarian
-    function searchGlobal() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let cards = document.getElementsByClassName('card');
-
-        for (let i = 0; i < cards.length; i++) {
-            let text = cards[i].innerText.toLowerCase();
-
-            if (text.includes(input)) {
-                cards[i].style.display = "block";
-                cards[i].parentElement.classList.add("active");
-            } else {
-                cards[i].style.display = "none";
-            }
-        }
-    }
-</script>
 </body>
 </html>
