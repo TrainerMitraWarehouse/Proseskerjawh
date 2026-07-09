@@ -16,6 +16,10 @@ body {
     display: flex; 
     background: var(--bg); 
     color: var(--text-dark); 
+    
+    /* MENGUNCI UKURAN FONT DI HP: Mencegah browser mobile mengubah ukuran font secara sepihak */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 /* --- SIDEBAR NAV --- */
