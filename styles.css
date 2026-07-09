@@ -84,7 +84,6 @@ nav {
     gap: 0.25rem;
 }
 
-/* Mengubah elemen menu menjadi button agar seragam */
 .menu-item {
     background: none;
     border: none;
@@ -111,7 +110,7 @@ nav {
     color: white !important;
 }
 
-/* ================= DESAIN DROPDOWN SUBMENU ================= */
+/* DROPDOWN SUBMENU */
 .dropdown-toggle {
     display: flex;
     justify-content: space-between;
@@ -124,7 +123,7 @@ nav {
 }
 
 .submenu-list {
-    display: none; /* Tersembunyi secara default */
+    display: none; /* Sembunyi secara default */
     flex-direction: column;
     gap: 0.25rem;
     padding-left: 1rem;
@@ -132,16 +131,14 @@ nav {
     margin-bottom: 0.25rem;
 }
 
-/* Muncul ketika kelas 'show' ditambahkan oleh JavaScript */
 .submenu-list.show {
-    display: flex;
+    display: flex; /* Muncul saat tombol induk diklik */
 }
 
 .sub-item {
     font-size: 0.8rem;
     padding: 0.5rem 1rem;
 }
-/* ========================================================== */
 
 .content-area {
     display: flex;
@@ -149,12 +146,11 @@ nav {
     gap: 1.5rem;
 }
 
-/* Sembunyikan Konten Section Secara Default */
+/* Sembunyikan dan Tampilkan Konten secara Instan */
 .content-section {
     display: none;
 }
 
-/* Tampilkan Konten Section yang Aktif */
 .content-section.active {
     display: block;
 }
