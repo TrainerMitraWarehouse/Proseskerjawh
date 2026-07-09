@@ -1,4 +1,32 @@
-<div class="content-container">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Kerja Mitra Warehouse Fresh</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <input type="text" id="searchInput" placeholder="Cari panduan..." onkeyup="searchGlobal()">
+        <ul id="menuList">
+            <li class="active" onclick="openTab(event, 'Panduan Umum')">Panduan Umum</li>
+            <li onclick="openTab(event, 'Inbound Admin')">Inbound Admin</li>
+            <li onclick="openTab(event, 'Inbound Checker')">Inbound Checker</li>
+            <li onclick="openTab(event, 'Inbound Labeling')">Inbound Labeling</li>
+            <li onclick="openTab(event, 'Inventory Fresh')">Inventory Fresh</li>
+            <li onclick="openTab(event, 'Outbound Fresh')">Outbound Fresh</li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="header-banner">
+            <h1>Panduan Kerja Mitra Warehouse Fresh</h1>
+            <p>Panduan lapangan yang ringkas untuk membantu mitra menjalankan proses inbound, inventory, dan outbound dengan urutan kerja yang jelas.</p>
+        </div>
+
+        <div class="content-container">
             <h2 style="font-size: 1.3rem; margin: 0 0 16px 0; color: #005e4d;">Aturan Singkat di Lapangan</h2>
             <div class="rules-grid">
                 <div class="rule-card">
@@ -17,8 +45,8 @@
 
             <div id="Panduan Umum" class="content-section active">
                 <div class="card">
-                    <h3 style="margin-top:0;">Panduan Umum</h3>
-                    <p>Selamat datang di Portal Panduan Kerja Mitra Warehouse Fresh. Halaman ini dirancang sebagai acuan cepat dan praktis bagi seluruh mitra di lapangan untuk memahami setiap tahapan kerja secara terstruktur, mulai dari proses penerimaan barang (inbound), pengelolaan stok (inventory), hingga persiapan pengiriman (outbound). Silakan gunakan menu navigasi di samping kiri untuk mencari modul spesifik sesuai dengan peran Anda, serta pastikan untuk selalu mengikuti urutan instruksi dan standar kualitas yang berlaku demi menjaga kelancaran operasional gudang kita.</p>
+                    <h3 style="margin-top:0; color: #005e4d;">Panduan Umum</h3>
+                    <p style="line-height: 1.6; color: var(--text-dark);">Selamat datang di Portal Panduan Kerja Mitra Warehouse Fresh. Halaman ini dirancang sebagai acuan cepat dan praktis bagi seluruh mitra di lapangan untuk memahami setiap tahapan kerja secara terstruktur, mulai dari proses penerimaan barang (inbound), pengelolaan stok (inventory), hingga persiapan pengiriman (outbound). Silakan gunakan menu navigasi di samping kiri untuk mencari modul spesifik sesuai dengan peran Anda, serta pastikan untuk selalu mengikuti urutan instruksi dan standar kualitas yang berlaku demi menjaga kelancaran operasional gudang kita.</p>
                 </div>
             </div>
 
@@ -37,15 +65,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
+
+                <div class="card clickable" onclick="toggleGallery('adminGallery')">
                     <div class="step-container">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h3>Cetak lembar HO</h3>
-                            <p>Siapkan Lembar Hand Over untuk digunakan checker saat proses hitung fisik.</p>
+                            <h3>Cetak lembar HO & Satukan Dokumen (Klik untuk lihat contoh gambar)</h3>
+                            <p>Siapkan Lembar Hand Over untuk digunakan checker saat proses hitung fisik, lalu gabungkan dengan Surat Jalan.</p>
                         </div>
                     </div>
                 </div>
+
+                <div id="adminGallery" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="Screenshot 2026-07-09 104900.jpg" alt="Contoh registrasi vendor inbound">
+                            <div class="image-caption">Contoh registrasi vendor inbound.</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="Screenshot 2026-07-09 104900.jpg" alt="Contoh Lembar Hand Over untuk checker">
+                            <div class="image-caption">Contoh Lembar Hand Over untuk checker.</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="step-container">
                         <div class="step-number">4</div>
@@ -53,17 +96,6 @@
                             <h3>Satukan dokumen</h3>
                             <p>Gabungkan HO, PO, dan Surat Jalan agar mudah dibawa ke area pengecekan.</p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="image-gallery">
-                    <div class="image-box">
-                        <img src="Screenshot 2026-07-09 104900.jpg" alt="Contoh registrasi vendor inbound">
-                        <div class="image-caption">Contoh registrasi vendor inbound.</div>
-                    </div>
-                    <div class="image-box">
-                        <img src="Screenshot 2026-07-09 104900.jpg" alt="Contoh Lembar Hand Over untuk checker">
-                        <div class="image-caption">Contoh Lembar Hand Over untuk checker.</div>
                     </div>
                 </div>
             </div>
@@ -132,3 +164,53 @@
             </div>
 
         </div>
+    </main>
+
+<script>
+    // Fungsi untuk navigasi menu utama sidebar
+    function openTab(evt, tabName) {
+        let sections = document.getElementsByClassName("content-section");
+        for (let i = 0; i < sections.length; i++) {
+            sections[i].classList.remove("active");
+        }
+
+        let allMenus = document.querySelectorAll("#menuList li");
+        allMenus.forEach(item => item.classList.remove("active"));
+
+        let targetSection = document.getElementById(tabName);
+        if(targetSection) {
+            targetSection.classList.add("active");
+        }
+
+        evt.currentTarget.classList.add("active");
+
+        // Otomatis tutup galeri gambar jika pengguna pindah menu halaman utama
+        let allGalleries = document.querySelectorAll(".image-gallery-wrapper");
+        allGalleries.forEach(gal => gal.classList.remove("show"));
+    }
+
+    // Fungsi interaktif Klik Poin -> Muncul/Sembunyi Gambar
+    function toggleGallery(galleryId) {
+        let gallery = document.getElementById(galleryId);
+        if (gallery) {
+            gallery.classList.toggle("show");
+        }
+    }
+
+    // Fungsi Filter Pencarian Global
+    function searchGlobal() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('card');
+
+        for (let i = 0; i < cards.length; i++) {
+            let text = cards[i].innerText.toLowerCase();
+            if (text.includes(input)) {
+                cards[i].style.display = "block";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+</script>
+</body>
+</html>
