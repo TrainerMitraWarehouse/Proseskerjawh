@@ -16,6 +16,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Header Section */
 header {
     background-color: var(--primary-dark);
     color: white;
@@ -42,6 +43,7 @@ h1 {
     font-size: 1rem;
 }
 
+/* Layout Grid Container */
 main {
     max-width: 80rem;
     margin: 2rem auto;
@@ -57,6 +59,7 @@ main {
     }
 }
 
+/* Sidebar Styling */
 aside {
     background: white;
     padding: 1rem;
@@ -84,6 +87,7 @@ nav {
     gap: 0.25rem;
 }
 
+/* Mengubah format menu dari <a> ke <button> */
 .menu-item {
     background: none;
     border: none;
@@ -110,7 +114,7 @@ nav {
     color: white !important;
 }
 
-/* DROPDOWN SUBMENU */
+/* STYLING ACCORDION / SUBMENU DROPDOWN */
 .dropdown-toggle {
     display: flex;
     justify-content: space-between;
@@ -123,7 +127,7 @@ nav {
 }
 
 .submenu-list {
-    display: none; /* Sembunyi secara default */
+    display: none; /* Disembunyikan secara default */
     flex-direction: column;
     gap: 0.25rem;
     padding-left: 1rem;
@@ -132,7 +136,7 @@ nav {
 }
 
 .submenu-list.show {
-    display: flex; /* Muncul saat tombol induk diklik */
+    display: flex; /* Ditampilkan saat tombol induk Inbound aktif */
 }
 
 .sub-item {
@@ -140,13 +144,14 @@ nav {
     padding: 0.5rem 1rem;
 }
 
+/* Main Content Styling */
 .content-area {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-/* Sembunyikan dan Tampilkan Konten secara Instan */
+/* Logika Sembunyikan Konten Secara Default */
 .content-section {
     display: none;
 }
@@ -171,6 +176,7 @@ h2 {
     margin-bottom: 1rem;
 }
 
+/* Grid Aturan */
 .aturan-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -202,6 +208,7 @@ h2 {
     margin-top: 0.25rem;
 }
 
+/* Langkah List */
 .step-list {
     display: flex;
     flex-direction: column;
@@ -243,6 +250,7 @@ h2 {
     margin-top: 0.125rem;
 }
 
+/* Media Grid */
 .image-grid {
     display: grid;
     grid-template-columns: 1fr;
