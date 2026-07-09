@@ -77,7 +77,7 @@
                     <div class="step-container">
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <h3>Vendor melakukan registrasi(Klik untuk lihat contoh gambar)</h3>
+                            <h3>Vendor melakukan registrasi (Klik untuk lihat contoh gambar)</h3>
                             <p>Vendor melakukan registrasi ketika tiba di warehouse, kemudian dari tim LP/security merubah status PO dari "On Delivery" menjadi "Arrived"</p>
                         </div>
                     </div>
@@ -96,14 +96,14 @@
                     <div class="step-container">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h3>Pengecekan kelengkapan dokumen dan mempersiapkan lembar kerja HO untuk checker</h3>
-                            <p>Pastikan No.PO dengan surat jalan sesusai, kemudian gabungkan dengan lembar kerja HO menjadi satu bagian dan diberikan kepada checker</p>
+                            <h3>Pengecekan kelengkapan dokumen dan mempersiapkan lembar kerja HO untuk checker (Klik untuk lihat contoh gambar)</h3>
+                            <p>Pastikan No.PO dengan surat jalan sesuai, kemudian gabungkan dengan lembar kerja HO menjadi satu bagian dan diberikan kepada checker</p>
                         </div>
                     </div>
                 </div>
                 
-            <div id="adminGallery3" class="image-gallery-wrapper">
-                    <div class="image-gallery">
+                <div id="adminGallery3" class="image-gallery-wrapper">
+                    <div class="image-gallery gallery-portrait">
                         <div class="image-box">
                             <img src="PO.png" alt="Contoh Dokumen PO (Purchase Order)">
                             <div class="image-caption">Contoh Dokumen PO (Purchase Order)</div>
@@ -119,7 +119,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div id="Inbound Checker" class="content-section">
                 <div class="section-header-box">
@@ -187,9 +186,7 @@
     </main>
 
 <script>
-    // Fungsi Navigasi Tab Utama & Sub-menu
     function openTab(evt, tabName) {
-        // Hentikan efek bubbling klik agar toggleSubmenu tidak ikut terpicu
         if(evt) evt.stopPropagation();
 
         let sections = document.getElementsByClassName("content-section");
@@ -197,7 +194,6 @@
             sections[i].classList.remove("active");
         }
 
-        // Reset status active dari seluruh elemen li di sidebar
         let allMenus = document.querySelectorAll("#menuList li");
         allMenus.forEach(item => item.classList.remove("active"));
 
@@ -206,15 +202,12 @@
             targetSection.classList.add("active");
         }
 
-        // Tandai item yang diklik sebagai active
         evt.currentTarget.classList.add("active");
 
-        // Tutup galeri gambar apa pun yang terbuka di konten
         let allGalleries = document.querySelectorAll(".image-gallery-wrapper");
         allGalleries.forEach(gal => gal.classList.remove("show"));
     }
 
-    // Fungsi khusus Buka/Tutup Submenu di Sidebar
     function toggleSubmenu(evt, submenuId) {
         let submenu = document.getElementById(submenuId);
         let arrow = evt.currentTarget.querySelector(".arrow");
@@ -228,7 +221,6 @@
         }
     }
 
-    // Fungsi Klik Poin Langkah -> Muncul/Sembunyi Gambar Contoh
     function toggleGallery(galleryId) {
         let gallery = document.getElementById(galleryId);
         if (gallery) {
@@ -236,7 +228,6 @@
         }
     }
 
-    // Fungsi Kolom Pencarian Global
     function searchGlobal() {
         let input = document.getElementById('searchInput').value.toLowerCase();
         let cards = document.getElementsByClassName('card');
