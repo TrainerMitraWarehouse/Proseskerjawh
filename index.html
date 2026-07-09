@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panduan Kerja Mitra Warehouse Fresh - Panduan Umum</title>
+    <title>Panduan Kerja Mitra Warehouse Fresh</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,22 +21,22 @@
                 <input type="text" placeholder="Cari panduan..." class="search-input">
             </div>
             <nav>
-                <a href="index.html" class="menu-item active">Panduan Umum</a>
+                <button class="menu-item active" data-target="panduan-umum">Panduan Umum</button>
                 
-                <details class="menu-dropdown" open>
-                    <summary class="menu-item dropdown-toggle">
+                <div class="menu-dropdown-container">
+                    <button class="menu-item dropdown-toggle" id="btn-inbound">
                         Inbound 
                         <span class="arrow">▼</span>
-                    </summary>
-                    <div class="submenu-list">
-                        <a href="inbound-admin.html" class="menu-item">Inbound Admin</a>
-                        <a href="inbound-checker.html" class="menu-item">Inbound Checker</a>
-                        <a href="inbound-labeling.html" class="menu-item">Inbound Labeling</a>
+                    </button>
+                    <div class="submenu-list" id="submenu-inbound">
+                        <button class="menu-item sub-item" data-target="inbound-admin">Inbound Admin</button>
+                        <button class="menu-item sub-item" data-target="inbound-checker">Inbound Checker</button>
+                        <button class="menu-item sub-item" data-target="inbound-labeling">Inbound Labeling</button>
                     </div>
-                </details>
+                </div>
 
-                <a href="inventory-fresh.html" class="menu-item">Inventory Fresh</a>
-                <a href="outbound-fresh.html" class="menu-item">Outbound Fresh</a>
+                <button class="menu-item" data-target="inventory-fresh">Inventory Fresh</button>
+                <button class="menu-item" data-target="outbound-fresh">Outbound Fresh</button>
             </nav>
         </aside>
 
@@ -59,14 +59,153 @@
                 </div>
             </div>
 
-            <div class="card">
-                <h2>Selamat Datang di Panduan Kerja</h2>
-                <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
-                    Silakan gunakan menu di sebelah kiri untuk mengakses panduan operasional lapangan secara mendetail. Klik pada menu <strong>Inbound</strong> untuk melihat sub-panduan Admin, Checker, dan Labeling.
-                </p>
+            <div id="panduan-umum" class="content-section active">
+                <div class="card">
+                    <h2>Selamat Datang di Panduan Kerja</h2>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
+                        Silakan gunakan menu di sebelah kiri untuk mengakses panduan operasional lapangan secara mendetail. Klik pada menu <strong>Inbound</strong> untuk memunculkan sub-panduan Admin, Checker, dan Labeling.
+                    </p>
+                </div>
             </div>
+
+            <div id="inbound-admin" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Inbound Admin</h2>
+                        <span class="badge">Proses Admin</span>
+                    </div>
+                    
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div>
+                                <div class="step-title">Cek kelengkapan dokumen</div>
+                                <div class="step-desc">Periksa PO dan Surat Jalan. Jika ada data tidak sesuai, tahan proses dan laporkan ke PIC.</div>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div>
+                                <div class="step-title">Cetak lembar HO</div>
+                                <div class="step-desc">Siapkan Lembar Hand Over untuk digunakan checker saat proses hitung fisik.</div>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div>
+                                <div class="step-title">Satukan dokumen</div>
+                                <div class="step-desc">Gabungkan HO, PO, dan Surat Jalan agar mudah dibawa ke area pengecekan.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="image-grid">
+                        <div class="img-card">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=500&q=80" alt="Registrasi Vendor">
+                            <div class="img-caption">Contoh registrasi vendor inbound.</div>
+                        </div>
+                        <div class="img-card">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Lembar Hand Over">
+                            <div class="img-caption">Contoh Lembar Hand Over untuk checker.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="inbound-checker" class="content-section">
+                <div class="card">
+                    <h2>Inbound Checker</h2>
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">Halaman panduan untuk tim Checker melakukan perhitungan fisik muatan vendor.</p>
+                </div>
+            </div>
+
+            <div id="inbound-labeling" class="content-section">
+                <div class="card">
+                    <h2>Inbound Labeling</h2>
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">Halaman panduan proses pencetakan barcode dan pelabelan produk fresh.</p>
+                </div>
+            </div>
+
+            <div id="inventory-fresh" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Inventory Fresh</h2>
+                        <span class="badge">Putaway dan stok</span>
+                    </div>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Fokus pada putaway, penjagaan stok, pengecekan lokasi, dan penanganan barang tidak layak.</p>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div>
+                                <div class="step-title">Putaway barang</div>
+                                <div class="step-desc">Pindahkan barang ke lokasi sesuai instruksi WMS dan aturan penyimpanan fresh.</div>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div>
+                                <div class="step-title">Cek kesesuaian lokasi</div>
+                                <div class="step-desc">Pastikan sistem tata letak bin/rak akurat dengan stok fisik barang.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="outbound-fresh" class="content-section">
+                <div class="card">
+                    <h2>Outbound Fresh</h2>
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">Halaman panduan proses order picking, packing, dan loading barang keluar.</p>
+                </div>
+            </div>
+
         </section>
     </main>
 
+    <script>
+        const btnInbound = document.getElementById('btn-inbound');
+        const submenuInbound = document.getElementById('submenu-inbound');
+        const menuButtons = document.querySelectorAll('.menu-item');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        // 1. Logika khusus klik tombol Utama "Inbound" (Buka/Tutup Submenu)
+        btnInbound.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = submenuInbound.classList.toggle('show');
+            
+            // Putar arah panah kecil
+            const arrow = this.querySelector('.arrow');
+            if (isOpen) {
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // 2. Logika klik ganti konten halaman tanpa 404
+        menuButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                
+                // Jika tombol yang diklik tidak punya data-target (seperti tombol induk Inbound), abaikan ganti konten
+                if (!targetId) return;
+
+                // Reset status aktif di semua tombol menu
+                menuButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Aktifkan warna hijau pada tombol yang diklik
+                this.classList.add('active');
+
+                // Sembunyikan semua section konten, tampilkan yang dipilih
+                contentSections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
