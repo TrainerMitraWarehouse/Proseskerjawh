@@ -52,21 +52,21 @@
 
             <div id="Inbound Admin" class="content-section">
                 <div class="section-header-box">
-                    <h2 class="section-title">Inbound Fresh</h2>
+                    <h2 class="section-title">Inbound Admin</h2>
                 </div>
                 <p class="section-desc">Fokus pada penerimaan dokumen, pengecekan kualitas barang, pencatatan hasil aktual, serta input data ke sistem WMS.</p>
 
-                <div class="card clickable" onclick="toggleGallery('adminGallery')">
+                <div class="card clickable" onclick="toggleGallery('adminGallery1')">
                     <div class="step-container">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h3>Cek kelengkapan dokumen</h3>
+                            <h3>Cek kelengkapan dokumen (Klik untuk lihat contoh gambar)</h3>
                             <p>Periksa PO dan Surat Jalan. Jika ada data tidak sesuai, tahan proses dan laporkan ke PIC.</p>
                         </div>
                     </div>
                 </div>
                 
-                <div id="adminGallery" class="image-gallery-wrapper">
+                <div id="adminGallery1" class="image-gallery-wrapper">
                     <div class="image-gallery">
                         <div class="image-box">
                             <img src="IB regist.png" alt="Contoh registrasi vendor inbound">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
 
-                <div class="card clickable" onclick="toggleGallery('adminGallery')">
+                <div class="card clickable" onclick="toggleGallery('adminGallery3')">
                     <div class="step-container">
                         <div class="step-number">3</div>
                         <div class="step-content">
@@ -89,7 +89,7 @@
                     </div>
                 </div>
 
-                <div id="adminGallery" class="image-gallery-wrapper">
+                <div id="adminGallery3" class="image-gallery-wrapper">
                     <div class="image-gallery">
                         <div class="image-box">
                             <img src="Screenshot 2026-07-09 104900.jpg" alt="Contoh registrasi vendor inbound">
@@ -180,7 +180,6 @@
     </main>
 
 <script>
-    // Fungsi untuk navigasi menu utama sidebar
     function openTab(evt, tabName) {
         let sections = document.getElementsByClassName("content-section");
         for (let i = 0; i < sections.length; i++) {
@@ -197,12 +196,11 @@
 
         evt.currentTarget.classList.add("active");
 
-        // Otomatis tutup galeri gambar jika pengguna pindah menu halaman utama
+        // Tutup semua galeri saat berganti halaman/tab utama
         let allGalleries = document.querySelectorAll(".image-gallery-wrapper");
         allGalleries.forEach(gal => gal.classList.remove("show"));
     }
 
-    // Fungsi interaktif Klik Poin -> Muncul/Sembunyi Gambar
     function toggleGallery(galleryId) {
         let gallery = document.getElementById(galleryId);
         if (gallery) {
@@ -210,7 +208,6 @@
         }
     }
 
-    // Fungsi Filter Pencarian Global
     function searchGlobal() {
         let input = document.getElementById('searchInput').value.toLowerCase();
         let cards = document.getElementsByClassName('card');
