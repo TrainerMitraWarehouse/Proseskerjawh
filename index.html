@@ -22,19 +22,9 @@
             </div>
             <nav>
                 <button class="menu-item active" data-target="panduan-umum">Panduan Umum</button>
-                
-                <div class="menu-dropdown-container">
-                    <button class="menu-item dropdown-toggle" id="btn-inbound">
-                        Inbound 
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="submenu-list" id="submenu-inbound">
-                        <button class="menu-item sub-item" data-target="inbound-admin">Inbound Admin</button>
-                        <button class="menu-item sub-item" data-target="inbound-checker">Inbound Checker</button>
-                        <button class="menu-item sub-item" data-target="inbound-labeling">Inbound Labeling</button>
-                    </div>
-                </div>
-
+                <button class="menu-item" data-target="inbound-admin">Inbound Admin</button>
+                <button class="menu-item" data-target="inbound-checker">Inbound Checker</button>
+                <button class="menu-item" data-target="inbound-labeling">Inbound Labeling</button>
                 <button class="menu-item" data-target="inventory-fresh">Inventory Fresh</button>
                 <button class="menu-item" data-target="outbound-fresh">Outbound Fresh</button>
             </nav>
@@ -63,7 +53,7 @@
                 <div class="card">
                     <h2>Selamat Datang di Panduan Kerja</h2>
                     <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
-                        Silakan gunakan menu di sebelah kiri untuk mengakses panduan operasional lapangan secara mendetail. Klik pada menu <strong>Inbound</strong> untuk memunculkan sub-panduan Admin, Checker, dan Labeling.
+                        Silakan gunakan menu di sebelah kiri untuk mengakses panduan operasional lapangan secara mendetail.
                     </p>
                 </div>
             </div>
@@ -74,24 +64,22 @@
                         <h2>Inbound Admin</h2>
                         <span class="badge">Proses Admin</span>
                     </div>
-                    
                     <div class="step-list">
                         <div class="step-item">
                             <div class="step-number">1</div>
                             <div>
                                 <div class="step-title">Registrasi Dokumen Vendor</div>
-                                <div class="step-desc">Menerima dan memeriksa kelengkapan Surat Jalan serta Purchase Order (PO) dari armada vendor yang tiba.</div>
+                                <div class="step-desc">Menerima dan memeriksa kelengkapan Surat Jalan serta Purchase Order (PO).</div>
                             </div>
                         </div>
                         <div class="step-item">
                             <div class="step-number">2</div>
                             <div>
                                 <div class="step-title">Cetak Lembar Hand Over (HO)</div>
-                                <div class="step-desc">Mencetak dokumen HO sistem untuk diserahkan kepada tim checker lapangan guna validasi kuantitas fisik.</div>
+                                <div class="step-desc">Mencetak dokumen HO sistem untuk diserahkan kepada tim checker lapangan.</div>
                             </div>
                         </div>
                     </div>
-
                     <div class="image-grid">
                         <div class="img-card">
                             <img src="IB regist.png" alt="Registrasi Vendor">
@@ -116,7 +104,7 @@
                             <div class="step-number">1</div>
                             <div>
                                 <div class="step-title">Pengecekan Kuantitas & Kualitas Fisik</div>
-                                <div class="step-desc">Menghitung jumlah muatan actual secara teliti dan memverifikasi kualitas kesegaran produk fresh.</div>
+                                <div class="step-desc">Menghitung jumlah muatan aktual dan memverifikasi kualitas kesegaran produk.</div>
                             </div>
                         </div>
                     </div>
@@ -144,7 +132,7 @@
                             <div class="step-number">1</div>
                             <div>
                                 <div class="step-title">Penempelan Label Barcode</div>
-                                <div class="step-desc">Mencetak identitas pelacakan barang (LPN/Barcode) lewat sistem WMS lalu menempelkannya ke pallet/keranjang produk.</div>
+                                <div class="step-desc">Mencetak identitas pelacakan barang (LPN) lalu menempelkannya ke pallet.</div>
                             </div>
                         </div>
                     </div>
@@ -167,7 +155,7 @@
                         <h2>Inventory Fresh</h2>
                         <span class="badge">Putaway & Stok</span>
                     </div>
-                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Fokus pada putaway, penjagaan stok, pengecekan lokasi bin, dan pemisahan produk tidak layak jual.</p>
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">Fokus pada putaway, penjagaan stok, dan penanganan berkala barang tidak layak.</p>
                 </div>
             </div>
 
@@ -177,26 +165,12 @@
                     <p style="font-size: 0.875rem; color: var(--text-muted);">Halaman panduan proses pengeluaran barang, picking order, packing, dan loading muatan keluar.</p>
                 </div>
             </div>
-
         </section>
     </main>
 
     <script>
-        const btnInbound = document.getElementById('btn-inbound');
-        const submenuInbound = document.getElementById('submenu-inbound');
         const menuButtons = document.querySelectorAll('.menu-item');
         const contentSections = document.querySelectorAll('.content-section');
-
-        btnInbound.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const isOpen = submenuInbound.classList.toggle('show');
-            const arrow = this.querySelector('.arrow');
-            if (isOpen) {
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        });
 
         menuButtons.forEach(button => {
             button.addEventListener('click', function() {
