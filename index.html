@@ -63,7 +63,7 @@
                 <div class="card">
                     <h2>Selamat Datang di Panduan Kerja</h2>
                     <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
-                        Silakan gunakan menu navigasi di sebelah kiri untuk mengakses seluruh panduan operasional lapangan secara mendetail. Klik pada menu <strong>Inbound</strong> untuk memunculkan sub-panduan khusus Admin, Checker, dan Labeling.
+                        Silakan gunakan menu di sebelah kiri untuk mengakses panduan operasional lapangan secara mendetail. Klik pada menu <strong>Inbound</strong> untuk memunculkan sub-panduan Admin, Checker, dan Labeling.
                     </p>
                 </div>
             </div>
@@ -77,36 +77,29 @@
                     
                     <div class="step-list">
                         <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div>
+                                <div class="step-title">Registrasi Dokumen Vendor</div>
+                                <div class="step-desc">Menerima dan memeriksa kelengkapan Surat Jalan serta Purchase Order (PO) dari armada vendor yang tiba.</div>
+                            </div>
+                        </div>
+                        <div class="step-item">
                             <div class="step-number">2</div>
                             <div>
-                                <div class="step-title">Cek kelengkapan dokumen</div>
-                                <div class="step-desc">Periksa PO dan Surat Jalan. Jika ada data tidak sesuai, tahan proses dan laporkan ke PIC.</div>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">3</div>
-                            <div>
-                                <div class="step-title">Cetak lembar HO</div>
-                                <div class="step-desc">Siapkan Lembar Hand Over untuk digunakan checker saat proses hitung fisik.</div>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">4</div>
-                            <div>
-                                <div class="step-title">Satukan dokumen</div>
-                                <div class="step-desc">Gabungkan HO, PO, dan Surat Jalan agar mudah dibawa ke area pengecekan.</div>
+                                <div class="step-title">Cetak Lembar Hand Over (HO)</div>
+                                <div class="step-desc">Mencetak dokumen HO sistem untuk diserahkan kepada tim checker lapangan guna validasi kuantitas fisik.</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="image-grid">
                         <div class="img-card">
-                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=500&q=80" alt="Registrasi Vendor">
-                            <div class="img-caption">Contoh registrasi vendor inbound.</div>
+                            <img src="IB regist.png" alt="Registrasi Vendor">
+                            <div class="img-caption">Alur registrasi driver/vendor inbound.</div>
                         </div>
                         <div class="img-card">
-                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Lembar Hand Over">
-                            <div class="img-caption">Contoh Lembar Hand Over untuk checker.</div>
+                            <img src="HO.png" alt="Lembar Hand Over">
+                            <div class="img-caption">Lembar Hand Over (HO) untuk checker fisik.</div>
                         </div>
                     </div>
                 </div>
@@ -114,19 +107,57 @@
 
             <div id="inbound-checker" class="content-section">
                 <div class="card">
-                    <h2>Inbound Checker</h2>
-                    <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
-                        Halaman panduan operasional untuk tim Checker lapangan dalam melakukan perhitungan kuantitas fisik dan pengecekan kualitas muatan yang dikirim oleh vendor.
-                    </p>
+                    <div class="card-header">
+                        <h2>Inbound Checker</h2>
+                        <span class="badge">Proses Lapangan</span>
+                    </div>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div>
+                                <div class="step-title">Pengecekan Kuantitas & Kualitas Fisik</div>
+                                <div class="step-desc">Menghitung jumlah muatan actual secara teliti dan memverifikasi kualitas kesegaran produk fresh.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-grid">
+                        <div class="img-card">
+                            <img src="counting.png" alt="Counting Fisik">
+                            <div class="img-caption">Proses perhitungan item/timbangan di area unloading.</div>
+                        </div>
+                        <div class="img-card">
+                            <img src="IB Validasi.png" alt="Validasi Inbound">
+                            <div class="img-caption">Validasi silang berkas HO vs Aktual fisik.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div id="inbound-labeling" class="content-section">
                 <div class="card">
-                    <h2>Inbound Labeling</h2>
-                    <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
-                        Halaman alur kerja pencetakan barcode/QR system, serta teknis penempelan label pelacakan pada komoditas produk fresh sebelum masuk rak.
-                    </p>
+                    <div class="card-header">
+                        <h2>Inbound Labeling</h2>
+                        <span class="badge">Pelabelan Sistem</span>
+                    </div>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div>
+                                <div class="step-title">Penempelan Label Barcode</div>
+                                <div class="step-desc">Mencetak identitas pelacakan barang (LPN/Barcode) lewat sistem WMS lalu menempelkannya ke pallet/keranjang produk.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-grid">
+                        <div class="img-card">
+                            <img src="label.png" alt="Proses Pelabelan">
+                            <div class="img-caption">Penempelan label barcode pada produk fresh.</div>
+                        </div>
+                        <div class="img-card">
+                            <img src="IB WMS.png" alt="Sistem WMS Inbound">
+                            <div class="img-caption">Pencatatan data masuk di komputer sistem WMS.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -136,33 +167,14 @@
                         <h2>Inventory Fresh</h2>
                         <span class="badge">Putaway & Stok</span>
                     </div>
-                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Fokus pada putaway, manajemen kapasitas penyimpanan, pengecekan ketepatan bin lokasi, serta penanganan berkala barang tidak layak.</p>
-                    
-                    <div class="step-list">
-                        <div class="step-item">
-                            <div class="step-number">1</div>
-                            <div>
-                                <div class="step-title">Putaway barang</div>
-                                <div class="step-desc">Pindahkan barang ke lokasi bin/rak sesuai instruksi sistem WMS dan regulasi penyimpanan zona dingin.</div>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">2</div>
-                            <div>
-                                <div class="step-title">Cek kesesuaian lokasi</div>
-                                <div class="step-desc">Lakukan pemeriksaan berkala untuk memastikan tata letak fisik 100% akurat dengan data sistem komputer.</div>
-                            </div>
-                        </div>
-                    </div>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Fokus pada putaway, penjagaan stok, pengecekan lokasi bin, dan pemisahan produk tidak layak jual.</p>
                 </div>
             </div>
 
             <div id="outbound-fresh" class="content-section">
                 <div class="card">
                     <h2>Outbound Fresh</h2>
-                    <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
-                        Halaman instruksi kerja untuk proses picking order, pemilahan rute pengiriman, pengemasan (packing) pelindung suhu, hingga pemuatan (loading) barang ke armada distribusi.
-                    </p>
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">Halaman panduan proses pengeluaran barang, picking order, packing, dan loading muatan keluar.</p>
                 </div>
             </div>
 
@@ -175,7 +187,6 @@
         const menuButtons = document.querySelectorAll('.menu-item');
         const contentSections = document.querySelectorAll('.content-section');
 
-        // 1. Aksi klik tombol utama Inbound (Buka-Tutup)
         btnInbound.addEventListener('click', function(e) {
             e.stopPropagation();
             const isOpen = submenuInbound.classList.toggle('show');
@@ -187,21 +198,14 @@
             }
         });
 
-        // 2. Aksi klik menu navigasi untuk mengganti konten secara instan
         menuButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const targetId = this.getAttribute('data-target');
-                
-                // Abaikan tombol utama Inbound karena tidak memiliki data-target konten langsung
                 if (!targetId) return;
 
-                // Bersihkan warna aktif hijau dari semua tombol sebelumnya
                 menuButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Tambahkan warna hijau ke menu yang baru saja diklik
                 this.classList.add('active');
 
-                // Sembunyikan konten lama, tampilkan konten baru sesuai target ID
                 contentSections.forEach(section => {
                     if (section.id === targetId) {
                         section.classList.add('active');
