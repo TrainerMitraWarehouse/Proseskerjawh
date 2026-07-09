@@ -1,4 +1,4 @@
-/* style.css */
+/* @import font eksternal agar tampilan clean */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
@@ -44,7 +44,7 @@ h1 {
     font-size: 1rem;
 }
 
-/* Main Layout */
+/* Main Layout Grid */
 main {
     max-width: 80rem;
     margin: 2rem auto;
@@ -60,7 +60,7 @@ main {
     }
 }
 
-/* Sidebar */
+/* Sidebar Container */
 aside {
     background: white;
     padding: 1rem;
@@ -86,7 +86,6 @@ aside {
 .search-input:focus {
     outline: none;
     border-color: var(--primary-green);
-    ring: 2px var(--primary-green);
 }
 
 nav {
@@ -95,6 +94,7 @@ nav {
     gap: 0.25rem;
 }
 
+/* Tombol Menu Utama */
 .menu-item {
     display: block;
     padding: 0.625rem 1rem;
@@ -103,21 +103,64 @@ nav {
     text-decoration: none;
     color: var(--text-muted);
     border-radius: 0.5rem;
-    transition: background 0.2s;
+    transition: background 0.2s, color 0.2s;
+    box-sizing: border-box;
 }
 
 .menu-item:hover {
     background-color: #F9FAFB;
+    color: var(--text-dark);
 }
 
-/* State Aktif untuk Menu */
+/* Status Aktif */
 .menu-item.active {
     background-color: var(--primary-green);
-    color: white;
+    color: white !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* Main Content Area */
+/* ================= STYLING DROPDOWN SUB-MENU ================= */
+.menu-dropdown summary::-webkit-details-marker {
+    display: none; /* Menghilangkan panah bawaan browser Chrome/Safari */
+}
+.menu-dropdown summary {
+    list-style: none; /* Menghilangkan panah bawaan browser Firefox */
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submenu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-left: 1rem; /* Efek menjorok masuk ke dalam */
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.submenu-list .menu-item {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Animasi Rotasi Panah Kecil */
+.menu-dropdown[open] .arrow {
+    transform: rotate(180deg);
+}
+
+.arrow {
+    font-size: 0.6rem;
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+/* ============================================================= */
+
+/* Main Content Cards */
 .content-area {
     display: flex;
     flex-direction: column;
@@ -139,7 +182,7 @@ h2 {
     margin-bottom: 1rem;
 }
 
-/* Aturan Singkat Grid */
+/* Aturan Grid Lapangan */
 .aturan-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -169,104 +212,4 @@ h2 {
     font-size: 0.75rem;
     color: var(--text-muted);
     margin-top: 0.25rem;
-}
-
-/* Langkah Kerja */
-.step-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.step-item {
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
-    border: 1px solid #E5E7EB;
-    border-radius: 0.5rem;
-    background-color: #F9FAFB;
-}
-
-.step-number {
-    flex-shrink: 0;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 9999px;
-    background-color: var(--primary-green);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.875rem;
-}
-
-.step-title {
-    font-weight: 700;
-    color: #111827;
-    font-size: 0.875rem;
-}
-
-.step-desc {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-top: 0.125rem;
-}
-
-/* Image Grid */
-.image-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-@media (min-width: 768px) {
-    .image-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.img-card {
-    border: 1px solid #E5E7EB;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    background-color: #F9FAFB;
-}
-
-.img-card img {
-    width: 100%;
-    height: 12rem;
-    object-fit: cover;
-}
-
-.img-caption {
-    padding: 0.75rem;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    border-top: 1px solid #E5E7EB;
-    background: white;
-}
-
-/* Badge */
-.badge {
-    background-color: #FEF3C7;
-    color: #92400E;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.25rem 0.625rem;
-    border-radius: 9999px;
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #E5E7EB;
-    padding-bottom: 0.75rem;
-    margin-bottom: 1rem;
-}
-
-.card-header h2 {
-    margin-bottom: 0;
 }
