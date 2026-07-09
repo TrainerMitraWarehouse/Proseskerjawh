@@ -190,8 +190,9 @@ main {
     overflow: hidden;
     transition: max-height 0.4s ease-out, margin-top 0.3s ease;
 }
+/* Menyesuaikan max-height agar muat menampung gambar portrait yang tinggi */
 .image-gallery-wrapper.show {
-    max-height: 500px;
+    max-height: 1000px; 
     margin-top: 15px;
     margin-bottom: 15px;
 }
@@ -212,6 +213,29 @@ main {
     background: #fafafa;
 }
 
+/* --- KHUSUS FORMAT DOKUMEN VERTIKAL / PORTRAIT DI POIN 3 --- */
+.gallery-portrait {
+    grid-template-columns: repeat(3, 1fr) !important; /* Membagi jadi 3 kolom agar rapi menyamping */
+}
+.gallery-portrait .image-box img {
+    height: 420px;          /* Frame ditinggikan agar proporsi kertas portrait pas */
+    object-fit: contain;    /* Agar dokumen mengecil sempurna di dalam kotak dan TIDAK terpotong */
+    background: #fdfdfd;    /* Background putih bersih agar dokumen terlihat jelas */
+    padding: 8px;           /* Memberi sedikit space manis di tepi dalam kotak */
+    box-sizing: border-box;
+}
+
+/* RESPONSIVE LAYOUT UNTUK LAYOR HP / TABLET */
+@media (max-width: 992px) {
+    .gallery-portrait {
+        grid-template-columns: 1fr !important; /* Berubah jadi 1 kolom ke bawah pada tablet */
+    }
+}
+
 @media (max-width: 768px) {
     .image-gallery { grid-template-columns: 1fr; }
+    .gallery-portrait .image-box img {
+        height: auto;       /* Mengikuti rasio asli gambar dokumen di smartphone */
+        max-height: 500px;
+    }
 }
