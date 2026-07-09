@@ -5,20 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panduan Kerja Mitra Warehouse Fresh</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        /* Smooth transition saat ganti konten */
-        .content-section {
-            display: none;
-        }
-        .content-section.active {
-            display: block;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-gray-100 font-sans antialiased text-gray-800">
 
@@ -38,25 +25,13 @@
                 <input type="text" placeholder="Cari panduan..." class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#007F5F]">
             </div>
             
-            <nav id="sidebar-menu" class="space-y-1">
-                <a href="#" data-target="panduan-umum" class="menu-item block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">
-                    Panduan Umum
-                </a>
-                <a href="#" data-target="inbound-admin" class="menu-item block px-4 py-2.5 text-sm font-medium rounded-lg bg-[#007F5F] text-white shadow-xs">
-                    Inbound Admin
-                </a>
-                <a href="#" data-target="inbound-checker" class="menu-item block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">
-                    Inbound Checker
-                </a>
-                <a href="#" data-target="inbound-labeling" class="menu-item block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">
-                    Inbound Labeling
-                </a>
-                <a href="#" data-target="inventory-fresh" class="menu-item block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">
-                    Inventory Fresh
-                </a>
-                <a href="#" data-target="outbound-fresh" class="menu-item block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">
-                    Outbound Fresh
-                </a>
+            <nav class="space-y-1">
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">Panduan Umum</a>
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg bg-[#007F5F] text-white shadow-xs">Inbound Admin</a>
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">Inbound Checker</a>
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">Inbound Labeling</a>
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">Inventory Fresh</a>
+                <a href="#" class="block px-4 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 transition">Outbound Fresh</a>
             </nav>
         </aside>
 
@@ -64,137 +39,69 @@
             
             <div class="bg-white p-6 rounded-xl shadow-xs border border-gray-100">
                 <h2 class="text-xl font-bold text-[#005B41] mb-4">Aturan Singkat di Lapangan</h2>
+                
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="border-l-4 border-[#007F5F] bg-emerald-50/30 p-4 rounded-r-lg">
-                        <h3 class="font-bold text-gray-900 text-sm">Ikuti urutan proses</h3>
-                        <p class="text-xs text-gray-600 mt-1">Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</p>
+                        <h3 class="font-bold text-gray-900 text-sm md:text-base">Ikuti urutan proses</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mt-1">Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</p>
                     </div>
                     <div class="border-l-4 border-[#007F5F] bg-emerald-50/30 p-4 rounded-r-lg">
-                        <h3 class="font-bold text-gray-900 text-sm">Catat hasil aktual</h3>
-                        <p class="text-xs text-gray-600 mt-1">Jumlah barang, kondisi barang, dan selisih harus ditulis sesuai temuan.</p>
+                        <h3 class="font-bold text-gray-900 text-sm md:text-base">Catat hasil aktual</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mt-1">Jumlah barang, kondisi barang, dan selisih harus ditulis sesuai temuan.</p>
                     </div>
                     <div class="border-l-4 border-[#007F5F] bg-emerald-50/30 p-4 rounded-r-lg">
-                        <h3 class="font-bold text-gray-900 text-sm">Laporkan kendala</h3>
-                        <p class="text-xs text-gray-600 mt-1">Jika ada dokumen tidak lengkap, QR tidak terbaca, atau barang rusak, segera eskalasi ke PIC.</p>
+                        <h3 class="font-bold text-gray-900 text-sm md:text-base">Laporkan kendala</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mt-1">Jika ada dokumen tidak lengkap, QR tidak terbaca, atau barang rusak, segera eskalasi ke PIC.</p>
                     </div>
                 </div>
             </div>
 
-            <div id="panduan-umum" class="content-section bg-white p-6 rounded-xl shadow-xs border border-gray-100">
-                <h2 class="text-xl font-bold text-[#005B41] border-b pb-3 mb-4">Panduan Umum</h2>
-                <p class="text-sm text-gray-600">Selamat datang di sistem Panduan Kerja Mandiri Warehouse Fresh. Silakan pilih menu di sebelah kiri untuk melihat detail alur kerja masing-masing bagian divisi.</p>
-            </div>
-
-            <div id="inbound-admin" class="content-section active bg-white p-6 rounded-xl shadow-xs border border-gray-100 space-y-4">
+            <div class="bg-white p-6 rounded-xl shadow-xs border border-gray-100 space-y-4">
                 <div class="flex justify-between items-center border-b border-gray-100 pb-3">
                     <h2 class="text-xl font-bold text-[#005B41]">Inbound Admin</h2>
+                    <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">Proses Admin</span>
                 </div>
+
                 <div class="space-y-3">
                     <div class="flex gap-4 p-4 border border-gray-100 rounded-lg bg-gray-50/50">
                         <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#007F5F] text-white flex items-center justify-center font-bold text-sm">2</div>
                         <div>
-                            <h4 class="font-bold text-gray-900 text-sm">Cek kelengkapan dokumen</h4>
-                            <p class="text-xs text-gray-600 mt-0.5">Periksa PO dan Surat Jalan. Jika ada data tidak sesuai, tahan proses dan laporkan ke PIC.</p>
+                            <h4 class="font-bold text-gray-900 text-sm md:text-base">Cek kelengkapan dokumen</h4>
+                            <p class="text-xs md:text-sm text-gray-600 mt-0.5">Periksa PO dan Surat Jalan. Jika ada data tidak sesuai, tahan proses dan laporkan ke PIC.</p>
                         </div>
                     </div>
+
                     <div class="flex gap-4 p-4 border border-gray-100 rounded-lg bg-gray-50/50">
                         <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#007F5F] text-white flex items-center justify-center font-bold text-sm">3</div>
                         <div>
-                            <h4 class="font-bold text-gray-900 text-sm">Cetak lembar HO</h4>
-                            <p class="text-xs text-gray-600 mt-0.5">Siapkan Lembar Hand Over untuk digunakan checker saat proses hitung fisik.</p>
+                            <h4 class="font-bold text-gray-900 text-sm md:text-base">Cetak lembar HO</h4>
+                            <p class="text-xs md:text-sm text-gray-600 mt-0.5">Siapkan Lembar Hand Over untuk digunakan checker saat proses hitung fisik.</p>
                         </div>
                     </div>
+
                     <div class="flex gap-4 p-4 border border-gray-100 rounded-lg bg-gray-50/50">
                         <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#007F5F] text-white flex items-center justify-center font-bold text-sm">4</div>
                         <div>
-                            <h4 class="font-bold text-gray-900 text-sm">Satukan dokumen</h4>
-                            <p class="text-xs text-gray-600 mt-0.5">Gabungkan HO, PO, dan Surat Jalan agar mudah dibawa ke area pengecekan.</p>
+                            <h4 class="font-bold text-gray-900 text-sm md:text-base">Satukan dokumen</h4>
+                            <p class="text-xs md:text-sm text-gray-600 mt-0.5">Gabungkan HO, PO, dan Surat Jalan agar mudah dibawa ke area pengecekan.</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
                     <div class="border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
                         <img src="https://via.placeholder.com/500x300" alt="Registrasi Vendor" class="w-full h-48 object-cover">
-                        <p class="p-3 text-xs text-gray-600 border-t border-gray-200 bg-white">Contoh registrasi vendor inbound.</p>
+                        <p class="p-3 text-xs md:text-sm text-gray-600 border-t border-gray-200 bg-white">Contoh registrasi vendor inbound.</p>
                     </div>
                     <div class="border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
                         <img src="https://via.placeholder.com/500x300" alt="Lembar Hand Over" class="w-full h-48 object-cover">
-                        <p class="p-3 text-xs text-gray-600 border-t border-gray-200 bg-white">Contoh Lembar Hand Over untuk checker.</p>
+                        <p class="p-3 text-xs md:text-sm text-gray-600 border-t border-gray-200 bg-white">Contoh Lembar Hand Over untuk checker.</p>
                     </div>
                 </div>
-            </div>
 
-            <div id="inbound-checker" class="content-section bg-white p-6 rounded-xl shadow-xs border border-gray-100">
-                <h2 class="text-xl font-bold text-[#005B41] border-b pb-3 mb-4">Inbound Checker</h2>
-                <div class="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
-                    <p class="text-sm text-gray-600">Konten proses pengecekan fisik barang masuk oleh tim Checker.</p>
-                </div>
             </div>
-
-            <div id="inbound-labeling" class="content-section bg-white p-6 rounded-xl shadow-xs border border-gray-100">
-                <h2 class="text-xl font-bold text-[#005B41] border-b pb-3 mb-4">Inbound Labeling</h2>
-                <p class="text-sm text-gray-600">Konten pencetakan dan penempelan label barcode/QR pada produk.</p>
-            </div>
-
-            <div id="inventory-fresh" class="content-section bg-white p-6 rounded-xl shadow-xs border border-gray-100 space-y-4">
-                <div class="flex justify-between items-center border-b border-gray-100 pb-3">
-                    <h2 class="text-xl font-bold text-[#005B41]">Inventory Fresh</h2>
-                    <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">Putaway dan stok</span>
-                </div>
-                <p class="text-xs md:text-sm text-gray-600">Fokus pada putaway, penjagaan stok, pengecekan lokasi, dan penanganan barang tidak layak.</p>
-                <div class="space-y-3">
-                    <div class="flex gap-4 p-4 border border-gray-100 rounded-lg bg-gray-50/50">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#007F5F] text-white flex items-center justify-center font-bold text-sm">1</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900 text-sm">Putaway barang</h4>
-                            <p class="text-xs text-gray-600 mt-0.5">Pindahkan barang ke lokasi sesuai instruksi WMS dan aturan penyimpanan fresh.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 p-4 border border-gray-100 rounded-lg bg-gray-50/50">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#007F5F] text-white flex items-center justify-center font-bold text-sm">2</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900 text-sm">Cek kesesuaian lokasi</h4>
-                            <p class="text-xs text-gray-600 mt-0.5">Pastikan sistem tata letak bin/rak akurat dengan stok fisik barang.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="outbound-fresh" class="content-section bg-white p-6 rounded-xl shadow-xs border border-gray-100">
-                <h2 class="text-xl font-bold text-[#005B41] border-b pb-3 mb-4">Outbound Fresh</h2>
-                <p class="text-sm text-gray-600">Konten proses pengeluaran barang, packing, dan loading armada kirim.</p>
-            </div>
-
         </section>
     </main>
 
-    <script>
-        const menuItems = document.querySelectorAll('.menu-item');
-        const sections = document.querySelectorAll('.content-section');
-
-        menuItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                // 1. Ganti status gaya menu tombol aktif
-                menuItems.forEach(i => {
-                    i.classList.remove('bg-[#007F5F]', 'text-white', 'shadow-xs');
-                    i.classList.add('text-gray-700', 'hover:bg-gray-50');
-                });
-                this.classList.remove('text-gray-700', 'hover:bg-gray-50');
-                this.classList.add('bg-[#007F5F]', 'text-white', 'shadow-xs');
-
-                // 2. Ganti tampilan Konten secara Dinamis
-                const targetId = this.getAttribute('data-target');
-                sections.forEach(section => {
-                    if (section.id === targetId) {
-                        section.classList.add('active');
-                    } else {
-                        section.classList.remove('active');
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
