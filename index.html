@@ -1,301 +1,310 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panduan Kerja Mitra Warehouse Fresh</title>
-    <link class="html-embed" rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Kerja Mitra Warehouse Fresh</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <nav>
-        <input type="text" id="searchInput" placeholder="Cari panduan..." onkeyup="searchGlobal()">
-        <ul id="menuList">
-            <li class="main-menu active" onclick="openTab(event, 'Panduan Umum')">Panduan Umum</li>
-            
-            <li class="main-menu has-submenu" onclick="toggleSubmenu(event, 'inboundSubmenu')">
-                Inbound Fresh <span class="arrow">▼</span>
-            </li>
-            <ul id="inboundSubmenu" class="submenu-list">
-                <li class="sub-menu" onclick="openTab(event, 'Inbound Admin')">Inbound Admin</li>
-                <li class="sub-menu" onclick="openTab(event, 'Inbound Checker')">Inbound Checker</li>
-                <li class="sub-menu" onclick="openTab(event, 'Inbound Labeling')">Inbound Labeling</li>
-            </ul>
+    <nav>
+        <input type="text" id="searchInput" placeholder="Cari panduan..." onkeyup="searchGlobal()">
+        <ul id="menuList">
+            <li class="main-menu active" onclick="openTab(event, 'Panduan Umum')">Panduan Umum</li>
+            
+            <li class="main-menu has-submenu" onclick="toggleSubmenu(event, 'inboundSubmenu')">
+                Inbound Fresh <span class="arrow">▼</span>
+            </li>
+            <ul id="inboundSubmenu" class="submenu-list">
+                <li class="sub-menu" onclick="openTab(event, 'Inbound Admin')">Inbound Admin</li>
+                <li class="sub-menu" onclick="openTab(event, 'Inbound Checker')">Inbound Checker</li>
+                <li class="sub-menu" onclick="openTab(event, 'Inbound Labeling')">Inbound Labeling</li>
+            </ul>
 
-            <li class="main-menu" onclick="openTab(event, 'Inventory Fresh')">Inventory Fresh</li>
-            <li class="main-menu" onclick="openTab(event, 'Outbound Fresh')">Outbound Fresh</li>
-        </ul>
-    </nav>
+            <li class="main-menu" onclick="openTab(event, 'Inventory Fresh')">Inventory Fresh</li>
+            <li class="main-menu" onclick="openTab(event, 'Outbound Fresh')">Outbound Fresh</li>
+        </ul>
+    </nav>
 
-    <main>
-        <div class="header-banner">
-            <h1>Panduan Kerja Mitra Warehouse Fresh</h1>
-            <p>Panduan lapangan yang ringkas untuk membantu mitra menjalankan proses inbound, inventory, dan outbound dengan urutan kerja yang jelas.</p>
-        </div>
+    <main>
+        <div class="header-banner">
+            <h1>Panduan Kerja Mitra Warehouse Fresh</h1>
+            <p>Panduan lapangan yang ringkas untuk membantu mitra menjalankan proses inbound, inventory, dan outbound dengan urutan kerja yang jelas.</p>
+        </div>
 
-        <div class="content-container">
-            <h2 style="font-size: 1.3rem; margin: 0 0 16px 0; color: #005e4d;">Aturan Singkat di Lapangan</h2>
-            <div class="rules-grid">
-                <div class="rule-card">
-                    <h4>Ikuti urutan proses</h4>
-                    <p>Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</p>
-                </div>
-                <div class="rule-card">
-                    <h4>Catat hasil aktual</h4>
-                    <p>Jumlah barang, kondisi barang, dan selisih harus ditulis sesuai temuan.</p>
-                </div>
-                <div class="rule-card">
-                    <h4>Laporkan kendala</h4>
-                    <p>Jika ada dokumen tidak lengkap, QR tidak terbaca, atau barang rusak, segera eskalasi ke PIC.</p>
-                </div>
-            </div>
+        <div class="content-container">
+            <h2 style="font-size: 1.3rem; margin: 0 0 16px 0; color: #005e4d;">Aturan Singkat di Lapangan</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <h4>Ikuti urutan proses</h4>
+                    <p>Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</p>
+                </div>
+                <div class="rule-card">
+                    <h4>Catat hasil aktual</h4>
+                    <p>Jumlah barang, kondisi barang, dan selisih harus ditulis sesuai temuan.</p>
+                </div>
+                <div class="rule-card">
+                    <h4>Laporkan kendala</h4>
+                    <p>Jika ada dokumen tidak lengkap, QR tidak terbaca, atau barang rusak, segera eskalasi ke PIC.</p>
+                </div>
+            </div>
 
-            <div id="Panduan Umum" class="content-section active">
-                <div class="card">
-                    <h3 style="margin-top:0; color: #005e4d;">Panduan Umum</h3>
-                    <p style="line-height: 1.6; color: var(--text-dark);">Selamat datang di Portal Panduan Kerja Mitra Warehouse Fresh. Halaman ini dirancang sebagai acuan cepat dan praktis bagi seluruh mitra di lapangan untuk memahami setiap tahapan kerja secara terstruktur, mulai dari proses penerimaan barang (inbound), pengelolaan stok (inventory), hingga persiapan pengiriman (outbound). Silakan gunakan menu navigasi di samping kiri untuk mencari modul spesifik sesuai dengan peran Anda, serta pastikan untuk selalu mengikuti urutan instruksi dan standar kualitas yang berlaku demi menjaga kelancaran operasional gudang kita.</p>
-                </div>
-            </div>
+            <div id="Panduan Umum" class="content-section active">
+                <div class="card">
+                    <h3 style="margin-top:0; color: #005e4d;">Panduan Umum</h3>
+                    <p style="line-height: 1.6; color: var(--text-dark);">Selamat datang di Portal Panduan Kerja Mitra Warehouse Fresh. Halaman ini dirancang sebagai acuan cepat dan praktis bagi seluruh mitra di lapangan untuk memahami setiap tahapan kerja secara terstruktur, mulai dari proses penerimaan barang (inbound), pengelolaan stok (inventory), hingga persiapan pengiriman (outbound). Silakan gunakan menu navigasi di samping kiri untuk mencari modul spesifik sesuai dengan peran Anda, serta pastikan untuk selalu mengikuti urutan instruksi dan standar kualitas yang berlaku demi menjaga kelancaran operasional gudang kita.</p>
+                </div>
+            </div>
 
-            <div id="Inbound Admin" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Inbound Admin</h2>
-                </div>
-                <p class="section-desc">Fokus pada penerimaan dokumen, pengecekan kualitas barang, pencatatan hasil aktual, serta input data ke sistem WMS.</p>
+            <div id="Inbound Admin" class="content-section">
+                <div class="section-header-box">
+                    <h2 class="section-title">Inbound Admin</h2>
+                </div>
+                <p class="section-desc">Fokus pada penerimaan dokumen, pengecekan kualitas barang, pencatatan hasil aktual, serta input data ke sistem WMS.</p>
 
-                <div class="card">
-                    <div class="step-container">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Tugas Admin Inbound secara umum</h3>
-                            <p>Secara umum, Admin Inbound bertanggung jawab memastikan seluruh proses penerimaan barang terdokumentasi dengan benar, akurat, dan sesuai SOP.</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="card">
+                    <div class="step-container">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Tugas Admin Inbound secara umum</h3>
+                            <p>Secara umum, Admin Inbound bertanggung jawab memastikan seluruh proses penerimaan barang terdokumentasi dengan benar, akurat, dan sesuai SOP.</p>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="card clickable" onclick="toggleGallery('adminGallery2')">
-                    <div class="step-container">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Vendor melakukan registrasi </h3>
-                            <p>Vendor melakukan registrasi ketika tiba di warehouse, kemudian dari tim LP/security merubah status PO dari "On Delivery" menjadi "Arrived".</p>
-                            <p>(Klik untuk lihat contoh gambar)</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="card clickable" onclick="toggleGallery('adminGallery2')">
+                    <div class="step-container">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Vendor melakukan registrasi </h3>
+                            <p>Vendor melakukan registrasi ketika tiba di warehouse, kemudian dari tim LP/security merubah status PO dari "On Delivery" menjadi "Arrived".</p>
+                            <p>(Klik untuk lihat contoh gambar)</p>
+                        </div>
+                    </div>
+                </div>
 
-                <div id="adminGallery2" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="IB regist.png" alt="Contoh registrasi vendor inbound">
-                            <div class="image-caption">Contoh registrasi vendor inbound.</div>
-                        </div>
-                    </div>
-                </div>
+                <div id="adminGallery2" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="IB regist.png" alt="Contoh registrasi vendor inbound">
+                            <div class="image-caption">Contoh registrasi vendor inbound.</div>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="card clickable" onclick="toggleGallery('adminGallery3')">
-                    <div class="step-container">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Pengecekan kelengkapan dokumen dan mempersiapkan lembar kerja HO untuk checker </h3>
-                            <p>Pastikan No.PO dengan surat jalan sesuai, kemudian gabungkan dengan lembar kerja HO menjadi satu bagian dan diberikan kepada checker.</p>
-                            <p>(Klik untuk lihat contoh gambar)</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="adminGallery3" class="image-gallery-wrapper">
-                    <div class="image-gallery gallery-portrait">
-                        <div class="image-box">
-                            <img src="PO ok.png" alt="Contoh Dokumen PO (Purchase Order)">
-                            <div class="image-caption">Contoh Dokumen PO (Purchase Order)</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="SJ Ok.png" alt="Contoh Dokumen SJ (Surat Jalan)">
-                            <div class="image-caption">Contoh Dokumen SJ (Surat Jalan)</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="HO.png" alt="Contoh Dokumen HO (Hand Over)">
-                            <div class="image-caption">Contoh Dokumen HO (Hand Over)</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="card clickable" onclick="toggleGallery('adminGallery3')">
+                    <div class="step-container">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Pengecekan kelengkapan dokumen dan mempersiapkan lembar kerja HO untuk checker </h3>
+                            <p>Pastikan No.PO dengan surat jalan sesuai, kemudian gabungkan dengan lembar kerja HO menjadi satu bagian dan diberikan kepada checker.</p>
+                            <p>(Klik untuk lihat contoh gambar)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="adminGallery3" class="image-gallery-wrapper">
+                    <div class="image-gallery gallery-portrait">
+                        <div class="image-box">
+                            <img src="PO ok.png" alt="Contoh Dokumen PO (Purchase Order)">
+                            <div class="image-caption">Contoh Dokumen PO (Purchase Order)</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="SJ Ok.png" alt="Contoh Dokumen SJ (Surat Jalan)">
+                            <div class="image-caption">Contoh Dokumen SJ (Surat Jalan)</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="HO.png" alt="Contoh Dokumen HO (Hand Over)">
+                            <div class="image-caption">Contoh Dokumen HO (Hand Over)</div>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="card clickable" onclick="toggleGallery('adminGallery4')">
-                    <div class="step-container">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h3>Proses pengesahan dokumen penerimaan (GRN) (Klik untuk lihat contoh gambar)</h3>
-                            <p>Pastikan jumlah penerimaan pada sistem sesuai dengan penerimaan aktual. Berikut ini langkah proses GRN (Good Receipt Notes) pada sistem WMS oleh Admin Inbound.</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="card clickable" onclick="toggleGallery('adminGallery4')">
+                    <div class="step-container">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Proses pengesahan dokumen penerimaan (GRN) (Klik untuk lihat contoh gambar)</h3>
+                            <p>Pastikan jumlah penerimaan pada sistem sesuai dengan penerimaan aktual. Berikut ini langkah proses GRN (Good Receipt Notes) pada sistem WMS oleh Admin Inbound.</p>
+                        </div>
+                    </div>
+                </div>
 
-                <div id="adminGallery4" class="image-gallery-wrapper">
-                    <div class="image-gallery gallery-portrait">
-                        <div class="image-box">
-                            <img src="step 1 GRN.png" alt="Langkah pertama proses GRN">
-                            <div class="image-caption">Langkah pertama proses GRN</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="step 2 GRN.png" alt="Langkah kedua proses GRN">
-                            <div class="image-caption">Langkah kedua proses GRN</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="step 3 GRN.png" alt="Langkah ketiga proses GRN">
-                            <div class="image-caption">Langkah ketiga proses GRN</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="Cetak GRN.png" alt="Hasil pencetakan GRN">
-                            <div class="image-caption">Hasil pencetakan GRN</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <div id="adminGallery4" class="image-gallery-wrapper">
+                    <div class="image-gallery gallery-portrait">
+                        <div class="image-box">
+                            <img src="step 1 GRN.png" alt="Langkah pertama proses GRN">
+                            <div class="image-caption">Langkah pertama proses GRN</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="step 2 GRN.png" alt="Langkah kedua proses GRN">
+                            <div class="image-caption">Langkah kedua proses GRN</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="step 3 GRN.png" alt="Langkah ketiga proses GRN">
+                            <div class="image-caption">Langkah ketiga proses GRN</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="Cetak GRN.png" alt="Hasil pencetakan GRN">
+                            <div class="image-caption">Hasil pencetakan GRN</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div id="Inbound Checker" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Inbound Checker</h2>
-                </div>
-                <p class="section-desc">Melakukan perhitungan fisik aktual dan pencatatan pada sistem.</p>
-                
-                <div class="card">
-                    <div class="step-container">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Persiapan Aset</h3>
-                            <p>Menyiapkan aset yang digunakan seperti keranjang, pallet, seuic, partisi untuk melapisi keranjang</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card clickable" onclick="toggleGallery('checkeribGallery2')">
-                    <div class="step-container">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Proses penerimaan</h3>
-                            <p>• Sebelum dilakukan proses penerimaan oleh Checker Inbound, dilakukan pengecekan suhu mobil dan produk oleh tim QA Inbound</p>
-                            <p>• Setelah QA Inbound mengecek produk secara sampling, Checker inbound melakukan pengecekan kualitas secara visual dan menghitung jumlah produk yang akan diterima sesuai dokumen PO (Purchase Order)</p>
-                            <p>• Saat proses penerimaan Checker Inbound juga melakukan pemisahan keranjang terhadap produk kategori bad</p>
-                            <p>• Produk yang diterima hanya yang memiliki kriteria sesuai standar, untuk produk kategori bad akan ditolak</p>
-                            <p>(Klik untuk lihat contoh gambar)</p>
-                        </div>
-                    </div>
-                </div>
+            <div id="Inbound Checker" class="content-section">
+                <div class="section-header-box">
+                    <h2 class="section-title">Inbound Checker</h2>
+                </div>
+                <p class="section-desc">Melakukan perhitungan fisik aktual dan pencatatan pada sistem.</p>
+                <div class="card">
+                    <div class="step-container">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Persiapan Aset</h3>
+                            <p>Menyiapkan aset yang digunakan seperti keranjang, pallet, seuic, partisi untuk melapisi keranjang</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card clickable" onclick="toggleGallery('checkeribGallery2')">
+                    <div class="step-container">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Proses penerimaan</h3>
+                            <p>• Sebelum dilakukan proses penerimaan oleh Checker Inbound, dilakukan pengecekan suhu mobil dan produk oleh tim QA Inbound</p>
+                            <p>• Setelah QA Inbound mengecek produk secara sampling, Checker inbound melakukan pengecekan kualitas secara visual dan menghitung jumlah produk yang akan </p>
+                            <p>  diterima sesuai dokumen PO (Purchase Order)</p>
+                            <p>• Saat proses penerimaan Checker Inbound juga melakukan pemisahan keranjang terhadap produk kategori bad</p>
+                            <p>• Produk yang diterima hanya yang memiliki kriteria sesuai standar, untuk produk kategori bad akan ditolak</p>
+                            <p>(Klik untuk lihat contoh gambar)</p>
+                        </div>
+                    </div>
+                </div>
 
-                <div id="checkeribGallery2" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="QA IB.png" alt="Proses Pengecekan Suhu Mobil & produk secara sampling">
-                            <div class="image-caption">Proses Pengecekan Suhu Mobil & produk secara sampling</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="counting.png" alt="Proses pengecekan dan menghitung jumlah produk">
-                            <div class="image-caption">Proses pengecekan dan menghitung jumlah produk</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="segregasi IB.png" alt="Pemisahan produk kategori Bad">
-                            <div class="image-caption">Pemisahan produk kategori Bad</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <div id="checkeribGallery2" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="QA IB.png" alt="Proses Pengecekan Suhu Mobil & produk secara sampling">
+                            <div class="image-caption">Proses Pengecekan Suhu Mobil & produk secara sampling</div>
+                        </div>
+                            <div class="image-box">
+                            <img src="counting.png" alt="Proses pengecekan dan menghitung jumlah produk">
+                            <div class="image-caption">Proses pengecekan dan menghitung jumlah produk</div>
+                        </div>
+                            <div class="image-box">
+                            <img src="segregasi IB.png" alt="Pemisahan produk kategori Bad">
+                            <div class="image-caption">Pemisahan produk kategori Bad</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div id="Inbound Labeling" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Inbound Labeling</h2>
-                </div>
-                <div class="card">
-                    <h3>Proses Labelling</h3>
-                    <p>Penempelan label barcode / Package ID sesuai instruksi sistem pada keranjang fresh product.</p>
-                </div>
-            </div>
+            <div id="Inbound Labeling" class="content-section">
+                <div class="section-header-box">
+                    <h2 class="section-title">Inbound Labeling</h2>
+                </div>
+                <div class="card">
+                    <h3>Proses Labelling</h3>
+                    <p>Penempelan label barcode / Package ID sesuai instruksi sistem pada keranjang fresh product.</p>
+                </div>
+            </div>
 
-            <div id="Inventory Fresh" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Inventory Fresh</h2>
-                    <span class="badge-orange">Putaway dan stok</span>
-                </div>
-                <p class="section-desc">Fokus pada putaway, penjagaan stok, pengecekan lokasi, dan penanganan barang tidak layak.</p>
+            <div id="Inventory Fresh" class="content-section">
+                <div class="section-header-box">
+                    <h2 class="section-title">Inventory Fresh</h2>
+                    <span class="badge-orange">Putaway dan stok</span>
+                </div>
+                <p class="section-desc">Fokus pada putaway, penjagaan stok, pengecekan lokasi, dan penanganan barang tidak layak.</p>
 
-                <div class="card">
-                    <div class="step-container">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Putaway barang</h3>
-                            <p>Pindahkan barang ke lokasi sesuai instruksi WMS dan aturan penyimpanan fresh.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="step-container">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Cek kesesuaian lokasi</h3>
-                            <p>Melakukan stock opname berkala dan pembersihan rak penyimpanan dingin.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <div class="card">
+                    <div class="step-container">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Putaway barang</h3>
+                            <p>Pindahkan barang ke lokasi sesuai instruksi WMS dan aturan penyimpanan fresh.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="step-container">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Cek kesesuaian lokasi</h3>
+                            <p>Melakukan stock opname berkala dan pembersihan rak penyimpanan dingin.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div id="Outbound Fresh" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Outbound Fresh</h2>
-                </div>
-                <div class="card">
-                    <h3>Proses Outbound</h3>
-                    <p>Persiapan pengiriman barang keluar dari gudang menuju ke hub/tujuan berikutnya.</p>
-                </div>
-            </div>
-        </div>
-    </main>
+            <div id="Outbound Fresh" class="content-section">
+                <div class="section-header-box">
+                    <h2 class="section-title">Outbound Fresh</h2>
+                </div>
+                <div class="card">
+                    <h3>Proses Outbound</h3>
+                    <p>Persiapan pengiriman barang keluar dari gudang menuju ke hub/tujuan berikutnya.</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
 <script>
-    function openTab(evt, tabName) {
-        if(evt) evt.stopPropagation();
+    function openTab(evt, tabName) {
+        if(evt) evt.stopPropagation();
 
-        let sections = document.getElementsByClassName("content-section");
-        for (let i = 0; i < sections.length; i++) {
-            sections[i].classList.remove("active");
-        }
+        let sections = document.getElementsByClassName("content-section");
+        for (let i = 0; i < sections.length; i++) {
+            sections[i].classList.remove("active");
+        }
 
-        let allMenus = document.querySelectorAll("#menuList li");
-        allMenus.forEach(item => item.classList.remove("active"));
+        let allMenus = document.querySelectorAll("#menuList li");
+        allMenus.forEach(item => item.classList.remove("active"));
 
-        let targetSection = document.getElementById(tabName);
-        if(targetSection) {
-            targetSection.classList.add("active");
-        }
+        let targetSection = document.getElementById(tabName);
+        if(targetSection) {
+            targetSection.classList.add("active");
+        }
 
-        evt.currentTarget.classList.add("active");
+        evt.currentTarget.classList.add("active");
 
-        let allGalleries = document.querySelectorAll(".image-gallery-wrapper");
-        allGalleries.forEach(gal => gal.classList.remove("show"));
-    }
+        let allGalleries = document.querySelectorAll(".image-gallery-wrapper");
+        allGalleries.forEach(gal => gal.classList.remove("show"));
+    }
 
-    function toggleSubmenu(evt, submenuId) {
-        let submenu = document.getElementById(submenuId);
-        let arrow = evt.currentTarget.querySelector(".arrow");
-        
-        if (submenu.classList.contains("open")) {
-            submenu.classList.remove("open");
-            if(arrow) arrow.innerText = "▼";
-        } else {
-            submenu.classList.add("open");
-            if(arrow) arrow.innerText = "▲";
-        }
-    }
+    function toggleSubmenu(evt, submenuId) {
+        let submenu = document.getElementById(submenuId);
+        let arrow = evt.currentTarget.querySelector(".arrow");
+        
+        if (submenu.classList.contains("open")) {
+            submenu.classList.remove("open");
+            if(arrow) arrow.innerText = "▼";
+        } else {
+            submenu.classList.add("open");
+            if(arrow) arrow.innerText = "▲";
+        }
+    }
 
-    function toggleGallery(galleryId) {
-        let gallery = document.getElementById(galleryId);
-        if (gallery) {
-            gallery.classList.toggle("show");
-        }
-    }
+    function toggleGallery(galleryId) {
+        let gallery = document.getElementById(galleryId);
+        if (gallery) {
+            gallery.classList.toggle("show");
+        }
+    }
 
-    function searchGlobal() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let cards = document.getElementsByClassName('card');
+    function searchGlobal() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('card');
 
-        for (let i = 0; i < cards.length; i++) {
-            let text
+        for (let i = 0; i < cards.length; i++) {
+            let text = cards[i].innerText.toLowerCase();
+            if (text.includes(input)) {
+                cards[i].style.display = "block";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+</script>
+</body>
+</html>
