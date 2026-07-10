@@ -17,7 +17,7 @@ body {
     background: var(--bg); 
     color: var(--text-dark); 
     
-    /* MENGUNCI UKURAN FONT DI HP */
+    /* MENGUNCI UKURAN FONT DI HP: Mencegah browser mobile mengubah ukuran font secara sepihak */
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
@@ -111,23 +111,42 @@ main {
 
 .content-container { padding: 30px 40px; }
 
-/* --- SEJAJARKAN KEMBALI GRID ATURAN SINGKAT --- */
+/* --- GRID ATURAN SINGKAT (DIKUNCI AGAR SELALU SEJAJAR & RATA) --- */
 .rules-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-bottom: 35px;
-    align-items: stretch; /* Memaksa semua tinggi box sejajar rata */
+    align-items: stretch;       /* Mengunci tinggi box agar selalu sama rata secara horizontal */
+    align-content: start;       /* Memastikan baris grid dimulai dari posisi paling atas */
 }
+
 .rule-card {
     background: var(--white);
     border-radius: 8px;
     padding: 24px;
     border-left: 4px solid var(--primary);
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;              /* Mengaktifkan flexbox di dalam kartu */
+    flex-direction: column;     /* Mengatur arah konten card vertikal ke bawah */
+    height: 100%;               /* Memaksa card mengisi penuh ruang grid yang tersedia */
+    box-sizing: border-box;     /* Mencegah padding merusak ukuran box */
 }
-.rule-card h4 { margin: 0 0 12px 0; font-size: 1.05rem; color: #111; font-weight: 700; }
-.rule-card p { margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
+
+.rule-card h4 { 
+    margin: 0 0 12px 0; 
+    font-size: 1.05rem; 
+    color: #111; 
+    font-weight: 700; 
+}
+
+.rule-card p { 
+    margin: 0; 
+    font-size: 0.95rem; 
+    color: var(--text-muted); 
+    line-height: 1.5; 
+    flex-grow: 1;               /* Membuat teks paragraf mengisi sisa ruang secara adil */
+}
 
 /* --- CONTENT SECTIONS --- */
 .content-section { display: none; } 
@@ -213,7 +232,7 @@ main {
     background: #fafafa;
 }
 
-/* --- FORMAT KHUSUS VERTIKAL --- */
+/* --- FORMAT KHUSUS VERTIKAL (POIN DOCUMENT PO & GRN) --- */
 .gallery-portrait {
     grid-template-columns: 1fr !important; 
     gap: 24px;
@@ -232,7 +251,7 @@ main {
     padding: 4px;
 }
 
-/* --- AMANKAN KAPASITAS TINGGI DROPDOWN --- */
+/* --- AMANKAN KAPASITAS TINGGI MAKSIMAL DROPDOWN --- */
 #adminGallery3.image-gallery-wrapper.show,
 #adminGallery4.image-gallery-wrapper.show,
 [id^="checkeribGallery"].image-gallery-wrapper.show {
