@@ -234,10 +234,11 @@ main {
 #adminGallery3.image-gallery-wrapper.show,
 #adminGallery4.image-gallery-wrapper.show,
 [id^="checkeribGallery"].image-gallery-wrapper.show {
-    max-height: 5000px !important; 
+    max-height: 5000px !important; /* Diubah ke checkeribGallery agar akurat */
 }
 
 /* --- UKURAN FOTO LAPANGAN SUB-MENU CHECKER (DESKTOP PC) --- */
+/* DIUBAH: Menggunakan id^="checkeribGallery" agar sesuai dengan nama ID di HTML */
 [id^="checkeribGallery"] .image-box {
     max-width: 450px;       
     margin: 0 auto;         
@@ -255,6 +256,7 @@ main {
         grid-template-columns: 1fr !important; 
     }
     
+    /* DIUBAH: Menyesuaikan target selektor ke ID checkeribGallery */
     [id^="checkeribGallery"] .image-box {
         max-width: 100% !important; 
         width: 100%;
