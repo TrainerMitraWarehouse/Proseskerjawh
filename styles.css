@@ -233,16 +233,16 @@ main {
 /* --- AMANKAN KAPASITAS TINGGI MAKSIMAL DROPDOWN --- */
 #adminGallery3.image-gallery-wrapper.show,
 #adminGallery4.image-gallery-wrapper.show,
-[id^="checkerGallery"].image-gallery-wrapper.show {
-    max-height: 5000px !important; /* Dinaikkan ke 5000px agar muat banyak gambar di HP */
+[id^="checkeribGallery"].image-gallery-wrapper.show {
+    max-height: 5000px !important; 
 }
 
 /* --- UKURAN FOTO LAPANGAN SUB-MENU CHECKER (DESKTOP PC) --- */
-[id^="checkerGallery"] .image-box {
+[id^="checkeribGallery"] .image-box {
     max-width: 450px;       
     margin: 0 auto;         
 }
-[id^="checkerGallery"] .image-box img {
+[id^="checkeribGallery"] .image-box img {
     width: 100%;
     height: auto;
     max-height: 280px;      
@@ -251,19 +251,16 @@ main {
 
 /* --- RESPONSIVE MEDIA LAYAR HANDPHONE --- */
 @media (max-width: 768px) {
-    /* Memaksa semua galeri (termasuk galeri standar milik checker) mengalir 1 kolom vertikal ke bawah */
     .image-gallery { 
         grid-template-columns: 1fr !important; 
     }
     
-    /* Membuka kunci lebar gambar khusus di HP agar memenuhi layar kontainer card */
-    [id^="checkerGallery"] .image-box {
+    [id^="checkeribGallery"] .image-box {
         max-width: 100% !important; 
         width: 100%;
     }
     
-    /* Mengatur tinggi foto dokumentasi lapangan di HP agar pas dan proporsional */
-    [id^="checkerGallery"] .image-box img { 
+    [id^="checkeribGallery"] .image-box img { 
         max-height: 260px; 
         object-fit: cover;
     } 
