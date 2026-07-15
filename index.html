@@ -33,6 +33,53 @@
             padding: 0;
         }
 
+        /* Mobile Header Styling (Hanya tampil di Layar Handphone) */
+        .mobile-header {
+            display: none;
+            background-color: var(--bg-sidebar);
+            color: #ffffff;
+            padding: 0 20px;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            height: 60px;
+        }
+
+        .mobile-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .mobile-menu-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:active {
+            transform: scale(0.95);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
@@ -428,18 +475,37 @@
             body {
                 flex-direction: column;
             }
+            
+            .mobile-header {
+                display: flex;
+            }
+
             nav {
                 width: 100%;
-                height: auto;
-                position: relative;
+                height: calc(100vh - 60px);
+                position: fixed;
+                top: 60px;
+                left: -100%; /* Sembunyi di kiri luar layar saat awal */
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 99;
                 padding: 20px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
+
+            nav.mobile-open {
+                left: 0; /* Meluncur masuk dari kiri ke kanan */
+            }
+
             main {
                 margin-left: 0;
+                padding-top: 60px; /* Memberi ruang agar tidak tertutup header sticky */
             }
+            
             .header-banner {
                 padding: 35px 25px;
             }
+            
             .content-container {
                 padding: 25px;
             }
@@ -448,7 +514,17 @@
 </head>
 <body>
 
-    <nav>
+    <div class="mobile-header">
+        <div class="mobile-logo">
+            <i class="fa-solid fa-warehouse text-emerald-400"></i>
+            <span>Panduan Mitra</span>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-bars" id="menuIcon"></i>
+        </button>
+    </div>
+
+    <nav id="sidebarNav">
         <div class="search-wrapper">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" id="searchInput" placeholder="Cari panduan..." onkeyup="searchGlobal()">
@@ -1093,6 +1169,26 @@
             // Tutup seluruh galeri gambar yang sedang terbuka di tab lain agar rapi
             let allGalleries = document.querySelectorAll(".image-gallery-wrapper");
             allGalleries.forEach(gal => gal.classList.remove("show"));
+
+            // Otomatis tutup menu laci mobile setelah memilih salah satu panduan
+            let sidebar = document.getElementById("sidebarNav");
+            if (sidebar && sidebar.classList.contains("mobile-open")) {
+                toggleMobileMenu();
+            }
+        }
+
+        // Membuka dan menutup laci menu navigasi di Handphone
+        function toggleMobileMenu() {
+            let sidebar = document.getElementById("sidebarNav");
+            let menuIcon = document.getElementById("menuIcon");
+            if (sidebar) {
+                sidebar.classList.toggle("mobile-open");
+                if (sidebar.classList.contains("mobile-open")) {
+                    menuIcon.className = "fa-solid fa-xmark"; // Ganti icon ke 'X' saat terbuka
+                } else {
+                    menuIcon.className = "fa-solid fa-bars";  // Kembalikan ke 'Hamburger' saat tertutup
+                }
+            }
         }
 
         // Dropdown accordion menu navigasi
