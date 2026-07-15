@@ -40,7 +40,8 @@
             color: #ffffff;
             padding: 0 20px;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start; /* Diubah ke flex-start agar berurutan dari kiri */
+            gap: 15px; /* Jarak antara tombol menu dan logo */
             position: fixed;
             top: 0;
             left: 0;
@@ -515,13 +516,13 @@
 <body>
 
     <div class="mobile-header">
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-bars" id="menuIcon"></i>
+        </button>
         <div class="mobile-logo">
             <i class="fa-solid fa-warehouse text-emerald-400"></i>
             <span>Panduan Mitra</span>
         </div>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-            <i class="fa-solid fa-bars" id="menuIcon"></i>
-        </button>
     </div>
 
     <nav id="sidebarNav">
