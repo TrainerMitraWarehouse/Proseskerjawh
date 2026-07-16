@@ -1233,24 +1233,99 @@
                 <h3 style="font-size: 1.15rem; margin: 20px 0 15px 0; color: var(--primary);">Aturan Singkat di Lapangan</h3>
                 <div class="rules-grid">
                     <div class="rule-card">
-                        <h4><i class="fa-solid fa-list-ol"></i> Ikuti urutan proses</h4>
-                        <p>Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</p>
+                        <h4><i class="fa-solid fa-list-ol"></i> Pencarian SLOC</h4>
+                        <p>Memahami cara membaca sloc untuk pencarian barang.</p>
                     </div>
                     <div class="rule-card">
-                        <h4><i class="fa-solid fa-pen-to-square"></i> Catat hasil aktual</h4>
-                        <p>Jumlah barang, kondisi barang, dan selisih harus ditulis sesuai temuan.</p>
+                        <h4><i class="fa-solid fa-pen-to-square"></i> Akurasi dan kualitas</h4>
+                        <p>Memastikan jumlah pengambilan barang sesuai dengan SO (Supply Order), memastikan hanya mengambil produk dengan kualitas baik dan melaporkan temuan barang dengan kondisi bad, pastikan cara menyimpan dan menyusun barang dilakukan secara baik dan benar.</p>
                     </div>
                     <div class="rule-card">
                         <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
-                        <p>Jika ada dokumen tidak lengkap, QR tidak terbaca, atau barang rusak, segera eskalasi ke PIC.</p>
-                    </div>
+                        <p>Jika terdapat kendala pencarian barang non cross dock, picker dapat meminta bantuan kepada Inventory Stock Keeper, jika terdapat kendala pencarian barang cross dock, silahkan konfirmasi ke Team Leader.</p>
+                    </div>    
                 </div>
-                <div class="card">
+                 <div class="card clickable" onclick="toggleGallery('pickerGallery1')">
                     <div class="step-container">
                         <div class="step-number">1</div>
                         <div class="step-content">
                             <h3>Pengambilan Barang (Picking)</h3>
                             <p>Gunakan scanner seuic untuk membaca tugas pick list, ambil barang sesuai panduan rack serta perhatikan prinsip FEFO (Expired Terdekat).</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+                <div id="pickerGallery1" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="Penugasan picker.png" alt="Menerima label untuk SO">
+                            <div class="image-caption">Menerima label untuk SO</div>
+                        </div>
+                    </div>
+                </div>
+                
+                div class="card clickable" onclick="toggleGallery('pickerGallery2')">
+                    <div class="step-container">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Pencarian barang dengan pada SLOC yang tertera di sistem</h3>
+                            <p>Memahami cara membaca SLOC, apabila pada SLOC tidak terdapat barang yang diperlukan, picker mengkonfirmasi dan meminta bantuan Inventory Stock Keeper untuk pencarian barang tersebut.</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+                <div id="pickerGallery2" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="pencarian SLOC.png" alt="Proses pencarian barang pada SLOC">
+                            <div class="image-caption">Proses pencarian barang pada SLOC</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="SKXPicker.png" alt="Proses Inventory Stock Keeper membantu Picker dalam pencarian barang">
+                            <div class="image-caption">Proses Inventory Stock Keeper membantu Picker dalam pencarian barang</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                div class="card clickable" onclick="toggleGallery('pickerGallery3')">
+                    <div class="step-container">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Proses pengambilan barang di SCLOC dan proses di sistem WMS</h3>
+                            <p>Memastikan SKU detail produk antara sistem dan aktual sesuai, pastikan jumlah pengambilan barang sesuai dengan yang tertera di SO (Supply Order) dan kualitas produk yang diambil memiliki kualitas yang baik.</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+                <div id="pickerGallery3" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="proses picking sistem.png" alt="Proses pengambilan barang">
+                            <div class="image-caption">Proses pengambilan barang</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="SKXPicker.png" alt="Proses Inventory Stock Keeper membantu Picker dalam pencarian barang">
+                            <div class="image-caption">Proses Inventory Stock Keeper membantu Picker dalam pencarian barang</div>
+                        </div>
+                    </div>
+                </div>
+        
+                div class="card clickable" onclick="toggleGallery('pickerGallery4')">
+                    <div class="step-container">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Temuan Barang Bad</h3>
+                            <p>Jika terdapat temuan barang dengan kondisi bad saat proses picking, Picker dapat konfirmasi ke QC Inspector untuk melakukan validasi terhadap temuan tersebut.</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+                <div id="pickerGallery4" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="bad outbound.png" alt="Proses konfirmasi temuan barang bad">
+                            <div class="image-caption">Proses konfirmasi temuan barang bad</div>
                         </div>
                     </div>
                 </div>
