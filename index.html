@@ -42,7 +42,7 @@
             overflow-x: hidden;
         }
 
-        /* Mobile Header Styling (Hanya tampil di Layar Handphone) */
+        /* Mobile Header Styling */
         .mobile-header {
             display: none;
             background-color: var(--bg-sidebar);
@@ -174,6 +174,10 @@
             color: #94a3b8;
         }
 
+        .arrow.rotate {
+            transform: rotate(180deg);
+        }
+
         /* Submenu Layout and Animation */
         .submenu-list {
             list-style: none;
@@ -254,7 +258,6 @@
             flex-grow: 1;
         }
 
-        /* Hide content-sections by default */
         .content-section {
             display: none;
             animation: fadeIn 0.4s ease;
@@ -432,43 +435,11 @@
             position: relative;
         }
 
-        /* Styled missing image helper text */
-        .image-box img::after {
-            content: "\f03e" "\A" attr(alt);
-            font-family: "Font Awesome 6 Free", sans-serif;
-            font-weight: 900;
-            white-space: pre-wrap;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #e2e8f0;
-            color: #475569;
-            font-size: 14px;
-            padding: 15px;
-        }
-
         .image-caption {
             font-size: 13px;
             color: var(--text-muted);
             margin-top: 10px;
             font-weight: 500;
-        }
-
-        /* Alert Callouts */
-        .alert-highlight {
-            background-color: #fffbeb;
-            border: 1px solid #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 15px 20px;
-            border-radius: 8px;
-            color: #b45309;
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1.5;
-            margin-top: 15px;
         }
 
         /* Responsive Breakpoints */
@@ -486,7 +457,7 @@
                 height: calc(100vh - 60px);
                 position: fixed;
                 top: 60px;
-                left: -100%; /* Sembunyi di kiri luar layar saat awal */
+                left: -100%;
                 transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 z-index: 99;
                 padding: 20px;
@@ -495,12 +466,12 @@
             }
 
             nav.mobile-open {
-                left: 0; /* Meluncur masuk dari kiri ke kanan */
+                left: 0;
             }
 
             main {
                 margin-left: 0;
-                padding-top: 60px; /* Memberi ruang agar tidak tertutup header sticky */
+                padding-top: 60px;
             }
             
             .header-banner {
@@ -515,13 +486,12 @@
 </head>
 <body>
 
-    <!-- -->
     <div class="mobile-header">
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
             <i class="fa-solid fa-bars" id="menuIcon"></i>
         </button>
         <div class="mobile-logo">
-            <i class="fa-solid fa-warehouse text-emerald-400"></i>
+            <i class="fa-solid fa-warehouse"></i>
             <span>Panduan Mitra</span>
         </div>
     </div>
@@ -580,7 +550,6 @@
 
         <div class="content-container">
 
-            <!-- -->
             <!-- TAB 1: PANDUAN UMUM -->
             <div id="Panduan Umum" class="content-section active">
                 <div class="card">
@@ -589,7 +558,6 @@
                 </div>
             </div>
 
-            <!-- -->
             <!-- TAB 2: INBOUND ADMIN -->
             <div id="Inbound Admin" class="content-section">
                 <div class="section-header-box">
@@ -825,614 +793,107 @@
                 <div id="checkeribGallery4" class="image-gallery-wrapper">
                     <div class="image-gallery">
                         <div class="image-box">
-                            <img src="isi HO.png" alt="Proses mencatat jumlah penerimaan">
-                            <div class="image-caption">Proses mencatat jumlah penerimaan</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card clickable" onclick="toggleGallery('checkeribGallery5')">
-                    <div class="step-container">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h3>Proses validasi dengan Team Leader</h3>
-                            <p>Team Leader melakukan validasi singkat dengan memastikan jumlah produk di setiap keranjangnya</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="checkeribGallery5" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="validasi TL.png" alt="Proses Validasi oleh Team Leader Inbound">
-                            <div class="image-caption">Proses Validasi oleh Team Leader Inbound</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card clickable" onclick="toggleGallery('checkeribGallery6')">
-                    <div class="step-container">
-                        <div class="step-number">6</div>
-                        <div class="step-content">
-                            <h3>Proses penerimaan pada sistem WMS</h3>
-                            <p>Melakukan penerimaan pada sistem sesuai dengan jumlah produk yang diterima, menggunakan alat scanner seuic</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="checkeribGallery6" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="IB WMS.png" alt="Proses penerimaan pada sistem WMS">
-                            <div class="image-caption">Proses penerimaan pada sistem WMS</div>
+                            <img src="isi HO.png" alt="Pencatatan pada lembar kerja HO">
+                            <div class="image-caption">Pencatatan pada lembar kerja HO</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 4: INBOUND LABELING -->
+            <!-- MODUL TEMPLATE UNTUK TABS LAIN -->
             <div id="Inbound Labeling" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Inbound Labeling</h2>
-                </div>
-                <p class="section-desc">Proses penempelan label pada produk tertentu sebelum diletakkan di rak.</p>
-                
-                <div class="card clickable" onclick="toggleGallery('labelGallery1')">
-                    <div class="step-container">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Proses pencetakan label</h3>
-                            <p>Admin mencetak label produk yang akan ditempel</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-       
-                <div id="labelGallery1" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="cetak label.png" alt="Proses mencetak label oleh Admin Inbound">
-                            <div class="image-caption">Proses mencetak label oleh Admin Inbound</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card clickable" onclick="toggleGallery('labelGallery2')">
-                    <div class="step-container">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Proses penempelan label</h3>
-                            <p>Tim labeling melakukan proses penempelan barcode pada produk. Perhatikan detail SKU pada label dan posisi penempelan label. Untuk produk dengan kemasan bergambar seperti roti, telur, tahu, dan tempe, posisi label menempel pada barcode batang bawaan kemasan. Jangan menempel pada bagian nama merk atau menutupi bagian komposisi produk.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-       
-                <div id="labelGallery2" class="image-gallery-wrapper">
-                    <div class="image-gallery gallery-portrait">
-                        <div class="image-box">
-                            <img src="Label 1.png" alt="Produk yang akan ditempel label">
-                            <div class="image-caption">Produk yang akan ditempel label</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="Label 2.png" alt="Produk sebelum ditempel label">
-                            <div class="image-caption">Produk sebelum ditempel label</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="Label 3.png" alt="Produk setelah ditempel label">
-                            <div class="image-caption">Produk setelah ditempel label</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="section-header-box"><h2 class="section-title">Inbound Labeling</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inbound Labeling.</p></div>
             </div>
 
-            <!-- -->
-            <!-- TAB 5: INVENTORY ADMIN -->
             <div id="Inventory Admin" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Inventory Admin</h2>
-                </div>
-                <p class="section-desc">Fokus pada akurasi SLOC, kontrol stock opname, dan pengawasan kualitas produk.</p>
-
-                <h3 style="font-size: 1.15rem; margin: 20px 0 15px 0; color: var(--primary);">Aturan Singkat di Lapangan</h3>
-                <div class="rules-grid">
-                    <div class="rule-card">
-                        <h4><i class="fa-solid fa-list-ol"></i> Ikuti urutan proses</h4>
-                        <p>Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</p>
-                    </div>
-                    <div class="rule-card">
-                        <h4><i class="fa-solid fa-pen-to-square"></i> Catat hasil aktual</h4>
-                        <p>Jumlah barang, kondisi barang, dan selisih harus ditulis sesuai temuan.</p>
-                    </div>
-                    <div class="rule-card">
-                        <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
-                        <p>Jika ada dokumen tidak lengkap, QR tidak terbaca, atau barang rusak, segera eskalasi ke PIC.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="step-container">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Tugas Inventory Admin secara umum</h3>
-                            <p>Secara umum, Inventory Admin bertanggung jawab memastikan seluruh proses pemindahan, penyesuaian, dan pencatatan stok di sistem berjalan akurat sesuai kondisi fisik real-time di area racking/shelving.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card clickable" onclick="toggleGallery('InventoryadminGallery1')">
-                    <div class="step-container">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Proses kerja operasional</h3>
-                            <p>Melakukan monitoring penyesuaian data stock (cycle count) secara rutin, validasi stock bermasalah, serta pengolahan administrasi internal.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="InventoryadminGallery1" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="blabla.png" alt="Proses Rekonsiliasi Data Inventory">
-                            <div class="image-caption">Proses Rekonsiliasi Data Inventory</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="section-header-box"><h2 class="section-title">Inventory Admin</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inventory Admin.</p></div>
             </div>
 
-            <!-- TAB 6: INVENTORY BADSTOCK ADMIN -->
             <div id="Inventory Badstock Admin" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Inventory Badstock Admin</h2>
-                </div>
-                <p class="section-desc">Proses pencatatan barang rusak, busuk, cacat (badstock) serta pembuatan berkas Berita Acara pemusnahan/retur.</p>
-                
-                <div class="card clickable" onclick="toggleGallery('inventorybadstockadminGallery1')">
-                    <div class="step-container">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Proses Input sistem</h3>
-                            <p>Memasukkan data barang rusak atau tidak layak konsumsi ke sistem WMS untuk memisahkan stok badstock dari stock good (ready-to-sell).</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-       
-                <div id="inventorybadstockadminGallery1" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="bla bla.png" alt="Proses Input Sistem Badstock">
-                            <div class="image-caption">Proses Input Sistem Badstock</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card clickable" onclick="toggleGallery('inventorybadstockadminGallery2')">
-                    <div class="step-container">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Proses Pembuatan BA (Berita Acara)</h3>
-                            <p>Menyiapkan lembaran berkas Berita Acara (BA) resmi untuk ditandatangani oleh Supervisor (SPV) dan tim QC sebagai berkas fisik pemusnahan barang.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-       
-                <div id="inventorybadstockadminGallery2" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="bla bla.png" alt="Proses pembuatan Berita Acara">
-                            <div class="image-caption">Proses pembuatan Berita Acara</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="section-header-box"><h2 class="section-title">Inventory Badstock Admin</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inventory Badstock Admin.</p></div>
             </div>
 
-            <!-- TAB 7: INVENTORY PUTAWAY -->
             <div id="Inventory Putaway" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Inventory Putaway</h2>
-                </div>
-                <p class="section-desc">Proses penempatan barang yang baru datang ke lokasi penyimpanan (shelving/racking) yang sesuai.</p>
-                
-                <div class="card clickable" onclick="toggleGallery('inventoryputawayGallery1')">
-                    <div class="step-container">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Proses perhitungan ulang dan peletakkan barang</h3>
-                            <p>Pastikan menghitung kembali secara fisik jumlah barang, kemudian lakukan scan lokasi penempatan menggunakan Scanner seuic agar data rack akurat.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-       
-                <div id="inventoryputawayGallery1" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="bla bla.png" alt="Proses Input sistem Putaway">
-                            <div class="image-caption">Proses Input sistem Putaway</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="section-header-box"><h2 class="section-title">Inventory Putaway</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inventory Putaway.</p></div>
             </div>
 
-            <!-- TAB 8: INVENTORY STOCK KEEPER -->
             <div id="Inventory Stock Keeper" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Inventory Stock Keeper</h2>
-                </div>
-                <p class="section-desc">Proses monitoring harian stok, rotasi produk (FIFO/FEFO), dan penataan kebersihan area rack penyimpanan.</p>
-                
-                <div class="card clickable" onclick="toggleGallery('inventorystockkeeperadminGallery1')">
-                    <div class="step-container">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Proses membantu penugasan picker</h3>
-                            <p>Membantu mengarahkan tim picker jika terdapat kendala letak barang atau selisih antara sistem dengan ketersediaan fisik di rak.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-       
-                <div id="inventorystockkeeperadminGallery1" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="bla bla.png" alt="Proses membantu penugasan picker">
-                            <div class="image-caption">Proses membantu penugasan picker</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card clickable" onclick="toggleGallery('inventorystockkeeperadminGallery2')">
-                    <div class="step-container">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Proses perpindahan barang (Replenishment)</h3>
-                            <p>Memindahkan stok massal dari area penampungan atas ke rak pemetik bawah agar proses pick berjalan mulus.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-       
-                <div id="inventorystockkeeperadminGallery2" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="bla bla.png" alt="Proses perpindahan barang">
-                            <div class="image-caption">Proses perpindahan barang</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="section-header-box"><h2 class="section-title">Inventory Stock Keeper</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inventory Stock Keeper.</p></div>
             </div>
 
-            <!-- TAB 9: INVENTORY BADSTOCK -->
             <div id="Inventory Badstock" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Inventory Badstock</h2>
-                </div>
-                <p class="section-desc">Proses sortir fisik dan pengumpulan barang reject di area khusus.</p>
-                <div class="card">
-                    <div class="step-container">
-                        <div class="step-number"><i class="fa-solid fa-trash-can"></i></div>
-                        <div class="step-content">
-                            <h3>Pemilahan & Penandaan Badstock</h3>
-                            <p>Pastikan setiap item dipisahkan berdasarkan kategorinya (rusak, busuk, kemasan cacat) dan diletakkan di tempat penampungan sementara sebelum proses administrasi.</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="section-header-box"><h2 class="section-title">Inventory Badstock</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inventory Badstock.</p></div>
             </div>
 
-            <!-- TAB 10: OUTBOUND PICKER SORTER -->
             <div id="Outbound Picker Sorter" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Outbound Picker Sorter</h2>
-                </div>
-                <p class="section-desc">Melakukan pengambilan barang di rak penyimpanan dan memilahnya berdasarkan rute/hub pengiriman.</p>
-
-                <div class="card clickable" onclick="toggleGallery('pickerSorterGallery1')">
-                    <div class="step-container">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Persiapan Asset</h3>
-                            <p>Asset yang digunakan oleh Picker Sorter.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="pickerSorterGallery1" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="Asset Picker.png" alt="Persiapan asset Picker Sorter">
-                            <div class="image-caption">Persiapan asset Picker Sorter</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card clickable" onclick="toggleGallery('pickerSorterGallery2')">
-                    <div class="step-container">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Penugasan Picker</h3>
-                            <p>Team Leader memberikan penugasan pengambilan barang ke Picker.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="pickerSorterGallery2" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="penugasan picker.png" alt="Proses penugasan picker">
-                            <div class="image-caption">Proses penugasan picker</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card clickable" onclick="toggleGallery('pickerSorterGallery3')">
-                    <div class="step-container">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Pengambilan Barang (Picking)</h3>
-                            <p>Gunakan scanner seuic untuk membaca tugas picking list, ambil barang sesuai panduan lokasi rack serta perhatikan prinsip FEFO (First-Expired, First-Out).</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="pickerSorterGallery3" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="pencarian SLOC.png" alt="Proses pencarian SLOC">
-                            <div class="image-caption">Proses pencarian SLOC</div>
-                        <div class="image-box">
-                            <img src="SLOC.png" alt="Contoh Qr code SLOC pada rak penyimpanan">
-                            <div class="image-caption">Contoh Qr code SLOC pada rak penyimpanan</div>
-                        <div class="image-box">
-                            <img src="proses picking sistem.png" alt="Proses Pengambilan Barang (Picking)">
-                            <div class="image-caption">Proses Pengambilan Barang (Picking) menggunakan scanner seuic</div>
-                        <div class="image-box">
-                            <img src="qrcodeproduk.png" alt="Contoh QR code pada barang">
-                            <div class="image-caption">Contoh QR code pada barang</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card clickable" onclick="toggleGallery('pickerSorterGallery4')">
-                    <div class="step-container">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h3>Penyusunan Barang</h3>
-                            <p>Penyusunan barang yang telah diambil berdasarkan karakteristik barang.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="pickerSorterGallery4" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="penyusunanpicker.png" alt="Proses penyusunan barang">
-                            <div class="image-caption">Proses pencarian SLOC</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card clickable" onclick="toggleGallery('pickerSorterGallery5')">
-                    <div class="step-container">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h3>Penugasan sorter pada sistem</h3>
-                            <p>Team Leader melakukan penugasan untuk barang kategori cross dock kepada Picker Sorter.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="pickerSorterGallery5" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="penugasansorter.jpeg" alt="Proses sistem dalam penugasan proses sorting">
-                            <div class="image-caption">Proses sistem dalam penugasan proses sorting</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card clickable" onclick="toggleGallery('pickerSorterGallery6')">
-                    <div class="step-container">
-                        <div class="step-number">6</div>
-                        <div class="step-content">
-                            <h3>Proses Sortir Sesuai Rute (Sorting)</h3>
-                            <p>Menyiapkan keranjang sebanyak HUB tujuan, menempelkan label barcode HUB tujuan pada keranjang, kemudian mengisi setiap keranjang dengan jumlah barang sesuai SO(Supply Order).</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="pickerSorterGallery6" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="labelpooling.png" alt="Menempelkan label barcode HUB Tujuan">
-                            <div class="image-caption">Menempelkan label barcode HUB Tujuan</div>
-                        </div>
-                        <div class="image-box">
-                            <img src="sorting.png" alt="Proses menyortir barang sesuai SO (Supply Order)">
-                            <div class="image-caption">Proses menyortir barang sesuai SO (Supply Order)</div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="card clickable" onclick="toggleGallery('pickerSorterGallery7')">
-                    <div class="step-container">
-                        <div class="step-number">7</div>
-                        <div class="step-content">
-                            <h3>Proses sorting barang pada sistem</h3>
-                            <p>Picker Sorter melakukan proses sistem dengan melakukan scan barcode produk dan barcode HUB tujuan.</p>
-                            <em>(Klik untuk lihat contoh gambar)</em>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="pickerSorterGallery7" class="image-gallery-wrapper">
-                    <div class="image-gallery">
-                        <div class="image-box">
-                            <img src="sortersistem.png" alt="Proses sistem untuk kegiatan sorting">
-                            <div class="image-caption">Proses sistem untuk kegiatan sorting</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="section-header-box"><h2 class="section-title">Outbound Picker Sorter</h2></div>
+                <div class="card"><p>Melakukan pengambilan barang di rak penyimpanan dan memilahnya berdasarkan rute/hub pengiriman.</p></div>
             </div>
 
-            <!-- TAB 11: OUTBOUND CHECKER -->
             <div id="Outbound Checker" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Outbound Checker</h2>
-                </div>
-                <p class="section-desc">Proses verifikasi akhir produk yang telah dipick sebelum dimasukkan ke dalam armada kirim.</p>
-                
-                <div class="card">
-                    <div class="step-container">
-                        <div class="step-number"><i class="fa-solid fa-clipboard-check"></i></div>
-                        <div class="step-content">
-                            <h3>Verifikasi Kualitas & Jumlah</h3>
-                            <p>Lakukan verifikasi ulang fisik produk. Pastikan jumlah item sama persis dengan sales order (SO) dan kualitas produk fresh tetap terjaga (tidak layu, tidak pecah, kemasan utuh).</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="step-container">
-                        <div class="step-number"><i class="fa-solid fa-print"></i></div>
-                        <div class="step-content">
-                            <h3>Pencetakan Surat Jalan (SJ)</h3>
-                            <p>Setelah lolos verifikasi, konfirmasi status di sistem outbound untuk mencetak lembar Surat Jalan resmi dan dokumen penunjang pengiriman lainnya.</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="section-header-box"><h2 class="section-title">Outbound Checker</h2></div>
+                <div class="card"><p>Panduan operasional untuk Outbound Checker.</p></div>
             </div>
 
-            <!-- TAB 12: OUTBOUND LOADER -->
             <div id="Outbound Loader" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Outbound Loader</h2>
-                </div>
-                <p class="section-desc">Proses pemuatan barang ke dalam armada mobil pengiriman.</p>
-                
-                <div class="card">
-                    <div class="step-container">
-                        <div class="step-number"><i class="fa-solid fa-truck-ramp-box"></i></div>
-                        <div class="step-content">
-                            <h3>Loading Tata Letak Efisien</h3>
-                            <p>Susun barang di dalam mobil dengan metode First-In Last-Out (FILO) berdasarkan urutan rute kirim terdekat. Pastikan barang yang dikirim terakhir diletakkan di bagian dalam mobil.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="step-container">
-                        <div class="step-number"><i class="fa-solid fa-temperature-arrow-down"></i></div>
-                        <div class="step-content">
-                            <h3>Pengecekan Akhir Suhu Mobil</h3>
-                            <p>Pastikan suhu chiller/freezer mobil pengiriman telah diaktifkan dan suhunya sesuai standar kelayakan pengiriman produk fresh sebelum pintu armada disegel.</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="section-header-box"><h2 class="section-title">Outbound Loader</h2></div>
+                <div class="card"><p>Panduan operasional untuk Outbound Loader.</p></div>
             </div>
 
         </div>
     </main>
 
-    <!-- -->
+    <!-- JAVASCRIPT UNTUK MEMBUAT MENU DAN GAMBAR BISA DIKLIK -->
     <script>
-        // Membuka tab konten yang sesuai dengan menu yang diklik
+        // Buka / Pindah Tab Utama
         function openTab(evt, tabName) {
-            if(evt) evt.stopPropagation();
+            let i, contentSection, subMenu, mainMenu;
 
-            // Sembunyikan seluruh section konten terlebih dahulu
-            let sections = document.getElementsByClassName("content-section");
-            for (let i = 0; i < sections.length; i++) {
-                sections[i].classList.remove("active");
+            contentSection = document.getElementsByClassName("content-section");
+            for (i = 0; i < contentSection.length; i++) {
+                contentSection[i].classList.remove("active");
             }
 
-            // Reset seluruh status menu navigasi aktif (Main Menu)
-            let allMenus = document.querySelectorAll("#menuList li.main-menu");
-            allMenus.forEach(item => item.classList.remove("active"));
-
-            // Reset seluruh status sub-menu aktif
-            let allSubMenus = document.querySelectorAll(".submenu-list li.sub-menu");
-            allSubMenus.forEach(item => item.classList.remove("active"));
-
-            // Tampilkan section target
-            let targetSection = document.getElementById(tabName);
-            if(targetSection) {
-                targetSection.classList.add("active");
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            subMenu = document.getElementsByClassName("sub-menu");
+            for (i = 0; i < subMenu.length; i++) {
+                subMenu[i].classList.remove("active");
             }
 
-            // Set element menu/submenu saat ini menjadi aktif
+            mainMenu = document.getElementsByClassName("main-menu");
+            for (i = 0; i < mainMenu.length; i++) {
+                mainMenu[i].classList.remove("active");
+            }
+
+            let targetTab = document.getElementById(tabName);
+            if(targetTab) {
+                targetTab.classList.add("active");
+            }
+
             if(evt && evt.currentTarget) {
                 evt.currentTarget.classList.add("active");
-                
-                // Indikator visual ke parent-menu jika yang diklik adalah sub-menu
-                let parentList = evt.currentTarget.closest(".submenu-list");
-                if (parentList) {
-                    let parentMenuId = parentList.id;
-                    let parentMenuBtn = document.querySelector(`[onclick*="${parentMenuId}"]`);
-                    if (parentMenuBtn) {
-                        parentMenuBtn.classList.add("active");
-                    }
-                }
             }
 
-            // Tutup seluruh galeri gambar yang sedang terbuka di tab lain agar rapi
-            let allGalleries = document.querySelectorAll(".image-gallery-wrapper");
-            allGalleries.forEach(gal => gal.classList.remove("show"));
-
-            // Otomatis tutup menu laci mobile setelah memilih salah satu panduan
-            let sidebar = document.getElementById("sidebarNav");
-            if (sidebar && sidebar.classList.contains("mobile-open")) {
-                toggleMobileMenu();
-            }
+            // Sembunyikan drawer sidebar di tampilan mobile saat menu dipilih
+            document.getElementById("sidebarNav").classList.remove("mobile-open");
         }
 
-        // Membuka dan menutup laci menu navigasi di Handphone
-        function toggleMobileMenu() {
-            let sidebar = document.getElementById("sidebarNav");
-            let menuIcon = document.getElementById("menuIcon");
-            if (sidebar) {
-                sidebar.classList.toggle("mobile-open");
-                if (sidebar.classList.contains("mobile-open")) {
-                    menuIcon.className = "fa-solid fa-xmark";
-                } else {
-                    menuIcon.className = "fa-solid fa-bars";
-                }
-            }
-        }
-
-        // Dropdown accordion menu navigasi
+        // Buka / Tutup Dropdown Submenu
         function toggleSubmenu(evt, submenuId) {
-            if(evt) evt.stopPropagation();
+            evt.stopPropagation();
             let submenu = document.getElementById(submenuId);
-            let arrow = evt.currentTarget.querySelector(".arrow");
+            let arrow = evt.currentTarget.querySelector('.arrow');
             
-            if (submenu.classList.contains("open")) {
-                submenu.classList.remove("open");
-                if(arrow) {
-                    arrow.innerText = "▼";
-                    arrow.style.transform = "rotate(0deg)";
-                }
-            } else {
-                submenu.classList.add("open");
-                if(arrow) {
-                    arrow.innerText = "▲";
-                    arrow.style.transform = "rotate(180deg)";
-                }
-            }
+            submenu.classList.toggle("open");
+            if(arrow) arrow.classList.toggle("rotate");
         }
 
-        // Toggle Expand/Collapse Galeri Gambar
+        // Buka / Tutup Gambar Saat Diklik
         function toggleGallery(galleryId) {
             let gallery = document.getElementById(galleryId);
             if (gallery) {
@@ -1440,38 +901,26 @@
             }
         }
 
-        // Pencarian Global Pintar
+        // Buka / Tutup Sidebar khusus Layar Handphone
+        function toggleMobileMenu() {
+            let nav = document.getElementById("sidebarNav");
+            nav.classList.toggle("mobile-open");
+        }
+
+        // Fitur Cari Panduan pada Sidebar
         function searchGlobal() {
             let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.getElementsByClassName('card');
-            
-            for (let i = 0; i < cards.length; i++) {
-                let cardText = cards[i].innerText.toLowerCase();
-                
-                if (input === "") {
-                    cards[i].style.display = "block";
-                    cards[i].style.borderColor = "";
-                    cards[i].style.backgroundColor = "";
-                } else if (cardText.includes(input)) {
-                    cards[i].style.display = "block";
-                    cards[i].style.borderColor = "var(--accent)";
-                    cards[i].style.backgroundColor = "#fffbeb";
-                    
-                    // Alihkan tab aktif ke section di mana card yang cocok berada
-                    let parentSection = cards[i].closest('.content-section');
-                    if (parentSection) {
-                        let sections = document.getElementsByClassName("content-section");
-                        for (let j = 0; j < sections.length; j++) {
-                            sections[j].classList.remove("active");
-                        }
-                        parentSection.classList.add("active");
-                    }
+            let subMenus = document.getElementsByClassName('sub-menu');
+
+            for (let i = 0; i < subMenus.length; i++) {
+                let text = subMenus[i].textContent.toLowerCase();
+                if (text.includes(input)) {
+                    subMenus[i].style.display = "block";
                 } else {
-                    cards[i].style.display = "none";
+                    subMenus[i].style.display = "none";
                 }
             }
         }
     </script>
 </body>
 </html>
-
