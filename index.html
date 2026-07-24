@@ -42,7 +42,7 @@
             overflow-x: hidden;
         }
 
-        /* Mobile Header */
+        /* Mobile Header Styling */
         .mobile-header {
             display: none;
             background-color: var(--bg-sidebar);
@@ -67,6 +67,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            letter-spacing: -0.01em;
         }
 
         .mobile-menu-btn {
@@ -84,7 +85,12 @@
             transition: var(--transition);
         }
 
-        /* Sidebar Navigation */
+        .mobile-menu-btn:active {
+            transform: scale(0.95);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Sidebar Navigation Desktop & Base Drawer */
         nav {
             width: 320px;
             background-color: var(--bg-sidebar);
@@ -128,6 +134,7 @@
             outline: none;
             background-color: rgba(255, 255, 255, 0.15);
             border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
         }
 
         #menuList {
@@ -171,11 +178,12 @@
             transform: rotate(180deg);
         }
 
+        /* Submenu Layout and Animation */
         .submenu-list {
             list-style: none;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
             display: flex;
             flex-direction: column;
             gap: 4px;
@@ -186,6 +194,7 @@
 
         .submenu-list.open {
             max-height: 500px;
+            transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
             margin-top: 5px;
             margin-bottom: 5px;
         }
@@ -224,12 +233,21 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .header-banner h1 {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 32px;
             font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .header-banner p {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 800px;
+            line-height: 1.6;
         }
 
         .content-container {
@@ -280,6 +298,7 @@
             border: 1px solid var(--border);
             padding: 30px;
             margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
             transition: var(--transition);
         }
 
@@ -290,6 +309,7 @@
 
         .card.clickable:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
             border-color: var(--primary);
         }
 
@@ -318,6 +338,12 @@
             gap: 8px;
         }
 
+        .rule-card p {
+            font-size: 14px;
+            color: #7c2d12;
+            line-height: 1.5;
+        }
+
         .step-container {
             display: flex;
             gap: 20px;
@@ -342,6 +368,13 @@
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .step-content em {
@@ -353,11 +386,13 @@
             font-size: 13px;
         }
 
+        /* Gallery Wrapper Style with Transitions */
         .image-gallery-wrapper {
             max-height: 0;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
+            margin-bottom: 20px;
         }
 
         .image-gallery-wrapper.show {
@@ -385,6 +420,7 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
             text-align: center;
         }
 
@@ -395,28 +431,56 @@
             max-height: 350px;
             object-fit: contain;
             background-color: #f1f5f9;
+            min-height: 150px;
+            position: relative;
         }
 
         .image-caption {
             font-size: 13px;
             color: var(--text-muted);
             margin-top: 10px;
+            font-weight: 500;
         }
 
+        /* Responsive Breakpoints */
         @media (max-width: 992px) {
-            body { flex-direction: column; }
-            .mobile-header { display: flex; }
+            body {
+                flex-direction: column;
+            }
+            
+            .mobile-header {
+                display: flex;
+            }
+
             nav {
                 width: 100%;
                 height: calc(100vh - 60px);
                 position: fixed;
                 top: 60px;
                 left: -100%;
-                transition: left 0.3s ease;
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 99;
+                padding: 20px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
-            nav.mobile-open { left: 0; }
-            main { margin-left: 0; padding-top: 60px; }
-            .header-banner, .content-container { padding: 25px; }
+
+            nav.mobile-open {
+                left: 0;
+            }
+
+            main {
+                margin-left: 0;
+                padding-top: 60px;
+            }
+            
+            .header-banner {
+                padding: 35px 25px;
+            }
+            
+            .content-container {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -490,7 +554,7 @@
             <div id="Panduan Umum" class="content-section active">
                 <div class="card">
                     <h3 style="margin-bottom:15px; color: var(--primary); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px;">Panduan Umum</h3>
-                    <p style="line-height: 1.7; color: var(--text-dark); font-size: 15px;">Selamat datang di Portal Panduan Kerja Mitra Warehouse Fresh. Halaman ini dirancang sebagai acuan cepat dan praktis bagi seluruh mitra di lapangan untuk memahami setiap tahapan kerja secara terstruktur.</p>
+                    <p style="line-height: 1.7; color: var(--text-dark); font-size: 15px;">Selamat datang di Portal Panduan Kerja Mitra Warehouse Fresh. Halaman ini dirancang sebagai acuan cepat dan praktis bagi seluruh mitra di lapangan untuk memahami setiap tahapan kerja secara terstruktur, mulai dari proses penerimaan barang (inbound), pengelolaan stok (inventory), hingga persiapan pengiriman (outbound). Silakan gunakan menu navigasi di samping kiri untuk mencari modul spesifik sesuai dengan peran Anda, serta pastikan untuk selalu mengikuti urutan instruksi dan standar kualitas yang berlaku demi menjaga kelancaran operasional gudang kita.</p>
                 </div>
             </div>
 
@@ -511,6 +575,20 @@
                         <h4><i class="fa-solid fa-pen-to-square"></i> Catat hasil aktual</h4>
                         <p>Memastikan jumlah penerimaan di sistem sesuai dengan penerimaan di lembar kerja HO.</p>
                     </div>
+                    <div class="rule-card">
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
+                        <p>Mengarsip dokumen penerimaan dan pencetakan label.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="step-container">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Tugas Admin Inbound secara umum</h3>
+                            <p>Secara umum, Admin Inbound bertanggung jawab memastikan seluruh proses penerimaan barang terdokumentasi dengan benar, akurat, dan sesuai SOP.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card clickable" onclick="toggleGallery('adminGallery2')">
@@ -518,7 +596,7 @@
                         <div class="step-number">2</div>
                         <div class="step-content">
                             <h3>Vendor melakukan registrasi</h3>
-                            <p>Vendor melakukan registrasi ketika tiba di warehouse...</p>
+                            <p>Vendor melakukan registrasi ketika tiba di warehouse, kemudian dari tim LP/security merubah status PO dari "On Delivery" menjadi "Arrived".</p>
                             <em>(Klik untuk lihat contoh gambar)</em>
                         </div>
                     </div>
@@ -532,6 +610,90 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="card clickable" onclick="toggleGallery('adminGallery3')">
+                    <div class="step-container">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Pengecekan kelengkapan dokumen dan mempersiapkan lembar kerja HO untuk checker</h3>
+                            <p>Pastikan No.PO dengan surat jalan sesuai, kemudian gabungkan dengan lembar kerja HO menjadi satu bagian dan diberikan kepada checker.</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="adminGallery3" class="image-gallery-wrapper">
+                    <div class="image-gallery gallery-portrait">
+                        <div class="image-box">
+                            <img src="PO ok.png" alt="Contoh Dokumen PO (Purchase Order)">
+                            <div class="image-caption">Contoh Dokumen PO (Purchase Order)</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="SJ Ok.png" alt="Contoh Dokumen SJ (Surat Jalan)">
+                            <div class="image-caption">Contoh Dokumen SJ (Surat Jalan)</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="HO.png" alt="Contoh Dokumen HO (Hand Over)">
+                            <div class="image-caption">Contoh Dokumen HO (Hand Over)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('adminGallery4')">
+                    <div class="step-container">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Proses pengesahan dokumen penerimaan (GRN)</h3>
+                            <p>Pastikan jumlah penerimaan pada sistem sesuai dengan penerimaan aktual. Berikut ini langkah proses GRN (Good Receipt Notes) pada sistem WMS oleh Admin Inbound.</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="adminGallery4" class="image-gallery-wrapper">
+                    <div class="image-gallery gallery-portrait">
+                        <div class="image-box">
+                            <img src="step 1 GRN.png" alt="Langkah pertama proses GRN">
+                            <div class="image-caption">Langkah pertama proses GRN</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="step 2 GRN.png" alt="Langkah kedua proses GRN">
+                            <div class="image-caption">Langkah kedua proses GRN</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="step 3 GRN.png" alt="Langkah ketiga proses GRN">
+                            <div class="image-caption">Langkah ketiga proses GRN</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="Cetak GRN.png" alt="Hasil pencetakan GRN">
+                            <div class="image-caption">Hasil pencetakan GRN</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('adminGallery5')">
+                    <div class="step-container">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Proses Pencetakan Label barcode</h3>
+                            <p>Admin melakukan persiapan dan pencetakan label barcode, memastikan tanggal expired date sesuai dengan ketentuan produk, memastikan SKU Name sesuai dengan produknya .</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="adminGallery5" class="image-gallery-wrapper">
+                    <div class="image-gallery gallery-portrait">
+                        <div class="image-box">
+                            <img src="cetak label.png" alt="Proses mencetak label">
+                            <div class="image-caption">Proses mencetak label</div>
+                        </div>
+                        <div class="image-box">
+                            <img src="Label Semangka.png" alt="Contoh detail label barcode">
+                            <div class="image-caption">Contoh detail label barcode</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- TAB 3: INBOUND CHECKER -->
@@ -541,12 +703,88 @@
                 </div>
                 <p class="section-desc">Melakukan perhitungan fisik aktual dan pencatatan pada sistem.</p>
 
+                <h3 style="font-size: 1.15rem; margin: 20px 0 15px 0; color: var(--primary);">Aturan Singkat di Lapangan</h3>
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <h4><i class="fa-solid fa-list-ol"></i> Ikuti urutan proses</h4>
+                        <p>Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4><i class="fa-solid fa-pen-to-square"></i> Catat hasil aktual</h4>
+                        <p>Jumlah barang, kondisi barang, dan selisih harus ditulis sesuai temuan.</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
+                        <p>Jika ada dokumen tidak lengkap, QR tidak terbaca, atau barang rusak, segera eskalasi ke PIC.</p>
+                    </div>
+                </div>
+                
+                <div class="card clickable" onclick="toggleGallery('checkeribGallery1')">
+                    <div class="step-container">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Persiapan Aset</h3>
+                            <p>Menyiapkan aset yang digunakan seperti keranjang, pallet, seuic, partisi untuk melapisi keranjang</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="checkeribGallery1" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="Asset Inbound.png" alt="Mempersiapkan asset untuk proses penerimaan">
+                            <div class="image-caption">Mempersiapkan asset untuk proses penerimaan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('checkeribGallery2')">
+                    <div class="step-container">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Proses penerimaan</h3>
+                            <p>Sebelum dilakukan proses penerimaan oleh Checker Inbound, dilakukan pengecekan suhu mobil dan produk oleh tim QA Inbound</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="checkeribGallery2" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="QA IB.png" alt="Proses Pengecekan Suhu Mobil & produk secara sampling">
+                            <div class="image-caption">Proses Pengecekan Suhu Mobil & produk secara sampling</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('checkeribGallery3')">
+                    <div class="step-container">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Proses Menghitung oleh Checker Inbound</h3>
+                            <p>Checker menghitung jumlah barang yang diterima dengan mengecek kualitas secara visual</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="checkeribGallery3" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="counting.png" alt="Proses Menghitung">
+                            <div class="image-caption">Proses Menghitung</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card clickable" onclick="toggleGallery('checkeribGallery4')">
                     <div class="step-container">
                         <div class="step-number">4</div>
                         <div class="step-content">
                             <h3>Pencatatan pada lembar kerja HO (Hand Over)</h3>
-                            <p>Mencatat jumlah produk yang diterima, beri keterangan jika jumlah produk tidak sesuai dengan jumlah pada PO (Purchase Order).</p>
+                            <p>Mencatat jumlah produk yang diterima, beri keterangan jika jumlah produk tidak sesuai dengan jumlah pada PO(Purchase Order)</p>
                             <em>(Klik untuk lihat contoh gambar)</em>
                         </div>
                     </div>
@@ -555,29 +793,65 @@
                 <div id="checkeribGallery4" class="image-gallery-wrapper">
                     <div class="image-gallery">
                         <div class="image-box">
-                            <img src="isi HO.png" alt="Pencatatan HO">
-                            <div class="image-caption">Contoh Pengisian Lembar Kerja HO</div>
+                            <img src="isi HO.png" alt="Pencatatan pada lembar kerja HO">
+                            <div class="image-caption">Pencatatan pada lembar kerja HO</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- DUMMY SECTION UNTUK TAB DARI MENU LAIN AGAR AKTIF -->
-            <div id="Inbound Labeling" class="content-section"><h2>Inbound Labeling</h2></div>
-            <div id="Inventory Admin" class="content-section"><h2>Inventory Admin</h2></div>
-            <div id="Inventory Badstock Admin" class="content-section"><h2>Inventory Badstock Admin</h2></div>
-            <div id="Inventory Putaway" class="content-section"><h2>Inventory Putaway</h2></div>
-            <div id="Inventory Stock Keeper" class="content-section"><h2>Inventory Stock Keeper</h2></div>
-            <div id="Inventory Badstock" class="content-section"><h2>Inventory Badstock</h2></div>
-            <div id="Outbound Picker Sorter" class="content-section"><h2>Outbound Picker Sorter</h2></div>
-            <div id="Outbound Checker" class="content-section"><h2>Outbound Checker</h2></div>
-            <div id="Outbound Loader" class="content-section"><h2>Outbound Loader</h2></div>
+            <!-- MODUL TEMPLATE UNTUK TABS LAIN -->
+            <div id="Inbound Labeling" class="content-section">
+                <div class="section-header-box"><h2 class="section-title">Inbound Labeling</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inbound Labeling.</p></div>
+            </div>
+
+            <div id="Inventory Admin" class="content-section">
+                <div class="section-header-box"><h2 class="section-title">Inventory Admin</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inventory Admin.</p></div>
+            </div>
+
+            <div id="Inventory Badstock Admin" class="content-section">
+                <div class="section-header-box"><h2 class="section-title">Inventory Badstock Admin</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inventory Badstock Admin.</p></div>
+            </div>
+
+            <div id="Inventory Putaway" class="content-section">
+                <div class="section-header-box"><h2 class="section-title">Inventory Putaway</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inventory Putaway.</p></div>
+            </div>
+
+            <div id="Inventory Stock Keeper" class="content-section">
+                <div class="section-header-box"><h2 class="section-title">Inventory Stock Keeper</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inventory Stock Keeper.</p></div>
+            </div>
+
+            <div id="Inventory Badstock" class="content-section">
+                <div class="section-header-box"><h2 class="section-title">Inventory Badstock</h2></div>
+                <div class="card"><p>Panduan operasional untuk Inventory Badstock.</p></div>
+            </div>
+
+            <div id="Outbound Picker Sorter" class="content-section">
+                <div class="section-header-box"><h2 class="section-title">Outbound Picker Sorter</h2></div>
+                <div class="card"><p>Melakukan pengambilan barang di rak penyimpanan dan memilahnya berdasarkan rute/hub pengiriman.</p></div>
+            </div>
+
+            <div id="Outbound Checker" class="content-section">
+                <div class="section-header-box"><h2 class="section-title">Outbound Checker</h2></div>
+                <div class="card"><p>Panduan operasional untuk Outbound Checker.</p></div>
+            </div>
+
+            <div id="Outbound Loader" class="content-section">
+                <div class="section-header-box"><h2 class="section-title">Outbound Loader</h2></div>
+                <div class="card"><p>Panduan operasional untuk Outbound Loader.</p></div>
+            </div>
 
         </div>
     </main>
 
+    <!-- JAVASCRIPT UNTUK MEMBUAT MENU DAN GAMBAR BISA DIKLIK -->
     <script>
-        // Buka / Tutup Tab Konten
+        // Buka / Pindah Tab Utama
         function openTab(evt, tabName) {
             let i, contentSection, subMenu, mainMenu;
 
@@ -601,9 +875,11 @@
                 targetTab.classList.add("active");
             }
 
-            evt.currentTarget.classList.add("active");
+            if(evt && evt.currentTarget) {
+                evt.currentTarget.classList.add("active");
+            }
 
-            // Tutup sidebar mobile saat menu diklik
+            // Sembunyikan drawer sidebar di tampilan mobile saat menu dipilih
             document.getElementById("sidebarNav").classList.remove("mobile-open");
         }
 
@@ -617,7 +893,7 @@
             if(arrow) arrow.classList.toggle("rotate");
         }
 
-        // Buka / Tutup Galeri Gambar
+        // Buka / Tutup Gambar Saat Diklik
         function toggleGallery(galleryId) {
             let gallery = document.getElementById(galleryId);
             if (gallery) {
@@ -625,17 +901,16 @@
             }
         }
 
-        // Toggle Sidebar Mobile
+        // Buka / Tutup Sidebar khusus Layar Handphone
         function toggleMobileMenu() {
             let nav = document.getElementById("sidebarNav");
             nav.classList.toggle("mobile-open");
         }
 
-        // Fitur Pencarian Global Sederhana
+        // Fitur Cari Panduan pada Sidebar
         function searchGlobal() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let subMenus = document.getElementsByClassName('sub-menu');
-            let mainMenus = document.getElementsByClassName('main-menu');
 
             for (let i = 0; i < subMenus.length; i++) {
                 let text = subMenus[i].textContent.toLowerCase();
