@@ -801,6 +801,69 @@
             </div>
 
             <!-- MODUL TEMPLATE UNTUK TABS LAIN -->
+            <!-- TAB 4: OUTBOUND PICKER SORTER -->
+            <div id="Outbound Picker Sorter" class="content-section">
+                <div class="section-header-box">
+                    <h2 class="section-title">Outbound Picker Sorter</h2>
+                </div>
+                <p class="section-desc">Melakukan pengambilan barang untuk kategori non cross dock dan menyortir barang dengan kategori cross dock</p>
+
+                <h3 style="font-size: 1.15rem; margin: 20px 0 15px 0; color: var(--primary);">Aturan Singkat di Lapangan</h3>
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <h4><i class="fa-solid fa-list-ol"></i> Ikuti urutan proses</h4>
+                        <p>Mulai dari penerimaan tugas, mengambil dan menyortir barang, kemudian proses pada sistem WMS (Warehouse Management System).</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4><i class="fa-solid fa-pen-to-square"></i> Proses Pengambilan barang</h4>
+                        <p>Picker melakukan pengambilan barang pada area penyimpanan seperti chiller, anteroom, area pasar, Sorter mengambil barang pada area penyimpanan sementara di staging inbound</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
+                        <p>Jika barang tidak ditemukan atau selisih, silahkan hubungi Inventory Stock Keeper untuk barang non cross dock, atau hubungi Team Leader untuk barang cross dock.</p>
+                    </div>
+                </div>
+                
+                <div class="card clickable" onclick="toggleGallery('pickerGallery1')">
+                    <div class="step-container">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Persiapan Aset</h3>
+                            <p>Menyiapkan aset yang digunakan seperti keranjang, pallet, seuic,dll</p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="pickerGallery1" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="Asset Picker.png" alt="Mempersiapkan asset untuk proses pengambilan barang">
+                            <div class="image-caption">Mempersiapkan asset untuk proses pengambilan barang</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card clickable" onclick="toggleGallery('pickerGallery2')">
+                    <div class="step-container">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Penerimaan penugasan</h3>
+                            <p>Team leader melakukan penugasan dengan memberi label QR code SO yang perlu diselesaikan </p>
+                            <em>(Klik untuk lihat contoh gambar)</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="pickerGallery2" class="image-gallery-wrapper">
+                    <div class="image-gallery">
+                        <div class="image-box">
+                            <img src="penugasan picker.png" alt="Penerimaan penugasan">
+                            <div class="image-caption">Penerimaan label QR code untuk penugasan Outbound Picker Sorter</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="Inbound Labeling" class="content-section">
                 <div class="section-header-box"><h2 class="section-title">Inbound Labeling</h2></div>
                 <div class="card"><p>Panduan operasional untuk Inbound Labeling.</p></div>
