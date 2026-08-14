@@ -1,833 +1,2965 @@
 <!DOCTYPE html>
+
 <html lang="id">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Panduan Kerja Mitra Warehouse Fresh</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     
+
     <style>
+
         :root {
+
             --primary: #005e4d;
+
             --primary-light: #e6f4f1;
+
             --primary-hover: #004d3f;
+
             --accent: #f97316;
+
             --accent-light: #fff7ed;
+
             --bg-body: #f1f5f9;
+
             --bg-sidebar: #0f172a;
+
             --bg-card: #ffffff;
+
             --text-dark: #0f172a;
+
             --text-muted: #64748b;
+
             --border: #e2e8f0;
+
             --radius-lg: 16px;
+
             --radius-md: 12px;
+
             --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
         }
+
+
 
         * {
+
             box-sizing: border-box;
+
             margin: 0;
+
             padding: 0;
+
         }
+
+
 
         body {
+
             font-family: 'Inter', sans-serif;
+
             background-color: var(--bg-body);
+
             color: var(--text-dark);
+
             display: flex;
+
             min-height: 100vh;
+
             overflow-x: hidden;
+
         }
+
+
 
         /* Mobile Header Styling */
+
         .mobile-header {
+
             display: none;
+
             background-color: var(--bg-sidebar);
+
             color: #ffffff;
+
             padding: 0 20px;
+
             align-items: center;
+
             justify-content: flex-start;
+
             gap: 15px;
+
             position: fixed;
+
             top: 0;
+
             left: 0;
+
             width: 100%;
+
             z-index: 100;
+
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
             height: 60px;
+
         }
+
+
 
         .mobile-logo {
+
             font-family: 'Plus Jakarta Sans', sans-serif;
+
             font-weight: 800;
+
             font-size: 16px;
+
             display: flex;
+
             align-items: center;
+
             gap: 10px;
+
             letter-spacing: -0.01em;
+
         }
+
+
 
         .mobile-menu-btn {
+
             background: rgba(255, 255, 255, 0.08);
+
             border: 1px solid rgba(255, 255, 255, 0.15);
+
             color: #ffffff;
+
             font-size: 18px;
+
             cursor: pointer;
+
             width: 40px;
+
             height: 40px;
+
             border-radius: 8px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             transition: var(--transition);
+
         }
+
+
 
         .mobile-menu-btn:active {
+
             transform: scale(0.95);
+
             background-color: rgba(255, 255, 255, 0.15);
+
         }
+
+
 
         /* Sidebar Navigation Desktop & Base Drawer */
+
         nav {
+
             width: 320px;
+
             background-color: var(--bg-sidebar);
+
             color: #f8fafc;
+
             padding: 30px 20px;
+
             display: flex;
+
             flex-direction: column;
+
             gap: 25px;
+
             position: fixed;
+
             height: 100vh;
+
             overflow-y: auto;
+
             border-right: 1px solid rgba(255, 255, 255, 0.1);
+
             z-index: 10;
+
         }
+
+
 
         .search-wrapper {
+
             position: relative;
+
         }
+
+
 
         .search-wrapper i {
+
             position: absolute;
+
             left: 15px;
+
             top: 50%;
+
             transform: translateY(-50%);
+
             color: #94a3b8;
+
         }
+
+
 
         #searchInput {
+
             width: 100%;
+
             padding: 14px 15px 14px 45px;
+
             background-color: rgba(255, 255, 255, 0.08);
+
             border: 1px solid rgba(255, 255, 255, 0.15);
+
             border-radius: var(--radius-md);
+
             color: #ffffff;
+
             font-size: 14px;
+
             font-family: inherit;
+
             transition: var(--transition);
+
         }
+
+
 
         #searchInput:focus {
+
             outline: none;
+
             background-color: rgba(255, 255, 255, 0.15);
+
             border-color: #38bdf8;
+
             box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+
         }
+
+
 
         #menuList {
+
             list-style: none;
+
             display: flex;
+
             flex-direction: column;
+
             gap: 8px;
+
         }
+
+
 
         .main-menu {
+
             padding: 12px 16px;
+
             border-radius: var(--radius-md);
+
             cursor: pointer;
+
             font-weight: 600;
+
             font-size: 15px;
+
             color: #cbd5e1;
+
             transition: var(--transition);
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             user-select: none;
+
         }
+
+
 
         .main-menu:hover {
+
             background-color: rgba(255, 255, 255, 0.05);
+
             color: #ffffff;
+
         }
+
+
 
         .main-menu.active {
+
             background-color: var(--primary);
+
             color: #ffffff;
+
         }
+
+
 
         .arrow {
+
             font-size: 10px;
+
             transition: transform 0.25s ease;
+
             color: #94a3b8;
+
         }
+
+
 
         .arrow.rotate {
+
             transform: rotate(180deg);
+
         }
+
+
 
         /* Submenu Layout and Animation */
+
         .submenu-list {
+
             list-style: none;
+
             max-height: 0;
+
             overflow: hidden;
+
             transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+
             display: flex;
+
             flex-direction: column;
+
             gap: 4px;
+
             padding-left: 15px;
+
             border-left: 1px solid rgba(255, 255, 255, 0.1);
+
             margin-left: 10px;
+
         }
+
+
 
         .submenu-list.open {
+
             max-height: 500px;
+
             transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+
             margin-top: 5px;
+
             margin-bottom: 5px;
+
         }
+
+
 
         .sub-menu {
+
             padding: 10px 16px;
+
             border-radius: 8px;
+
             cursor: pointer;
+
             font-size: 14px;
+
             color: #94a3b8;
+
             transition: var(--transition);
+
         }
+
+
 
         .sub-menu:hover, .sub-menu.active {
+
             color: #ffffff;
+
             background-color: rgba(255, 255, 255, 0.05);
+
         }
+
+
 
         .sub-menu.active {
+
             color: #38bdf8;
+
             font-weight: 600;
+
         }
+
+
 
         main {
+
             margin-left: 320px;
+
             flex-grow: 1;
+
             min-height: 100vh;
+
             display: flex;
+
             flex-direction: column;
+
         }
+
+
 
         .header-banner {
+
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+
             color: #ffffff;
+
             padding: 50px 60px;
+
             display: flex;
+
             flex-direction: column;
+
             gap: 12px;
+
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
         }
+
+
 
         .header-banner h1 {
+
             font-family: 'Plus Jakarta Sans', sans-serif;
+
             font-size: 32px;
+
             font-weight: 800;
+
             letter-spacing: -0.02em;
+
         }
+
+
 
         .header-banner p {
+
             font-size: 16px;
+
             opacity: 0.9;
+
             max-width: 800px;
+
             line-height: 1.6;
+
         }
+
+
 
         .content-container {
+
             padding: 40px 60px;
+
             max-width: 1200px;
+
             width: 100%;
+
             margin: 0 auto;
+
             flex-grow: 1;
+
         }
+
+
 
         .content-section {
+
             display: none;
+
             animation: fadeIn 0.4s ease;
+
         }
+
+
 
         .content-section.active {
+
             display: block;
+
         }
+
+
 
         @keyframes fadeIn {
+
             from { opacity: 0; transform: translateY(10px); }
+
             to { opacity: 1; transform: translateY(0); }
+
         }
+
+
 
         .section-header-box {
+
             border-bottom: 2px solid var(--border);
+
             padding-bottom: 15px;
+
             margin-bottom: 25px;
+
         }
+
+
 
         .section-title {
+
             font-family: 'Plus Jakarta Sans', sans-serif;
+
             font-size: 26px;
+
             font-weight: 700;
+
             color: var(--primary);
+
         }
+
+
 
         .section-desc {
+
             font-size: 16px;
+
             color: var(--text-muted);
+
             line-height: 1.6;
+
             margin-bottom: 30px;
+
         }
+
+
 
         .card {
+
             background-color: var(--bg-card);
+
             border-radius: var(--radius-lg);
+
             border: 1px solid var(--border);
+
             padding: 30px;
+
             margin-bottom: 20px;
+
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+
             transition: var(--transition);
+
         }
+
+
 
         .card.clickable {
+
             cursor: pointer;
+
             border-left: 4px solid var(--primary);
+
         }
+
+
 
         .card.clickable:hover {
+
             transform: translateY(-2px);
+
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+
             border-color: var(--primary);
+
         }
+
+
 
         .rules-grid {
+
             display: grid;
+
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
             gap: 20px;
+
             margin-bottom: 35px;
+
         }
+
+
 
         .rule-card {
+
             background-color: #fffaf7;
+
             border: 1px solid #ffedd5;
+
             border-left: 4px solid var(--accent);
+
             border-radius: var(--radius-md);
+
             padding: 20px;
+
         }
+
+
 
         .rule-card h4 {
+
             color: #c2410c;
+
             font-size: 16px;
+
             font-weight: 700;
+
             margin-bottom: 8px;
+
             display: flex;
+
             align-items: center;
+
             gap: 8px;
+
         }
+
+
 
         .rule-card p {
+
             font-size: 14px;
+
             color: #7c2d12;
+
             line-height: 1.5;
+
         }
+
+
 
         .step-container {
+
             display: flex;
+
             gap: 20px;
+
             align-items: flex-start;
+
         }
+
+
 
         .step-number {
+
             background-color: var(--primary-light);
+
             color: var(--primary);
+
             font-weight: 800;
+
             font-size: 18px;
+
             width: 44px;
+
             height: 44px;
+
             border-radius: 50%;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             flex-shrink: 0;
+
         }
+
+
 
         .step-content h3 {
+
             font-size: 18px;
+
             font-weight: 700;
+
             margin-bottom: 8px;
+
             color: var(--text-dark);
+
         }
+
+
 
         .step-content p {
+
             font-size: 15px;
+
             color: var(--text-muted);
+
             line-height: 1.6;
+
         }
+
+
 
         .step-content em {
+
             display: inline-block;
+
             margin-top: 8px;
+
             color: var(--primary);
+
             font-style: normal;
+
             font-weight: 600;
+
             font-size: 13px;
+
         }
+
+
 
         /* Gallery Wrapper Style with Transitions */
+
         .image-gallery-wrapper {
+
             max-height: 0;
+
             overflow: hidden;
+
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
             opacity: 0;
+
             margin-bottom: 20px;
+
         }
+
+
 
         .image-gallery-wrapper.show {
+
             max-height: 1200px;
+
             opacity: 1;
+
             margin-bottom: 30px;
+
         }
+
+
 
         .image-gallery {
+
             background-color: #f8fafc;
+
             border: 1px dashed var(--border);
+
             border-radius: var(--radius-lg);
+
             padding: 25px;
+
             display: grid;
+
             grid-template-columns: 1fr;
+
             gap: 20px;
+
         }
+
+
 
         .image-gallery.gallery-portrait {
+
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
         }
+
+
 
         .image-box {
+
             background-color: #ffffff;
+
             border: 1px solid var(--border);
+
             border-radius: var(--radius-md);
+
             padding: 10px;
+
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+
             text-align: center;
+
         }
+
+
 
         .image-box img {
+
             width: 100%;
+
             height: auto;
+
             border-radius: 8px;
+
             max-height: 350px;
+
             object-fit: contain;
+
             background-color: #f1f5f9;
+
             min-height: 150px;
+
             position: relative;
+
         }
+
+
 
         .image-caption {
+
             font-size: 13px;
+
             color: var(--text-muted);
+
             margin-top: 10px;
+
             font-weight: 500;
+
         }
+
+
 
         /* Responsive Breakpoints */
+
         @media (max-width: 992px) {
+
             body {
+
                 flex-direction: column;
+
             }
+
             
+
             .mobile-header {
+
                 display: flex;
+
             }
+
+
 
             nav {
+
                 width: 100%;
+
                 height: calc(100vh - 60px);
+
                 position: fixed;
+
                 top: 60px;
+
                 left: -100%;
+
                 transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
                 z-index: 99;
+
                 padding: 20px;
+
                 border-right: none;
+
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
             }
+
+
 
             nav.mobile-open {
+
                 left: 0;
+
             }
+
+
 
             main {
+
                 margin-left: 0;
+
                 padding-top: 60px;
+
             }
+
             
+
             .header-banner {
+
                 padding: 35px 25px;
+
             }
+
             
+
             .content-container {
+
                 padding: 25px;
+
             }
+
         }
+
     </style>
+
 </head>
+
 <body>
 
+
+
     <div class="mobile-header">
+
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+
             <i class="fa-solid fa-bars" id="menuIcon"></i>
+
         </button>
+
         <div class="mobile-logo">
+
             <i class="fa-solid fa-warehouse"></i>
+
             <span>Panduan Mitra</span>
+
         </div>
+
     </div>
 
+
+
     <nav id="sidebarNav">
+
         <div class="search-wrapper">
+
             <i class="fa-solid fa-magnifying-glass"></i>
+
             <input type="text" id="searchInput" placeholder="Cari panduan..." onkeyup="searchGlobal()">
+
         </div>
+
         
+
         <ul id="menuList">
+
             <li class="main-menu active" onclick="openTab(event, 'Panduan Umum')">
+
                 <span>Panduan Umum</span>
+
                 <i class="fa-solid fa-house"></i>
+
             </li>
+
             
+
             <li class="main-menu" onclick="toggleSubmenu(event, 'inboundSubmenu')">
+
                 <span>Inbound Fresh</span>
+
                 <span class="arrow">▼</span>
+
             </li>
+
             <ul id="inboundSubmenu" class="submenu-list">
+
                 <li class="sub-menu" onclick="openTab(event, 'Inbound Admin')">Inbound Admin</li>
+
                 <li class="sub-menu" onclick="openTab(event, 'Inbound Checker')">Inbound Checker</li>
+
                 <li class="sub-menu" onclick="openTab(event, 'Inbound Labeling')">Inbound Labeling</li>
+
             </ul>
+
+
 
             <li class="main-menu" onclick="toggleSubmenu(event, 'inventorySubmenu')">
+
                 <span>Inventory Fresh</span>
+
                 <span class="arrow">▼</span>
+
             </li>
+
             <ul id="inventorySubmenu" class="submenu-list">
+
                 <li class="sub-menu" onclick="openTab(event, 'Inventory Admin')">Inventory Admin</li>
+
                 <li class="sub-menu" onclick="openTab(event, 'Inventory Badstock Admin')">Inventory Badstock Admin</li>
+
                 <li class="sub-menu" onclick="openTab(event, 'Inventory Putaway')">Inventory Putaway</li>
+
                 <li class="sub-menu" onclick="openTab(event, 'Inventory Stock Keeper')">Inventory Stock Keeper</li>
+
                 <li class="sub-menu" onclick="openTab(event, 'Inventory Badstock')">Inventory Badstock</li>
+
             </ul>
+
+
 
             <li class="main-menu" onclick="toggleSubmenu(event, 'outboundSubmenu')">
+
                 <span>Outbound Fresh</span>
+
                 <span class="arrow">▼</span>
+
             </li>
+
             <ul id="outboundSubmenu" class="submenu-list">
+
                 <li class="sub-menu" onclick="openTab(event, 'Outbound Picker Sorter')">Outbound Picker Sorter</li>
+
                 <li class="sub-menu" onclick="openTab(event, 'Outbound Checker')">Outbound Checker</li>
+
                 <li class="sub-menu" onclick="openTab(event, 'Outbound Loader')">Outbound Loader</li>
+
             </ul>
+
         </ul>
+
     </nav>
 
+
+
     <main>
+
         <div class="header-banner">
+
             <h1>Panduan Kerja Mitra Warehouse Fresh</h1>
+
             <p>Panduan lapangan yang ringkas untuk membantu mitra menjalankan proses inbound, inventory, dan outbound dengan urutan kerja yang jelas serta terstandarisasi.</p>
+
         </div>
+
+
 
         <div class="content-container">
 
+
+
             <!-- TAB 1: PANDUAN UMUM -->
+
             <div id="Panduan Umum" class="content-section active">
+
                 <div class="card">
+
                     <h3 style="margin-bottom:15px; color: var(--primary); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px;">Panduan Umum</h3>
+
                     <p style="line-height: 1.7; color: var(--text-dark); font-size: 15px;">Selamat datang di Portal Panduan Kerja Mitra Warehouse Fresh. Halaman ini dirancang sebagai acuan cepat dan praktis bagi seluruh mitra di lapangan untuk memahami setiap tahapan kerja secara terstruktur, mulai dari proses penerimaan barang (inbound), pengelolaan stok (inventory), hingga persiapan pengiriman (outbound). Silakan gunakan menu navigasi di samping kiri untuk mencari modul spesifik sesuai dengan peran Anda, serta pastikan untuk selalu mengikuti urutan instruksi dan standar kualitas yang berlaku demi menjaga kelancaran operasional gudang kita.</p>
+
                 </div>
+
             </div>
+
+
 
             <!-- TAB 2: INBOUND ADMIN -->
+
             <div id="Inbound Admin" class="content-section">
+
                 <div class="section-header-box">
+
                     <h2 class="section-title">Inbound Admin</h2>
+
                 </div>
+
                 <p class="section-desc">Fokus pada penerimaan dokumen, pengecekan kualitas barang, pencatatan hasil aktual, serta input data ke sistem WMS.</p>
 
+
+
                 <h3 style="font-size: 1.15rem; margin: 20px 0 15px 0; color: var(--primary);">Aturan Singkat di Lapangan</h3>
+
                 <div class="rules-grid">
+
                     <div class="rule-card">
+
                         <h4><i class="fa-solid fa-list-ol"></i> Ikuti urutan proses</h4>
+
                         <p>Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</p>
+
                     </div>
+
                     <div class="rule-card">
+
                         <h4><i class="fa-solid fa-pen-to-square"></i> Catat hasil aktual</h4>
+
                         <p>Memastikan jumlah penerimaan di sistem sesuai dengan penerimaan di lembar kerja HO.</p>
+
                     </div>
+
                     <div class="rule-card">
+
                         <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
+
                         <p>Mengarsip dokumen penerimaan dan pencetakan label.</p>
+
                     </div>
+
                 </div>
+
+
 
                 <div class="card">
+
                     <div class="step-container">
+
                         <div class="step-number">1</div>
+
                         <div class="step-content">
+
                             <h3>Tugas Admin Inbound secara umum</h3>
+
                             <p>Secara umum, Admin Inbound bertanggung jawab memastikan seluruh proses penerimaan barang terdokumentasi dengan benar, akurat, dan sesuai SOP.</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
 
                 <div class="card clickable" onclick="toggleGallery('adminGallery2')">
+
                     <div class="step-container">
+
                         <div class="step-number">2</div>
+
                         <div class="step-content">
+
                             <h3>Vendor melakukan registrasi</h3>
+
                             <p>Vendor melakukan registrasi ketika tiba di warehouse, kemudian dari tim LP/security merubah status PO dari "On Delivery" menjadi "Arrived".</p>
+
                             <em>(Klik untuk lihat contoh gambar)</em>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
 
                 <div id="adminGallery2" class="image-gallery-wrapper">
+
                     <div class="image-gallery">
+
                         <div class="image-box">
+
                             <img src="IB regist.png" alt="Contoh registrasi vendor inbound">
+
                             <div class="image-caption">Contoh registrasi vendor inbound.</div>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('adminGallery3')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">3</div>
+
+                        <div class="step-content">
+
+                            <h3>Pengecekan kelengkapan dokumen dan mempersiapkan lembar kerja HO untuk checker</h3>
+
+                            <p>Pastikan No.PO dengan surat jalan sesuai, kemudian gabungkan dengan lembar kerja HO menjadi satu bagian dan diberikan kepada checker.</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="adminGallery3" class="image-gallery-wrapper">
+
+                    <div class="image-gallery gallery-portrait">
+
+                        <div class="image-box">
+
+                            <img src="PO ok.png" alt="Contoh Dokumen PO (Purchase Order)">
+
+                            <div class="image-caption">Contoh Dokumen PO (Purchase Order)</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="SJ Ok.png" alt="Contoh Dokumen SJ (Surat Jalan)">
+
+                            <div class="image-caption">Contoh Dokumen SJ (Surat Jalan)</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="HO.png" alt="Contoh Dokumen HO (Hand Over)">
+
+                            <div class="image-caption">Contoh Dokumen HO (Hand Over)</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('adminGallery4')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">4</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses pengesahan dokumen penerimaan (GRN)</h3>
+
+                            <p>Pastikan jumlah penerimaan pada sistem sesuai dengan penerimaan aktual. Berikut ini langkah proses GRN (Good Receipt Notes) pada sistem WMS oleh Admin Inbound.</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div id="adminGallery4" class="image-gallery-wrapper">
+
+                    <div class="image-gallery gallery-portrait">
+
+                        <div class="image-box">
+
+                            <img src="step 1 GRN.png" alt="Langkah pertama proses GRN">
+
+                            <div class="image-caption">Langkah pertama proses GRN</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="step 2 GRN.png" alt="Langkah kedua proses GRN">
+
+                            <div class="image-caption">Langkah kedua proses GRN</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="step 3 GRN.png" alt="Langkah ketiga proses GRN">
+
+                            <div class="image-caption">Langkah ketiga proses GRN</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="Cetak GRN.png" alt="Hasil pencetakan GRN">
+
+                            <div class="image-caption">Hasil pencetakan GRN</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('adminGallery5')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">5</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses Pencetakan Label barcode</h3>
+
+                            <p>Admin melakukan persiapan dan pencetakan label barcode, memastikan tanggal expired date sesuai dengan ketentuan produk, memastikan SKU Name sesuai dengan produknya .</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div id="adminGallery5" class="image-gallery-wrapper">
+
+                    <div class="image-gallery gallery-portrait">
+
+                        <div class="image-box">
+
+                            <img src="cetak label.png" alt="Proses mencetak label">
+
+                            <div class="image-caption">Proses mencetak label</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="Label Semangka.png" alt="Contoh detail label barcode">
+
+                            <div class="image-caption">Contoh detail label barcode</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
+
 
             <!-- TAB 3: INBOUND CHECKER -->
+
             <div id="Inbound Checker" class="content-section">
+
                 <div class="section-header-box">
+
                     <h2 class="section-title">Inbound Checker</h2>
+
                 </div>
+
                 <p class="section-desc">Melakukan perhitungan fisik aktual dan pencatatan pada sistem.</p>
-            </div>
 
-            <!-- TAB 4: OUTBOUND PICKER SORTER -->
-            <div id="Outbound Picker Sorter" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Outbound Picker Sorter</h2>
-                </div>
-                <p class="section-desc">Melakukan pengambilan barang untuk kategori non cross dock dan menyortir barang dengan kategori cross dock</p>
-            </div>
-            
-            <!-- TAB 5: OUTBOUND CHECKER -->
-            <div id="Outbound Checker" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Outbound Checker</h2>
-                </div>
-                <p class="section-desc">Melakukan pengecekan dan pengemasan barang untuk dikirim ke HUB</p>
-            </div>
 
-            <!-- TAB 6: OUTBOUND LOADER (DIPERBAIKI & TIDAK DUPLIKAT) -->
-            <div id="Outbound Loader" class="content-section">
-                <div class="section-header-box">
-                    <h2 class="section-title">Outbound Loader</h2>
-                </div>
-                <p class="section-desc">Memuat barang ke dalam mobil truk untuk dikirim ke HUB dengan rute yang telah ditentukan</p>
 
                 <h3 style="font-size: 1.15rem; margin: 20px 0 15px 0; color: var(--primary);">Aturan Singkat di Lapangan</h3>
+
                 <div class="rules-grid">
+
                     <div class="rule-card">
+
                         <h4><i class="fa-solid fa-list-ol"></i> Ikuti urutan proses</h4>
-                        <p>Memuat barang untuk dikirim ke HUB dan pastikan tidak ada koli yang tertinggal dan kelebihan.</p>
+
+                        <p>Mulai dari dokumen, pengecekan fisik, pencatatan, lalu input sistem.</p>
+
                     </div>
+
                     <div class="rule-card">
-                        <h4><i class="fa-solid fa-pen-to-square"></i> Proses memuat barang</h4>
-                        <p>Proses grouping, scan koli ID, memuat barang ke dalam truk, memberikan keranjang dengan jaring hitam sebagai pemisah.</p>
+
+                        <h4><i class="fa-solid fa-pen-to-square"></i> Catat hasil aktual</h4>
+
+                        <p>Jumlah barang, kondisi barang, dan selisih harus ditulis sesuai temuan.</p>
+
                     </div>
+
                     <div class="rule-card">
+
                         <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
-                        <p>Jika terdapat koli yang hilang atau lebih maupun koli tanpa identitas, segera konfirmasi ke Team Leader.</p>
+
+                        <p>Jika ada dokumen tidak lengkap, QR tidak terbaca, atau barang rusak, segera eskalasi ke PIC.</p>
+
                     </div>
+
                 </div>
+
                 
-                <div class="card clickable" onclick="toggleGallery('loaderbGallery1')">
+
+                <div class="card clickable" onclick="toggleGallery('checkeribGallery1')">
+
                     <div class="step-container">
+
                         <div class="step-number">1</div>
+
                         <div class="step-content">
+
                             <h3>Persiapan Aset</h3>
-                            <p>Menyiapkan aset yang digunakan oleh Outbound Loader</p>
+
+                            <p>Menyiapkan aset yang digunakan seperti keranjang, pallet, seuic, partisi untuk melapisi keranjang</p>
+
                             <em>(Klik untuk lihat contoh gambar)</em>
+
                         </div>
+
                     </div>
+
                 </div>
+
                 
-                <div id="loaderbGallery1" class="image-gallery-wrapper">
+
+                <div id="checkeribGallery1" class="image-gallery-wrapper">
+
                     <div class="image-gallery">
+
                         <div class="image-box">
-                            <img src="Asset Loader.png" alt="Mempersiapkan asset untuk proses memuat barang yang akan dikirim ke HUB">
-                            <div class="image-caption">Asset Loader</div>
+
+                            <img src="Asset Inbound.png" alt="Mempersiapkan asset untuk proses penerimaan">
+
+                            <div class="image-caption">Mempersiapkan asset untuk proses penerimaan</div>
+
                         </div>
+
                     </div>
+
                 </div>
-                    
-                <div class="card clickable" onclick="toggleGallery('loaderbGallery2')">
+
+
+
+                <div class="card clickable" onclick="toggleGallery('checkeribGallery2')">
+
                     <div class="step-container">
+
                         <div class="step-number">2</div>
+
                         <div class="step-content">
-                            <h3>Mengelompokkan barang sesuai HUB tujuan</h3>
-                            <p>Setelah terima barang dari Checker, Loader mengelompokkan barang sesuai dengan HUB tujuannya, di area loading terdapat penanda yang ditempel pada dinding sebagai kode HUB, barang akan dipindahkan ke area gate ketika mobil akan tiba</p>
+
+                            <h3>Proses penerimaan</h3>
+
+                            <p>Sebelum dilakukan proses penerimaan oleh Checker Inbound, dilakukan pengecekan suhu mobil dan produk oleh tim QA Inbound</p>
+
                             <em>(Klik untuk lihat contoh gambar)</em>
+
                         </div>
+
                     </div>
+
                 </div>
-                
-                <div id="loaderbGallery2" class="image-gallery-wrapper">
+
+
+
+                <div id="checkeribGallery2" class="image-gallery-wrapper">
+
                     <div class="image-gallery">
+
                         <div class="image-box">
-                            <img src="grouping1.png" alt="Contoh pengelompokan barang">
-                            <div class="image-caption">Contoh pengelompokan barang 1</div>
+
+                            <img src="QA IB.png" alt="Proses Pengecekan Suhu Mobil & produk secara sampling">
+
+                            <div class="image-caption">Proses Pengecekan Suhu Mobil & produk secara sampling</div>
+
                         </div>
-                        <div class="image-box">
-                            <img src="grouping2.png" alt="Contoh pengelompokan barang">
-                            <div class="image-caption">Contoh pengelompokan barang 2</div>
-                        </div>
+
                     </div>
+
                 </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('checkeribGallery3')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">3</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses Menghitung oleh Checker Inbound</h3>
+
+                            <p>Checker menghitung jumlah barang yang diterima dengan mengecek kualitas secara visual</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div id="checkeribGallery3" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="counting.png" alt="Proses Menghitung">
+
+                            <div class="image-caption">Proses Menghitung</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('checkeribGallery4')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">4</div>
+
+                        <div class="step-content">
+
+                            <h3>Pencatatan pada lembar kerja HO (Hand Over)</h3>
+
+                            <p>Mencatat jumlah produk yang diterima, beri keterangan jika jumlah produk tidak sesuai dengan jumlah pada PO(Purchase Order)</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div id="checkeribGallery4" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="isi HO.png" alt="Pencatatan pada lembar kerja HO">
+
+                            <div class="image-caption">Pencatatan pada lembar kerja HO</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MODUL TEMPLATE UNTUK TABS LAIN -->
+
+            <!-- TAB 4: OUTBOUND PICKER SORTER -->
+
+            <div id="Outbound Picker Sorter" class="content-section">
+
+                <div class="section-header-box">
+
+                    <h2 class="section-title">Outbound Picker Sorter</h2>
+
+                </div>
+
+                <p class="section-desc">Melakukan pengambilan barang untuk kategori non cross dock dan menyortir barang dengan kategori cross dock</p>
+
+
+
+                <h3 style="font-size: 1.15rem; margin: 20px 0 15px 0; color: var(--primary);">Aturan Singkat di Lapangan</h3>
+
+                <div class="rules-grid">
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-list-ol"></i> Ikuti urutan proses</h4>
+
+                        <p>Mulai dari penerimaan tugas, mengambil dan menyortir barang, kemudian proses pada sistem WMS (Warehouse Management System).</p>
+
+                    </div>
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-pen-to-square"></i> Proses Pengambilan barang</h4>
+
+                        <p>Picker melakukan pengambilan barang pada area penyimpanan seperti chiller, anteroom, area pasar, Sorter mengambil barang pada area penyimpanan sementara di staging inbound</p>
+
+                    </div>
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
+
+                        <p>Jika barang tidak ditemukan atau selisih, silahkan hubungi Inventory Stock Keeper untuk barang non cross dock, atau hubungi Team Leader untuk barang cross dock.</p>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="card clickable" onclick="toggleGallery('pickerGallery1')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">1</div>
+
+                        <div class="step-content">
+
+                            <h3>Persiapan Aset</h3>
+
+                            <p>Menyiapkan aset yang digunakan seperti keranjang, pallet, seuic,dll</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="pickerGallery1" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="Asset Picker.png" alt="Mempersiapkan asset untuk proses pengambilan barang">
+
+                            <div class="image-caption">Asset Picker Sorter</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('pickerGallery2')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">2</div>
+
+                        <div class="step-content">
+
+                            <h3>Penerimaan penugasan (Picker Sorter)</h3>
+
+                            <p>Team leader melakukan penugasan dengan memberi label QR code SO yang perlu diselesaikan </p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="pickerGallery2" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="penugasan picker.png" alt="Penerimaan penugasan">
+
+                            <div class="image-caption">Penerimaan label QR code untuk penugasan Outbound Picker Sorter</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="QRpenugasan.png" alt="Label QR Penugasan">
+
+                            <div class="image-caption">Label QR Penugasan</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('pickerGallery3')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">3</div>
+
+                        <div class="step-content">
+
+                            <h3>Penempelan QR code label penugasan pada keranjang</h3>
+
+                            <p>Menempelkan QR code label penugasan pada keranjang sebagai identitas barang sesuai nomor SO (Supply Order).</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="pickerGallery3" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="labelpooling.png" alt="Penempelan QR code label penugasan pada keranjang">
+
+                            <div class="image-caption">Penempelan QR code label penugasan pada keranjang</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="card clickable" onclick="toggleGallery('pickerGallery4')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">4</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses pengambilan barang (Picker)</h3>
+
+                            <p>Picker mengambil barang di area penyimpanan pada SLOC yang tertera pada sistem. pada saat proses pengambilan cek detail yang tertera pada QR code barang seperti : Nama SKU, Garamasi, dan Expired Date</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="pickerGallery4" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="carabacasloc.png" alt="Cara membaca SLOC">
+
+                            <div class="image-caption">Cara membaca SLOC</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="pencarian SLOC.png" alt="Pencarian SLOC">
+
+                            <div class="image-caption">Pencarian SLOC untuk pengambilan barang</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="areapengambilanncd.png" alt="Area pengambilan barang Non Cross Dock">
+
+                            <div class="image-caption">Area pengambilan barang Non Cross Dock</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="proses picking sistem.png" alt="Pengambilan barang">
+
+                            <div class="image-caption">Pengambilan barang</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="card clickable" onclick="toggleGallery('pickerGallery5')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">5</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses pengambilan barang pada sistem (Picker)</h3>
+
+                            <p>Proses pengambilan barang pada sistem WMS (Warehouse Management System), dengan melakukan scan pada QR code barang dan QR code SLOC</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="pickerGallery5" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="pickersistem.png" alt="Proses sistem">
+
+                            <div class="image-caption">Proses sistem</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('pickerGallery6')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">6</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses menyortir barang (Sorter)</h3>
+
+                            <p>Sorter mengambil barang dengan jumlah yang banyak per SKU, kemudian menyortir berdasarka jumlah permintaan masing-masing HUB.</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="pickerGallery6" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="areapengambilancd.png" alt="Area pengambilan barang Cross Dock">
+
+                            <div class="image-caption">Area pengambilan barang Cross Dock</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="sorting.png" alt="Proses menyortir">
+
+                            <div class="image-caption">Proses menyortir</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="card clickable" onclick="toggleGallery('pickerGallery7')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">7</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses sistem untuk menyortir (Sorter)</h3>
+
+                            <p>Proses meenyortir barang pada sistem WMS (Warehouse Management System), dengan melakukan scan pada QR code barang dan QR code HUB tujuan yang tertera pada label penugasan dan memproses pada sistem WMS (Warehouse Management System).</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="pickerGallery7" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="sortersistem.png" alt="Proses sistem">
+
+                            <div class="image-caption">Proses sistem</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('pickerGallery8')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">8</div>
+
+                        <div class="step-content">
+
+                            <h3>Serah terima ke Outbound Checker</h3>
+
+                            <p>Barang yang telah diambil maupun disortir kemudian diserah terima ke bagian Outbound Checker untuk proses pengecekan dan pengemasan.</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="pickerGallery8" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="serahterimachecker.png" alt="Serah terima barang yang telah diproses Outbound Picker Sorter">
+
+                            <div class="image-caption">Serah terima barang yang telah diproses Outbound Picker Sorter</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <!-- TAB 5: OUTBOUND CHECKER -->
+
+            <div id="Outbound Checker" class="content-section">
+
+                <div class="section-header-box">
+
+                    <h2 class="section-title">Outbound Checker</h2>
+
+                </div>
+
+                <p class="section-desc">Melakukan pengecekan dan pengemasan barang untuk dikirim ke HUB</p>
+
+
+
+                <h3 style="font-size: 1.15rem; margin: 20px 0 15px 0; color: var(--primary);">Aturan Singkat di Lapangan</h3>
+
+                <div class="rules-grid">
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-list-ol"></i> Ikuti urutan proses</h4>
+
+                        <p>Mulai dari cetak koli ID, pengecekan barang, hingga penyusunan dan pengemasan barang.</p>
+
+                    </div>
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-pen-to-square"></i> Proses Pengecekan dan pengemasan barang</h4>
+
+                        <p>Checker melakukan pengecekan barang dengan jumlah yang tertera pada SO (Supply Order) kemudian menyusun dan mengemas barang sesuai ketentuan dengan memperhatikan berat dan karakterisitik dari suatu barang</p>
+
+                    </div>
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
+
+                        <p>Jika ditemukan barang dengan keadaan bad atau jumlah barang tidak sesuai, namun tidak ada stok penggantinya, segera konfirmasi ke Team Leader.</p>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="card clickable" onclick="toggleGallery('checkerobGallery1')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">1</div>
+
+                        <div class="step-content">
+
+                            <h3>Persiapan Aset</h3>
+
+                            <p>Menyiapkan aset yang digunakan oleh Outbound Checker</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="checkerobGallery1" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="Asset Checker.png" alt="Mempersiapkan asset untuk proses pengecekan dan pengemasan barang">
+
+                            <div class="image-caption">Asset Checker</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('checkerobGallery2')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">2</div>
+
+                        <div class="step-content">
+
+                            <h3>Mencetak dan scan Koli ID</h3>
+
+                            <p>Checker mencetak koli ID kemudian melakukan scan pada koli ID tersebut untuk memulai dan  merekam proses checking</p>
+
+                            <p>Note : untuk menghentikan proses merekam, Checker melakukan scan koli ID di akhir sesi pengecekan</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="checkerobGallery2" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="cetakkoli.png" alt="Mencetak koli">
+
+                            <div class="image-caption">Mencetak koli</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('checkerobGallery3')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">3</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses pengecekan barang </h3>
+
+                            <p>Checker melakukan scan QR code barang untuk menghitung dan melakukan proses pengecekan</p>
+
+                            <p>Note : Scan dilakukan satu per satu, untuk barang berupa telur diberi toleransi untuk proses ketik jumlah secara manual namun tetap dihitung</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="checkerobGallery3" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="scanchecker.png" alt="Proses pengecekan">
+
+                            <div class="image-caption">Proses pengecekan</div>
+
+                        </div>
+
+                        
+
+                        <div style="margin-top: 25px;">
+
+                            <a href="https://drive.google.com/file/d/1pXSi-DmrWBrIYLmKB9HamsHL_-mtF9so/view?usp=sharing"
+
+                               target="_blank"
+
+                               style="background-color: #25d366; color: white; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2); transition: 0.2s;">
+
+                               ▶️ Proses pengecekan barang (Video)</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="card clickable" onclick="toggleGallery('checkerobGallery4')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">4</div>
+
+                        <div class="step-content">
+
+                            <h3>Penyusunan dan pengemasan barang</h3>
+
+                            <p>Barang disusun sesuai karakteristik barang, berikut ketentuannya</p>
+
+                            <p>• Barang dengan karakteristik Berat / besar, padat, kokoh, diletakkan pada bagian paling bawah (Contoh : Semangka, labu parang)</p>
+
+                            <p>• Barang dengan karakterisitik Berat sedang, sedikit rentan, diletakkan pada bagian tengah (Contoh : Brokoli, mentimun)</p>
+
+                            <p>• Barang dengan karakteristik Ringan / kecil, sangat rentan, diletakkan pada bagian paling atas (Contoh : Sayuran daun seperti bayam , kangkung, selada keriting)</p>
+
+                            <p>• Penempatan barang dengan berat sedang disesuaikan dengan karakteristik barang lainnya. Jika berdampingan dengan barang yang lebih berat, tempatkan di posisi tengah. Jika berdampingan dengan barang yang lebih ringan, tempatkan di posisi bawah</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="checkerobGallery4" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="penyusunanchecker.png" alt="Proses penyusunan & pengemasan barang">
+
+                            <div class="image-caption">Proses penyusunan & pengemasan barang</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="stacking.png" alt="Ketentuan proses penyusunan">
+
+                            <div class="image-caption">Ketentuan proses penyusunan</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="penyusunan.png" alt="Contoh penyusunan barang">
+
+                            <div class="image-caption">Contoh penyusunan barang</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('checkerobGallery5')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">5</div>
+
+                        <div class="step-content">
+
+                            <h3>Hal yang perlu diperhatikan checker</h3>
+
+                            <p>Catatan  :</p>
+
+                            <p>• Pastikan 1 permintaan pesanan tidak digabungkan dengan permintaan pesanan lain</p>
+
+                            <p>• Pastikan dalam 1 koli tidak ada ruang kosong dan terisi penuh</p>
+
+                            <p>• Beri partisi berupa kardus atau bubble wrap pada barang tertentu</p>
+
+                            <p>• Tambahkan ice gel pada produk rentan dan pengemasan menggunakan styrofoam</p>
+
+                            <p>• Lepaskan label koli ID yang lama</p>
+
+                            <p>• Tempelkan label koli ID yang baru tanpa menutupi label tagging asset</p>
+
+                            <p>• Jika dalam satu SO terdapat >1 keranjang, maka cetak koli ID sebanyak keranjang yang digunakan dengan nomor koli ID yang berbeda </p>
+
+                            <p>• Pastikan label koli ID terpasang dengan baik dan benar</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('checkerobGallery6')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">6</div>
+
+                        <div class="step-content">
+
+                            <h3>Serah terima ke Outbound Loader</h3>
+
+                            <p>Barang yang telah selesai pengecekan dan pengemasn kemudian di serah terima ke Outbound Loader untuk proses grouping</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="checkerobGallery6" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="serahterimaloader.png" alt="Serah terima dari Outbound Checker ke Outbound Loader">
+
+                            <div class="image-caption">Asset Checker</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('checkerobGallery7')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">7</div>
+
+                        <div class="step-content">
+
+                            <h3>Contoh temuan kasus</h3>
+
+                            <p>Temuan kasus yang sering terjadi pada proses pengecekan barang</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="checkerobGallery7" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="temuankasuschecker.png" alt="Contoh permasalahan serta penyelesaiannya">
+
+                            <div class="image-caption">Contoh permasalahan serta penyelesaiannya</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TAB 6: OUTBOUND LOADER -->
+
+                <div id="Outbound Loader" class="content-section">
+
+                    <div class="section-header-box">
+
+                        <h2 class="section-title">Outbound Loader</h2>
+
+                </div>
+
+                <p class="section-desc">Memuat barang ke dalam mobil truk untuk dikirim ke HUB dengan rute yang telah ditentukan</p>
+
+
+
+                <h3 style="font-size: 1.15rem; margin: 20px 0 15px 0; color: var(--primary);">Aturan Singkat di Lapangan</h3>
+
+                <div class="rules-grid">
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-list-ol"></i> Ikuti urutan proses</h4>
+
+                        <p>Memuat barang untuk dikirim ke HUB dan pastikan tidak ada koli yang tertinggal dan kelebihan.</p>
+
+                    </div>
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-pen-to-square"></i> Proses memuat barang</h4>
+
+                        <p>Proses grouping, scan koli ID, memuat barang ke dalam truk, memberikan keranjang dengan jaring hitam sebagai pemisah.</p>
+
+                    </div>
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
+
+                        <p>Jika terdapat koli yang hilang atau lebih maupun koli tanpa identitas, segera konfirmasi ke Team Leader.</p>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="card clickable" onclick="toggleGallery('loaderbGallery1')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">1</div>
+
+                        <div class="step-content">
+
+                            <h3>Persiapan Aset</h3>
+
+                            <p>Menyiapkan aset yang digunakan oleh Outbound Loader</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="loaderbGallery1" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="Asset Loader.png" alt="Mempersiapkan asset untuk proses memuat barang yang akan dikirim ke HUB">
+
+                            <div class="image-caption">Asset Loader</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                    
+
+                <div class="card clickable" onclick="toggleGallery('loaderbGallery2')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">2</div>
+
+                        <div class="step-content">
+
+                            <h3>Mengelompokkan barang sesuai HUB tujuan</h3>
+
+                            <p>Setelah terima barang dari Checker, Loader mengelompokkan barang sesuai dengan HUB tujuannya, di area loading terdapat penanda yang ditempel pada dinding sebagia kode HUB, barang akan dipindahkan ke area gate ketika mobil akan tiba</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="loaderbGallery2" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="grouping1.png" alt="Contoh pengelompokan barang">
+
+                            <div class="image-caption">Contoh pengelompokan barang</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="grouping2.png" alt="Contoh pengelompokan barang">
+
+                            <div class="image-caption">Contoh pengelompokan barang</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
 
                 <div class="card clickable" onclick="toggleGallery('loaderbGallery3')">
+
                     <div class="step-container">
+
                         <div class="step-number">3</div>
+
                         <div class="step-content">
+
                             <h3>Proses scan koli pada sistem</h3>
+
                             <p>Ketika barang telah dipindahkan ke area gate, sebelum barang dimuat kedalam mobil Loader harus melakukan scan koli ID sesuai yang tertera pada sistem WMS (Warehouse Management System), pastikan semua koli sudah di scan dan lengkap</p>
+
                             <em>(Klik untuk lihat contoh gambar)</em>
+
                         </div>
+
                     </div>
+
                 </div>
+
                 
+
                 <div id="loaderbGallery3" class="image-gallery-wrapper">
+
                     <div class="image-gallery">
+
                         <div class="image-box">
+
                             <img src="scanloader.png" alt="Proses scan koli ID">
+
                             <div class="image-caption">Proses scan koli ID</div>
+
                         </div>
+
                         <div class="image-box">
+
                             <img src="sistemloader.png" alt="Proses sistem Loader">
+
                             <div class="image-caption">Proses sistem Loader</div>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('loaderbGallery4')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">4</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses muat barang</h3>
+
+                            <p>"Sebelum barang dimuat, pastikan suhu kendaraan sudah sesuai standar. Kemudian muat barang kedalam mobil menggunakan prinsip LIFO (Last In First Out) sesuai rute HUB  atau koli terakhir yang masuk kedalam truk akan pertama keluar</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="loaderbGallery4" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="muatbarang.png" alt="Proses memuat barang ke dalam mobil">
+
+                            <div class="image-caption">Proses memuat barang ke dalam mobil</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('loaderbGallery5')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">5</div>
+
+                        <div class="step-content">
+
+                            <h3>Pemisahan keranjang</h3>
+
+                            <p>Beri pemisah menggunakan jaring hitam pada keranjang dengan tujuan HUB yang berbeda</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="loaderbGallery5" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="jaringloader.png" alt="Proses pemisahan keranjang">
+
+                            <div class="image-caption">Proses pemisahan keranjang</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('loaderbGallery6')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">6</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses akhir memuat barang</h3>
+
+                            <p>Setelah barang selesai dimuat, tim Quality melakukan pengecekan suhu kendaraan kemudian pintu kendaraan akan ditutup dan disegel menggunakan barcode seal</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="loaderbGallery6" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="finalisasiloader.png" alt="Proses terakhir memuat barang">
+
+                            <div class="image-caption">Proses terakhir memuat barang</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card clickable" onclick="toggleGallery('loaderbGallery7')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">7</div>
+
+                        <div class="step-content">
+
+                            <h3>Contoh temuan kasus</h3>
+
+                            <p>Temuan kasus yang sering ditemukan pada proses memuat barang</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="loaderbGallery7" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="temuankasuasloader.png" alt="Contoh permasalahan serta penyelesaiannya">
+
+                            <div class="image-caption">Contoh permasalahan serta penyelesaiannya</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <!-- MODUL LAINNYA -->
+               
+
             <div id="Inbound Labeling" class="content-section">
+
                 <div class="section-header-box"><h2 class="section-title">Inbound Labeling</h2></div>
+
                 <div class="card"><p>Panduan operasional untuk Inbound Labeling.</p></div>
+
             </div>
+
+
 
             <div id="Inventory Admin" class="content-section">
+
                 <div class="section-header-box"><h2 class="section-title">Inventory Admin</h2></div>
+
                 <div class="card"><p>Panduan operasional untuk Inventory Admin.</p></div>
+
             </div>
+
+
 
             <div id="Inventory Badstock Admin" class="content-section">
+
                 <div class="section-header-box"><h2 class="section-title">Inventory Badstock Admin</h2></div>
+
                 <div class="card"><p>Panduan operasional untuk Inventory Badstock Admin.</p></div>
+
             </div>
+
+
 
             <div id="Inventory Putaway" class="content-section">
+
                 <div class="section-header-box"><h2 class="section-title">Inventory Putaway</h2></div>
+
                 <div class="card"><p>Panduan operasional untuk Inventory Putaway.</p></div>
+
             </div>
+
+
 
             <div id="Inventory Stock Keeper" class="content-section">
+
                 <div class="section-header-box"><h2 class="section-title">Inventory Stock Keeper</h2></div>
+
                 <div class="card"><p>Panduan operasional untuk Inventory Stock Keeper.</p></div>
+
             </div>
+
+
 
             <div id="Inventory Badstock" class="content-section">
+
                 <div class="section-header-box"><h2 class="section-title">Inventory Badstock</h2></div>
+
                 <div class="card"><p>Panduan operasional untuk Inventory Badstock.</p></div>
+
             </div>
 
+
+
+            <div id="Outbound Picker Sorter" class="content-section">
+
+                <div class="section-header-box"><h2 class="section-title">Outbound Picker Sorter</h2></div>
+
+                <div class="card"><p>Melakukan pengambilan barang di rak penyimpanan dan memilahnya berdasarkan rute/hub pengiriman.</p></div>
+
+            </div>
+
+
+
+            <div id="Outbound Checker" class="content-section">
+
+                <div class="section-header-box"><h2 class="section-title">Outbound Checker</h2></div>
+
+                <div class="card"><p>Panduan operasional untuk Outbound Checker.</p></div>
+
+            </div>
+
+
+
+            <div id="Outbound Loader" class="content-section">
+
+                <div class="section-header-box"><h2 class="section-title">Outbound Loader</h2></div>
+
+                <div class="card"><p>Panduan operasional untuk Outbound Loader.</p></div>
+
+            </div>
+
+
+
         </div>
+
     </main>
 
-    <!-- JAVASCRIPT -->
+
+
+    <!-- JAVASCRIPT UNTUK MEMBUAT MENU DAN GAMBAR BISA DIKLIK -->
+
     <script>
+
+        // Buka / Pindah Tab Utama
+
         function openTab(evt, tabName) {
+
             let i, contentSection, subMenu, mainMenu;
 
+
+
             contentSection = document.getElementsByClassName("content-section");
+
             for (i = 0; i < contentSection.length; i++) {
+
                 contentSection[i].classList.remove("active");
+
             }
+
+
 
             subMenu = document.getElementsByClassName("sub-menu");
+
             for (i = 0; i < subMenu.length; i++) {
+
                 subMenu[i].classList.remove("active");
+
             }
+
+
 
             mainMenu = document.getElementsByClassName("main-menu");
+
             for (i = 0; i < mainMenu.length; i++) {
+
                 mainMenu[i].classList.remove("active");
+
             }
+
+
 
             let targetTab = document.getElementById(tabName);
+
             if(targetTab) {
+
                 targetTab.classList.add("active");
+
             }
+
+
 
             if(evt && evt.currentTarget) {
+
                 evt.currentTarget.classList.add("active");
+
             }
+
+
+
+            // Sembunyikan drawer sidebar di tampilan mobile saat menu dipilih
 
             document.getElementById("sidebarNav").classList.remove("mobile-open");
+
         }
+
+
+
+        // Buka / Tutup Dropdown Submenu
 
         function toggleSubmenu(evt, submenuId) {
+
             evt.stopPropagation();
+
             let submenu = document.getElementById(submenuId);
+
             let arrow = evt.currentTarget.querySelector('.arrow');
+
             
+
             submenu.classList.toggle("open");
+
             if(arrow) arrow.classList.toggle("rotate");
+
         }
+
+
+
+        // Buka / Tutup Gambar Saat Diklik
 
         function toggleGallery(galleryId) {
+
             let gallery = document.getElementById(galleryId);
+
             if (gallery) {
+
                 gallery.classList.toggle("show");
+
             }
+
         }
+
+
+
+        // Buka / Tutup Sidebar khusus Layar Handphone
 
         function toggleMobileMenu() {
+
             let nav = document.getElementById("sidebarNav");
+
             nav.classList.toggle("mobile-open");
+
         }
+
+
+
+        // Fitur Cari Panduan pada Sidebar
 
         function searchGlobal() {
+
             let input = document.getElementById('searchInput').value.toLowerCase();
+
             let subMenus = document.getElementsByClassName('sub-menu');
 
+
+
             for (let i = 0; i < subMenus.length; i++) {
+
                 let text = subMenus[i].textContent.toLowerCase();
+
                 if (text.includes(input)) {
+
                     subMenus[i].style.display = "block";
+
                 } else {
+
                     subMenus[i].style.display = "none";
+
                 }
+
             }
+
         }
+
     </script>
+
 </body>
-</html>
+
+</html> 
