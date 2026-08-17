@@ -1048,10 +1048,6 @@
 
             <ul id="inventorySubmenu" class="submenu-list">
 
-                <li class="sub-menu" onclick="openTab(event, 'Inventory Admin')">Inventory Admin</li>
-
-                <li class="sub-menu" onclick="openTab(event, 'Inventory Badstock Admin')">Inventory Badstock Admin</li>
-
                 <li class="sub-menu" onclick="openTab(event, 'Inventory Putaway')">Inventory Putaway</li>
 
                 <li class="sub-menu" onclick="openTab(event, 'Inventory Stock Keeper')">Inventory Stock Keeper</li>
@@ -3239,10 +3235,366 @@
                     </div>
 
                 </div>
+                
+            </div>
+
+            <!-- TAB 9: INVENTORY BADSTOCK -->
+
+            <div id="Inventory Badstock" class="content-section">
+
+                <div class="section-header-box">
+
+                    <h2 class="section-title">Inventory Badstock</h2>
+
+                </div>
+
+                <p class="section-desc">Pengelolaan barang bad atau tidak layak jual</p>
+
+
+
+                <h3 style="font-size: 1.15rem; margin: 20px 0 15px 0; color: var(--primary);">Aturan Singkat di Lapangan</h3>
+
+                <div class="rules-grid">
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-list-ol"></i> Ikuti urutan proses</h4>
+
+                        <p>Mengelola barang tidak layak jual untuk dimusnahkan atau dijual ke pihak ketiga.</p>
+
+                    </div>
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-pen-to-square"></i> Proses Pengelolaan Barang Tidak Layak Jual</h4>
+
+                        <p>Mulai dari penerimaan barang bad dari HUB, pengecekan dan pemisahan barang bad, hingga proses sitem dan pembuatan BA (Berita Acara)</p>
+
+                    </div>
+
+                    <div class="rule-card">
+
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> Laporkan kendala</h4>
+
+                        <p>Jika ditemukan jumlah barang yang diterima dari HUB tidak sesuai, segera konfirmasi ke Team Leader.</p>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="card clickable" onclick="toggleGallery('BSGallery1')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">1</div>
+
+                        <div class="step-content">
+
+                            <h3>Persiapan Aset</h3>
+
+                            <p>Menyiapkan aset yang digunakan Inventory Badstock</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="BSGallery1" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="Asset BS.png" alt="Mempersiapkan asset untuk proses meneglola barang tidak layak jual">
+
+                            <div class="image-caption">Asset Inventory Badstock</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('BSGallery2')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">2</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses penerimaan barang bad stock dari HUB</h3>
+
+                            <p>HUB mengirim barang badstock ke warehouse kemudian diterima oleh Inventory Badstock untuk dilakukan pengecekan antara surat jalan dengan fisik barang aktual</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div id="BSGallery2" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="BS HUB.png" alt="Proses penerimaan kiriman barang bad dari HUB">
+
+                            <div class="image-caption">Proses penerimaan kiriman barang bad dari HUB</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="SJ BS.png" alt="Contoh surat jalan badstock">
+
+                            <div class="image-caption">Contoh surat jalan badstock</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('BSGallery3')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">3</div>
+
+                        <div class="step-content">
+
+                            <h3>Pengecekan barang tidak layak</h3>
+
+                            <p>• Inventory Badstock mengecek barang badstock kiriman HUB dan memilah barang yang akan dijual ke pihak ketiga atau akan dimusnahkan (disposal)</p>
+
+                            <p>• Memastikan jumlah fisik barang sesuai dengan surat jalan</p>
+
+                            <p>• Apabila jumlah fisik lebih banyak dari yang tertera pada surat jalan, Inventory Badstock WH memberitahu HUB untuk membuat SO tambahan</p>
+
+                            <p>• Apabila jumlah fisik lebih sedikit dari yang tertera pada surat jalan, Inventory Badstock WH menerima sesuai jumlah fisik yang diterima (partial)</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+                <div id="BSGallery3" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="cekBS.png" alt="Proses pengecekan jumlah barang bad kiriman HUB">
+
+                            <div class="image-caption">Proses pengecekan jumlah barang bad kiriman HUB</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="penerimaanBS1.png" alt="Proses receiving SOB (Supply Order Badstock) dari HUB (1)">
+
+                            <div class="image-caption">Proses receiving SOB (Supply Order Badstock) dari HUB(1)</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="penerimaanBS2.png" alt="Proses receiving SOB (Supply Order Badstock) dari HUB (2)">
+
+                            <div class="image-caption">Proses receiving SOB (Supply Order Badstock) dari HUB(2)</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="penerimaanBS3.png" alt="Proses receiving SOB (Supply Order Badstock) dari HUB (3)">
+
+                            <div class="image-caption">Proses receiving SOB (Supply Order Badstock) dari HUB(3)</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('BSGallery4')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">4</div>
+
+                        <div class="step-content">
+
+                            <h3>Pengelolaan barang tidak layak jual</h3>
+
+                            <p>• Lapisi keranjang dengan plastik trashbag untuk wadah barang badstock yang akan dimusnahkan</p>
+
+                            <p>• Untuk barang badstock yang akan dijual dilakukan penimbangan pada saat pihak ketiga tiba</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+                <div id="BSGallery4" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="final BS.png" alt="Proses persiapan untuk pemusnahan dan penjualan barang bad">
+
+                            <div class="image-caption">Proses persiapan untuk pemusnahan dan penjualan barang bad</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('BSGallery5')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">5</div>
+
+                        <div class="step-content">
+
+                            <h3>Proses pengelolaan barang bad pada sistem </h3>
+
+                            <p>Admin Badstock membuat SOB (Supply Order Badstock) untuk mengurangi jumlah badstock pada sistem, proses ini memiliki istilah "Bulky"</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+                <div id="BSGallery5" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="SOB1.png" alt="Proses pembuatan SOB (Supply Order Badstock pada sistem (1)">
+
+                            <div class="image-caption">Proses pembuatan SOB (Supply Order Badstock pada sistem (1)</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="SOB2.png" alt="Proses pembuatan SOB (Supply Order Badstock pada sistem (2)">
+
+                            <div class="image-caption">Proses pembuatan SOB (Supply Order Badstock pada sistem (2)</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="SOB3.png" alt="Proses pembuatan SOB (Supply Order Badstock pada sistem (3)">
+
+                            <div class="image-caption">Proses pembuatan SOB (Supply Order Badstock pada sistem (3)</div>
+
+                        </div>
+
+                        <div class="image-box">
+
+                            <img src="SOB4.png" alt="Proses pembuatan SOB (Supply Order Badstock pada sistem (4)">
+
+                            <div class="image-caption">Proses pembuatan SOB (Supply Order Badstock pada sistem (4)</div>
+
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('BSGallery6')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">6</div>
+
+                        <div class="step-content">
+
+                            <h3>Membuat BA (Berita Acara)</h3>
+
+                            <p>Berita acara dibuat oleh Admin Badstock berisi detail pemusnahan dan penjualan barang badstock ke pihak ketiga </p>
+
+                            <em> </em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card clickable" onclick="toggleGallery('BSGallery7')">
+
+                    <div class="step-container">
+
+                        <div class="step-number">7</div>
+
+                        <div class="step-content">
+
+                            <h3>Contoh temuan kasus</h3>
+
+                            <p>Temuan kasus yang sering ditemukan pada proses mengelola badstock</p>
+
+                            <em>(Klik untuk lihat contoh gambar)</em>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+                <div id="BSGallery7" class="image-gallery-wrapper">
+
+                    <div class="image-gallery">
+
+                        <div class="image-box">
+
+                            <img src="temuankasusBS.png" alt="Contoh permasalahan dan penyelesaiannya">
+
+                            <div class="image-caption">Contoh permasalahan dan penyelesaiannya</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
-            
 
+            
     </main>
 
 
